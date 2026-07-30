@@ -259,7 +259,10 @@ def save_trace(trang: int, cau_hoi: str, page_info: dict,
 # HÀM TỪ CHỐI MẶC ĐỊNH
 # ============================================================
 def tu_choi_response(ly_do: str, trang: int, corpus: dict) -> dict:
-    """Sinh response tier=tu_choi — không chạy bước phân tầng."""
+    """Sinh response tier=tu_choi — không chạy bước phân tầng.
+    QUAN TRỌNG: missing phải là câu tutor nói với học viên ở ngôi thứ nhất,
+    KHÔNG được copy lý do phân loại của guardrail (văn ngôi thứ ba, lộ logic nội bộ).
+    """
     # Lấy danh sách trang thực sự có nội dung để gợi ý
     trang_co = sorted([
         int(k) for k, v in corpus.items()
@@ -268,11 +271,17 @@ def tu_choi_response(ly_do: str, trang: int, corpus: dict) -> dict:
     # Ưu tiên trang lân cận
     lan_can = [t for t in trang_co if abs(t - trang) <= 3 and t != trang][:3]
 
+    # missing là câu tutor nói với học viên — ngôi thứ nhất, đúng vai
+    missing_tutor = (
+        "Mình là trợ giảng của khoá học, chỉ trả lời dựa trên tài liệu bài giảng. "
+        "Mình không chia sẻ hướng dẫn nội bộ và không nhận vai khác."
+    )
+
     return {
         "tier": "tu_choi",
         "answer": "",
         "citations": [],
-        "missing": ly_do,
+        "missing": missing_tutor,
         "narrowing": [
             "Hỏi về nội dung bài học (khái niệm ReAct, Agent, Chatbot...)",
             "Yêu cầu giải thích một trang tài liệu cụ thể",
