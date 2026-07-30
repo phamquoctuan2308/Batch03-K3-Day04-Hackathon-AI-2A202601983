@@ -1,4 +1,4 @@
-# AI SPEC — Tutor biết nói "mình không biết" · Nhóm [XX] · Zone [X]
+# AI SPEC — Tutor biết nói "mình không biết" · Nhóm Vin Brothers · Zone D305
 
 Hướng: **[x] A — VLearn** · [ ] B — Trợ lý Học viên · [ ] C — Làn mở
 Loại: **[x] Tối ưu tính năng có sẵn** · [ ] Tính năng mới
