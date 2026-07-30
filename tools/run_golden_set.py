@@ -175,10 +175,16 @@ def run_one_case(corpus, ma, turn_id, trang_override, tier_mong_doi, turns_by_id
         final = call_ai.tu_choi_response(guardrail_parsed.get("ly_do", ""), trang_goi, corpus)
         classification_raw = None
     else:
-        user_msg = call_ai.build_user_message(page, cau_hoi)
+        # Truyền corpus để model thấy danh sách trang lân cận CÓ nội dung.
+        # Thiếu tham số này thì eval đo một đường khác với call_ai.run_pipeline
+        # (tier khong sẽ ra have_instead rỗng) — số đo không còn đại diện bản chạy thật.
+        user_msg = call_ai.build_user_message(page, cau_hoi, corpus)
         classification_raw = call_gemini_with_retry(call_ai.CLASSIFICATION_PROMPT, user_msg)
         try:
             final = call_ai.parse_json(classification_raw["text"])
+            # Cùng lớp chặn cuối như run_pipeline — giữ hai đường đồng nhất.
+            if final.get("tier") == "khong" and not final.get("have_instead"):
+                final["have_instead"] = call_ai.trang_lan_can(corpus, trang_goi, so_luong=3)
         except json.JSONDecodeError:
             final = {"tier": "PARSE_ERROR", "answer": "", "citations": [], "missing": None,
                      "narrowing": [], "have_instead": []}

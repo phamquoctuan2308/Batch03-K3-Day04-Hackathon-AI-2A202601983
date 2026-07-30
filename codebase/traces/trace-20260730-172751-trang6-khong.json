@@ -1,0 +1,57 @@
+{
+  "timestamp": "2026-07-30T17:27:51.217050+07:00",
+  "model": "gemini-3.5-flash-lite",
+  "input": {
+    "trang": 6,
+    "cau_hoi": "tóm tắt ý chính để tôi làm quiz cuối giờ",
+    "trang_tang": "khong",
+    "trang_so_ky_tu": 0
+  },
+  "guardrail": {
+    "raw": "{\"hop_le\": true, \"ly_do\": \"Yêu cầu tóm tắt ý chính để ôn tập chuẩn bị cho quiz cuối giờ, liên quan trực tiếp đến nội dung học tập.\"}",
+    "parsed": {
+      "hop_le": true,
+      "ly_do": "Yêu cầu tóm tắt ý chính để ôn tập chuẩn bị cho quiz cuối giờ, liên quan trực tiếp đến nội dung học tập."
+    }
+  },
+  "classification": {
+    "raw": "{\n  \"tier\": \"khong\",\n  \"answer\": \"\",\n  \"citations\": [],\n  \"missing\": \"Kho hiện không có nội dung cho trang 6 để tóm tắt ý chính.\",\n  \"narrowing\": [\n    \"Autonomous Agent và các mức độ từ Bot, Chatbot đến Agent ở trang 7\",\n    \"Agentic Fit Framework và cách đánh giá khi nào dùng chatbot hay agent ở trang 4\",\n    \"Kiểu hệ thống AI và cấu trúc Agent ở trang 3\"\n  ],\n  \"have_instead\": [7, 4, 3]\n}",
+    "parsed": {
+      "tier": "khong",
+      "answer": "",
+      "citations": [],
+      "missing": "Kho hiện không có nội dung cho trang 6 để tóm tắt ý chính.",
+      "narrowing": [
+        "Autonomous Agent và các mức độ từ Bot, Chatbot đến Agent ở trang 7",
+        "Agentic Fit Framework và cách đánh giá khi nào dùng chatbot hay agent ở trang 4",
+        "Kiểu hệ thống AI và cấu trúc Agent ở trang 3"
+      ],
+      "have_instead": [
+        7,
+        4,
+        3
+      ]
+    }
+  },
+  "output": {
+    "tier": "khong",
+    "answer": "",
+    "citations": [],
+    "missing": "Kho hiện không có nội dung cho trang 6 để tóm tắt ý chính.",
+    "narrowing": [
+      "Autonomous Agent và các mức độ từ Bot, Chatbot đến Agent ở trang 7",
+      "Agentic Fit Framework và cách đánh giá khi nào dùng chatbot hay agent ở trang 4",
+      "Kiểu hệ thống AI và cấu trúc Agent ở trang 3"
+    ],
+    "have_instead": [
+      7,
+      4,
+      3
+    ]
+  },
+  "usage": {
+    "input_tokens": 1848,
+    "output_tokens": 175
+  },
+  "elapsed_ms": 2333.6739540100098
+}

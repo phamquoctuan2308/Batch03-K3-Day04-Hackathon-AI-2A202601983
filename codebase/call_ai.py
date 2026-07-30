@@ -164,8 +164,31 @@ def get_page_content(corpus: dict, trang: int) -> dict:
     return corpus[key]
 
 
-def build_user_message(page: dict, cau_hoi: str) -> str:
-    """Xây dựng input gửi cho AI từ nội dung kho + câu hỏi."""
+def trang_co_noi_dung(corpus: dict, tru_trang: int = None) -> list:
+    """Danh sách số trang thực sự có nội dung trong kho, tăng dần.
+
+    Dùng chung cho have_instead ở tier khong và cho tu_choi_response.
+    """
+    return sorted(
+        int(k) for k, v in corpus.items()
+        if v.get("so_ky_tu", 0) > 0 and int(k) != tru_trang
+    )
+
+
+def trang_lan_can(corpus: dict, trang: int, so_luong: int = 3) -> list:
+    """Trang có nội dung gần `trang` nhất — gợi ý sát ngữ cảnh hơn trang xa."""
+    co = trang_co_noi_dung(corpus, tru_trang=trang)
+    return sorted(co, key=lambda t: (abs(t - trang), t))[:so_luong]
+
+
+def build_user_message(page: dict, cau_hoi: str, corpus: dict = None) -> str:
+    """Xây dựng input gửi cho AI từ nội dung kho + câu hỏi.
+
+    QUAN TRỌNG: phải kèm danh sách trang lân cận CÓ nội dung. Nếu chỉ gửi
+    một trang, model không có cách nào biết trang nào khác có gì — nó sẽ trả
+    have_instead=[] và narrowing rỗng ở tier khong, đúng lúc học viên cần
+    được chỉ đường nhất. Đây là lỗi đã quan sát thật trên trang 6.
+    """
     trang = page["trang"]
     noi_dung = page.get("noi_dung", [])
     so_ky_tu = page.get("so_ky_tu", 0)
@@ -175,11 +198,29 @@ def build_user_message(page: dict, cau_hoi: str) -> str:
     else:
         noi_dung_text = "(KHÔNG CÓ NỘI DUNG NÀO CHO TRANG NÀY)"
 
+    # CHỈ gắn khối lân cận khi trang này RỖNG (so_ky_tu == 0).
+    # Đo được: gắn cho cả trang có nội dung thì model bị kéo sang "khong" —
+    # trang 9 (1009 ký tự) rơi từ mong 4/4 xuống khong 3/4 vì tưởng câu trả
+    # lời nằm ở trang khác. Trang rỗng thì tier chắc chắn là khong, không có
+    # gì để hỏng, mà lại đúng chỗ cần have_instead + narrowing có nội dung.
+    khoi_lan_can = ""
+    if corpus and so_ky_tu == 0:
+        dong = []
+        for t in trang_lan_can(corpus, int(trang), so_luong=5):
+            tom_tat = " · ".join(corpus[str(t)].get("noi_dung", []))[:90]
+            dong.append(f"- trang {t} ({corpus[str(t)]['so_ky_tu']} ký tự): {tom_tat}")
+        if dong:
+            khoi_lan_can = (
+                "\n\nTRANG LÂN CẬN CÓ NỘI DUNG TRONG KHO "
+                "(dùng cho have_instead và để đặt câu narrowing — CHỈ được nhắc trang trong danh sách này):\n"
+                + "\n".join(dong)
+            )
+
     return f"""TRANG: {trang}
 SỐ KÝ TỰ CĂN CỨ: {so_ky_tu}
 
 NỘI DUNG KHO CHO TRANG {trang}:
-{noi_dung_text}
+{noi_dung_text}{khoi_lan_can}
 
 CÂU HỎI HỌC VIÊN: {cau_hoi}"""
 
@@ -379,7 +420,7 @@ def run_pipeline(trang: int, cau_hoi: str, verbose: bool = True) -> dict:
     log("\n✅ GUARDRAIL: Câu hỏi hợp lệ → chạy bước phân tầng")
     log("── Bước 2: Phân tầng ──")
 
-    user_message = build_user_message(page, cau_hoi)
+    user_message = build_user_message(page, cau_hoi, corpus)
     classification_result = call_gemini(CLASSIFICATION_PROMPT, user_message)
     total_usage["input_tokens"] += classification_result["usage"]["input_tokens"]
     total_usage["output_tokens"] += classification_result["usage"]["output_tokens"]
@@ -389,6 +430,15 @@ def run_pipeline(trang: int, cau_hoi: str, verbose: bool = True) -> dict:
 
     try:
         final = parse_json(raw_text)
+
+        # Lớp chặn cuối cho tier khong: have_instead là dữ kiện tra được từ kho,
+        # không phải thứ nên phụ thuộc model nhớ. Nếu model bỏ trống thì điền
+        # bằng Python. Tầng khong mà không có "trang mình thực sự có" thì lời
+        # từ chối thành cụt — đúng lỗi gốc nhóm đang sửa.
+        if final.get("tier") == "khong" and not final.get("have_instead"):
+            final["have_instead"] = trang_lan_can(corpus, trang, so_luong=3)
+            log(f"[bù] have_instead rỗng → điền từ kho: {final['have_instead']}")
+
         log(f"\n=== KẾT QUẢ: tier={final.get('tier', '???')} ===")
         log(json.dumps(final, ensure_ascii=False, indent=2))
     except json.JSONDecodeError as e:
