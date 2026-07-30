@@ -1,0 +1,45 @@
+{
+  "timestamp": "2026-07-30T17:14:20.102483+07:00",
+  "model": "gemini-3.5-flash-lite",
+  "input": {
+    "trang": 6,
+    "cau_hoi": "tóm tắt ý chính để tôi làm quiz cuối giờ",
+    "trang_tang": "khong",
+    "trang_so_ky_tu": 0
+  },
+  "guardrail": {
+    "raw": "```json\n{\"hop_le\": true, \"ly_do\": \"Học viên yêu cầu tóm tắt ý chính để chuẩn bị cho quiz cuối giờ, liên quan trực tiếp đến nội dung học tập.\"}\n```",
+    "parsed": {
+      "hop_le": true,
+      "ly_do": "Học viên yêu cầu tóm tắt ý chính để chuẩn bị cho quiz cuối giờ, liên quan trực tiếp đến nội dung học tập."
+    }
+  },
+  "classification": {
+    "raw": "{\n  \"tier\": \"khong\",\n  \"answer\": \"\",\n  \"citations\": [],\n  \"missing\": \"Kho hiện tại không có nội dung nào cho trang 6 để tóm tắt ý chính làm quiz.\",\n  \"narrowing\": [\n    \"Bạn có muốn xem lại nội dung của các trang khác trong bài học không?\"\n  ],\n  \"have_instead\": []\n}",
+    "parsed": {
+      "tier": "khong",
+      "answer": "",
+      "citations": [],
+      "missing": "Kho hiện tại không có nội dung nào cho trang 6 để tóm tắt ý chính làm quiz.",
+      "narrowing": [
+        "Bạn có muốn xem lại nội dung của các trang khác trong bài học không?"
+      ],
+      "have_instead": []
+    }
+  },
+  "output": {
+    "tier": "khong",
+    "answer": "",
+    "citations": [],
+    "missing": "Kho hiện tại không có nội dung nào cho trang 6 để tóm tắt ý chính làm quiz.",
+    "narrowing": [
+      "Bạn có muốn xem lại nội dung của các trang khác trong bài học không?"
+    ],
+    "have_instead": []
+  },
+  "usage": {
+    "input_tokens": 1643,
+    "output_tokens": 135
+  },
+  "elapsed_ms": 2106.2021255493164
+}

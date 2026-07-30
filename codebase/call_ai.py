@@ -30,6 +30,28 @@ CORPUS_PATH = Path("out/corpus.json")
 TRACES_DIR = Path("codebase/traces")
 MODEL = "gemini-3.5-flash-lite"  # free tier
 
+
+def _nap_env():
+    """Đọc .env ở gốc repo vào os.environ nếu biến chưa được set sẵn.
+
+    Tự viết thay vì dùng python-dotenv để không thêm phụ thuộc — nhóm chạy
+    trên 4 máy khác nhau, càng ít thứ phải cài càng ít chỗ hỏng.
+    Biến môi trường có sẵn LUÔN thắng .env (tiện khi chạy CI hoặc đổi key tạm).
+    .env nằm trong .gitignore — KHÔNG commit.
+    """
+    f = Path(__file__).resolve().parent.parent / ".env"
+    if not f.exists():
+        return
+    for dong in f.read_text(encoding="utf-8").splitlines():
+        dong = dong.strip()
+        if not dong or dong.startswith("#") or "=" not in dong:
+            continue
+        ten, _, gia_tri = dong.partition("=")
+        os.environ.setdefault(ten.strip(), gia_tri.strip().strip('"').strip("'"))
+
+
+_nap_env()
+
 # ============================================================
 # PROMPT — P3 tự viết 2 prompt này
 # ============================================================
@@ -302,7 +324,7 @@ def run_pipeline(trang: int, cau_hoi: str, verbose: bool = True) -> dict:
     """
     def log(*a):
         if verbose:
-            log(*a)
+            print(*a)
 
     corpus = load_corpus()
     page = get_page_content(corpus, trang)

@@ -1,6 +1,7 @@
 .DS_Store
 node_modules/
 *.env
+.env*
 __pycache__/
 
 # Kết quả chạy tools/extract_corpus.py — chứa dữ liệu được cấp, KHÔNG commit

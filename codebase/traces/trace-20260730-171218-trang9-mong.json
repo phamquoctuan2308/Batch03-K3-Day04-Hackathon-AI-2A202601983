@@ -1,0 +1,55 @@
+{
+  "timestamp": "2026-07-30T17:12:18.646819+07:00",
+  "model": "gemini-3.5-flash-lite",
+  "input": {
+    "trang": 9,
+    "cau_hoi": "ReAct khác gì chatbot thường",
+    "trang_tang": "du",
+    "trang_so_ky_tu": 1009
+  },
+  "guardrail": {
+    "raw": "{\"hop_le\": true, \"ly_do\": \"Câu hỏi liên quan trực tiếp đến khái niệm ReAct và Chatbot trong nội dung bài học.\"}",
+    "parsed": {
+      "hop_le": true,
+      "ly_do": "Câu hỏi liên quan trực tiếp đến khái niệm ReAct và Chatbot trong nội dung bài học."
+    }
+  },
+  "classification": {
+    "raw": "{\n  \"tier\": \"mong\",\n  \"answer\": \"Dựa trên nội dung kho ở trang 9, LLM chatbot có ưu điểm là viết câu trả lời mượt nhưng lại bị hạn chế là không tự truy vấn giá vé thật. Trong khi đó, hệ thống agent (Reactive agent) được minh họa qua bài toán cần tách goal thành nhiều việc (như tìm vé và gợi ý theo điều kiện thời tiết).\",\n  \"citations\": [9],\n  \"missing\": \"Kho chưa cung cấp đầy đủ định nghĩa chi tiết và so sánh toàn diện từng điểm khác biệt sâu hơn giữa ReAct agent và chatbot thường ngoài ví dụ về việc xử lý bài toán nhiều bước.\",\n  \"narrowing\": [\n    \"Bot có rule và LLM chatbot khác nhau như thế nào trong bài toán tìm vé?\",\n    \"Reactive agent xử lý bài toán nhiều bước như thế nào?\"\n  ],\n  \"have_instead\": [9]\n}",
+    "parsed": {
+      "tier": "mong",
+      "answer": "Dựa trên nội dung kho ở trang 9, LLM chatbot có ưu điểm là viết câu trả lời mượt nhưng lại bị hạn chế là không tự truy vấn giá vé thật. Trong khi đó, hệ thống agent (Reactive agent) được minh họa qua bài toán cần tách goal thành nhiều việc (như tìm vé và gợi ý theo điều kiện thời tiết).",
+      "citations": [
+        9
+      ],
+      "missing": "Kho chưa cung cấp đầy đủ định nghĩa chi tiết và so sánh toàn diện từng điểm khác biệt sâu hơn giữa ReAct agent và chatbot thường ngoài ví dụ về việc xử lý bài toán nhiều bước.",
+      "narrowing": [
+        "Bot có rule và LLM chatbot khác nhau như thế nào trong bài toán tìm vé?",
+        "Reactive agent xử lý bài toán nhiều bước như thế nào?"
+      ],
+      "have_instead": [
+        9
+      ]
+    }
+  },
+  "output": {
+    "tier": "mong",
+    "answer": "Dựa trên nội dung kho ở trang 9, LLM chatbot có ưu điểm là viết câu trả lời mượt nhưng lại bị hạn chế là không tự truy vấn giá vé thật. Trong khi đó, hệ thống agent (Reactive agent) được minh họa qua bài toán cần tách goal thành nhiều việc (như tìm vé và gợi ý theo điều kiện thời tiết).",
+    "citations": [
+      9
+    ],
+    "missing": "Kho chưa cung cấp đầy đủ định nghĩa chi tiết và so sánh toàn diện từng điểm khác biệt sâu hơn giữa ReAct agent và chatbot thường ngoài ví dụ về việc xử lý bài toán nhiều bước.",
+    "narrowing": [
+      "Bot có rule và LLM chatbot khác nhau như thế nào trong bài toán tìm vé?",
+      "Reactive agent xử lý bài toán nhiều bước như thế nào?"
+    ],
+    "have_instead": [
+      9
+    ]
+  },
+  "usage": {
+    "input_tokens": 1945,
+    "output_tokens": 237
+  },
+  "elapsed_ms": 3933.353900909424
+}
