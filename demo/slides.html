@@ -83,14 +83,6 @@
   .lesson{font-size:17px;background:#f7f8fb;border-left:4px solid var(--accent);
           border-radius:8px;padding:18px 22px;margin-top:14px}
 
-  /* Lời thoại — chỉ hiện trên màn hình khi tập, KHÔNG in ra PDF */
-  .say{width:1280px;margin:-10px auto 30px;background:#111418;color:#e8eaed;
-       border-radius:10px;padding:20px 26px;font-size:16px;line-height:1.65}
-  .say h3{margin:0 0 10px;font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:#8b93a1}
-  .say p{margin:0 0 10px}
-  .say .do{color:#ffd479}
-  .say .time{float:right;color:#8b93a1;font-size:13px;font-weight:700}
-  @media print{ .say{display:none} }
   @media print{
     body{background:#fff}
     .slide{margin:0;border:none;border-radius:0;page-break-after:always;box-shadow:none}
@@ -133,14 +125,6 @@
   <div class="src">Nguồn: <code>chat_history_anonymized_for_hackathon.csv</code> — 1.261 turn · 369 học viên · 585 hội thoại · chế độ <code>in_class</code></div>
   <div class="no">1 / 6</div>
 </section>
-<div class="say"><h3>Lời thoại — slide 1<span class="time">45 giây</span></h3>
-<p>“Học viên đang xem một trang slide, gõ câu hỏi về trang đó. Đây là ba đoạn hội thoại thật, lấy nguyên văn từ log.”</p>
-<p class="do">→ chỉ tay vào phần chữ đỏ</p>
-<p>“Cả ba lần, tutor không tra được nội dung. Và cả ba lần nó đều làm cùng một việc: <b>đòi học viên tự đưa nội dung trang đó</b> — tức là bảo họ làm hộ đúng cái việc họ đang cần được giúp.”</p>
-<p>“Ba đoạn này đều là lượt cuối cùng của hội thoại. Họ không hỏi thêm câu nào nữa.”</p>
-<p class="do">→ chỉ xuống dãy số</p>
-<p>“99 hội thoại kết thúc ngay tại một câu như thế. 60 trong số đó chỉ hỏi đúng một câu rồi bỏ đi luôn. Và 15 trên 15 lượt bó tay có đánh giá đều là ngón tay xuống — không một lượt nào được thích.”</p>
-</div>
 
 
 <!-- ═══ 2 ═══════════════════════════════════════════════ -->
@@ -188,14 +172,6 @@
   <div class="src">Bảng đầy đủ + lý do loại từng ứng viên: <code>spec.md §2</code></div>
   <div class="no">2 / 6</div>
 </section>
-<div class="say"><h3>Lời thoại — slide 2<span class="time">45 giây</span></h3>
-<p>“Bọn em không chọn lỗi này ngay từ đầu. Có bốn ứng viên, và bọn em chấm từng cái theo ba tiêu chí.”</p>
-<p class="do">→ chỉ vào ba cột</p>
-<p>“Đếm được bằng số không. Có thấy hậu quả không. Và người dùng có ghét nó không.”</p>
-<p>“Chỉ đúng một dòng đủ cả ba.”</p>
-<p>“Ví dụ sinh quiz — nghe thì hấp dẫn, nhưng bọn em bỏ vì <b>không có pain</b>: tutor hiện tại đã làm được rồi, ba trên bốn case thành công, có case học viên còn bấm thích.”</p>
-<p>“Còn thiếu citation thì đếm được thật, 46% câu trả lời không có, nhưng nó cùng gốc với lỗi bọn em chọn và khó demo trong năm phút.”</p>
-</div>
 
 
 <!-- ═══ 3 ═══════════════════════════════════════════════ -->
@@ -223,15 +199,6 @@
   <div class="src">Prototype: <code>codebase/index.html</code> + <code>codebase/server.py</code> · AI thật: <code>codebase/call_ai.py</code>, 70+ trace trong <code>codebase/traces/</code></div>
   <div class="no">3 / 6</div>
 </section>
-<div class="say"><h3>Lời thoại — slide 3<span class="time">2 phút — phần chính</span></h3>
-<p>“Bọn em không dạy tutor biết nhiều hơn. Bọn em dạy nó <b>cách nói mình không biết mà vẫn giúp được</b>.”</p>
-<p>“AI quyết đúng một việc: mình có đủ căn cứ để trả lời hay không. Rồi hành xử theo ba tầng. Cộng một guardrail chặn câu hỏi ngoài phạm vi.”</p>
-<p class="do">→ chuyển sang màn hình prototype, bắt đầu bấm</p>
-<p><b>Nhịp 1</b> — “Đây là trang 6. Bên trái trống, vì kho thật sự không có nội dung trang này. Bên dưới ghi 0 ký tự, nhưng 17 câu hỏi thật — <b>trang bị hỏi nhiều nhất tài liệu lại là trang tutor không trả lời được</b>.”</p>
-<p><b>Nhịp 2</b> — gõ câu hỏi, bấm Gửi. “Tutor nói thẳng là không có. Nhưng thay vì dừng, nó đưa ra <b>những trang nó thực sự có</b>.”</p>
-<p><b>Nhịp 3</b> — bấm nút “trang 4”. <span class="do">im lặng 2 giây cho người xem nhìn màn hình đổi</span> “Một cú bấm. Không phải gõ lại, không phải tự đi tìm. Và giờ nó trả lời được, có ghi rõ lấy từ trang 4.”</p>
-<p><b>Nhịp 4</b> — đổi sang kịch bản jailbreak. “Còn đây là khi có người cố lừa nó lộ hướng dẫn nội bộ. Banner đỏ, khác hẳn ô xám lúc nãy — vì <b>bị chặn và thiếu dữ liệu là hai chuyện khác nhau</b>.”</p>
-</div>
 
 
 <!-- ═══ 4 ═══════════════════════════════════════════════ -->
@@ -256,13 +223,6 @@
   <div class="src">29 case golden set 100% từ chatlog thật · <code>eval/golden-set.md</code> · <code>eval/run-01→03.md</code> · mọi case fail ghi đủ</div>
   <div class="no">4 / 6</div>
 </section>
-<div class="say"><h3>Lời thoại — slide 4<span class="time">45 giây</span></h3>
-<p>“Bọn em chốt ngưỡng đạt là 80%, lúc 4 rưỡi chiều ngày đầu — <b>trước khi biết kết quả lượt cuối</b>.”</p>
-<p>“Con số 80 không suy ra từ số đo. Nó đến từ mức nghiêm trọng của một lần sai: trong log thật, 15 trên 15 lượt tutor bó tay đều bị ghét. Không có chuyện sai nhẹ vẫn được tha — sai một lần là mất niềm tin.”</p>
-<p class="do">→ chỉ vào biểu đồ</p>
-<p>“Lượt một 37,9%. Sửa bug kho và prompt xong lên 75,9% — vẫn chưa đạt. Lượt ba 82,8%, đạt.”</p>
-<p>“Nhưng bọn em không giấu phần hỏng: còn 2 case model quá tự tin trên trang chỉ có mỗi dòng tiêu đề. Đó là tác dụng phụ của chính quy tắc bọn em thêm vào.”</p>
-</div>
 
 
 <!-- ═══ 5 ═══════════════════════════════════════════════ -->
@@ -281,13 +241,6 @@
   <div class="src">Rubric R6 — 8 điểm: feedback log ≥5 mẩu (4đ) + ≥1 thay đổi từ feedback hoặc giữ nguyên có lý do (4đ)</div>
   <div class="no">5 / 6</div>
 </section>
-<div class="say"><h3>Lời thoại — slide 5<span class="time">45 giây</span></h3>
-<p class="do">→ SLIDE NÀY CHƯA ĐIỀN. Sau vòng validation sáng mai, thay ô vàng bằng 2 quote thật.</p>
-<p>Khi có rồi, nói theo mẫu:</p>
-<p>“Bọn em cho 5 người ngoài nhóm thử, mỗi người 10 phút, giao task thật rồi im lặng quan sát.”</p>
-<p>“Bạn [tên] nói: [quote nguyên văn].”</p>
-<p>“Sau phản hồi đó bọn em đã sửa [việc gì], ghi trong changelog.” — hoặc — “Bọn em quyết định giữ nguyên, vì [lý do có căn cứ].”</p>
-</div>
 
 
 <!-- ═══ 6 ═══════════════════════════════════════════════ -->
@@ -310,13 +263,6 @@
   <div class="src">Nhóm Vin Brothers · Zone D305 · <code>spec.md</code> · <code>eval/</code> · <code>codebase/</code></div>
   <div class="no">6 / 6</div>
 </section>
-<div class="say"><h3>Lời thoại — slide 6<span class="time">30 giây</span></h3>
-<p>“Nếu có thêm một tuần, ba việc — cả ba đều trỏ vào lỗi bọn em đã biết mà chưa sửa xong.”</p>
-<p class="do">→ đọc lướt 3 gạch đầu dòng, đừng đọc từng chữ</p>
-<p>“Và bài học lớn nhất thì không nằm ở sản phẩm.”</p>
-<p>“Bản sửa prompt đầu tiên của bọn em chạy thử 2 lượt, thấy ổn. Chạy 4 lượt mới lộ ra là nó <b>làm hỏng</b> một case vốn đang đúng. Suýt nữa thì đẩy lên nhánh chính.”</p>
-<p>“Với model này, mẫu một hai lượt không kết luận được gì cả.”</p>
-</div>
 
 
 </body>
