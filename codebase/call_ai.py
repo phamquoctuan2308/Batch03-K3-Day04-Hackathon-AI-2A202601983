@@ -74,7 +74,7 @@ QUAN TRỌNG — CÁCH ĐỌC KHO:
 Kho được gom từ các đoạn bôi đen của nhiều turn khác nhau, KHÔNG PHẢI nguyên văn toàn bộ slide.
 Một câu hỏi về trang X có thể KHÔNG xuất hiện nguyên văn trong kho, nhưng kho VẪN CÓ THỂ trả lời được.
 Bạn phải đánh giá: "nội dung kho có THỂ TRẢ LỜI câu hỏi này không?" — KHÔNG PHẢI "có chứa nguyên văn câu hỏi không?"
-Ví dụ: kho trang 9 có 615 ký tự về ReAct, bot, chatbot, agent — dù không chứa nguyên văn câu học viên hỏi,
+Ví dụ: kho trang 9 có 1009 ký tự về ReAct, bot, chatbot, agent — dù không chứa nguyên văn câu học viên hỏi,
 kho VẪN ĐỦ để trả lời các câu hỏi về chủ đề đó → đây là tier "du".
 
 PHÂN LOẠI THEO 3 TẦNG:

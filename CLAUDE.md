@@ -12,7 +12,7 @@ Nếu người dùng đã nói vai của họ, đọc brief tương ứng ngay v
 
 VLearn có AI tutor trong trang học. Học viên đang xem một trang slide, gõ câu hỏi về trang đó ("tóm tắt slide này"). Khi tutor không tra được nội dung trang đó, nó **yêu cầu học viên tự cung cấp nội dung trang đó** — tức là đòi họ làm đúng việc họ đang cần được giúp.
 
-Đo trên 1.261 lượt hỏi thật: **69,2%** lượt dùng không bôi đen đoạn nào, và ở nhóm đó tutor bó tay **cao gấp 8 lần** (20,9% vs 2,6%). **99/585 hội thoại chết ngay tại đó.** **15/15** lượt bó tay bị đánh giá 👎, không một lượt nào 👍.
+Đo trên 1.261 lượt hỏi thật: **62,7%** lượt dùng không bôi đen đoạn nào, và ở nhóm đó tutor bó tay **cao gấp 9,5 lần** (22,9% vs 2,4%). **99/585 hội thoại chết ngay tại đó.** **15/15** lượt bó tay bị đánh giá 👎, không một lượt nào 👍.
 
 **Tính năng nhóm xây:** tutor quyết định *"mình có đủ căn cứ để trả lời hay không"*, và hành xử theo 3 tầng.
 
@@ -59,7 +59,7 @@ Ví dụ đầy đủ cả 4 giá trị: `codebase/sample-responses.json`.
 
 1. **Không bịa nội dung slide.** Kho tài liệu chỉ đến từ `tools/extract_corpus.py`. Không có nội dung cho một trang thì tầng của nó là `khong` — đó là dữ liệu, không phải thiếu sót cần lấp.
 
-2. **Không làm kho đầy đủ. Lỗ trong kho là CỐ Ý.** Kho hiện có 9 trang đủ căn cứ / 14 mỏng / 12 trống. Nếu mọi trang đều có căn cứ thì tầng `khong` không bao giờ chạy → mất case demo trung tâm, mất 6 case golden set, và không còn gì để đo. Hệ thống thật cũng thiếu (20,9% lượt không tra ra được) — nhóm **tái tạo** điều kiện lỗi đó.
+2. **Không làm kho đầy đủ. Lỗ trong kho là CỐ Ý.** Kho hiện có 10 trang đủ căn cứ / 14 mỏng / 11 trống. Nếu mọi trang đều có căn cứ thì tầng `khong` không bao giờ chạy → mất case demo trung tâm, mất 6 case golden set, và không còn gì để đo. Hệ thống thật cũng thiếu (22,9% lượt không tra ra được) — nhóm **tái tạo** điều kiện lỗi đó.
 
 3. **Không dựng vector DB, embedding, chunking pipeline, RAG framework.** Kho là một file JSON tra theo số trang. Đừng thêm hạ tầng không ai cần.
 

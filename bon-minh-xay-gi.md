@@ -36,7 +36,7 @@ VLearn tutor được thiết kế cho flow *"bôi đen đoạn tài liệu rồ
 | Số | Nghĩa là gì |
 |---|---|
 | **69%** | lượt dùng **không** bôi đen đoạn nào |
-| **8×** | tỉ lệ tutor bó tay cao hơn ở nhóm đó — 20,9% so với 2,6% |
+| **9,5×** | tỉ lệ tutor bó tay cao hơn ở nhóm đó — 22,9% so với 2,4% |
 | **99 / 585** | hội thoại **chết ngay** tại câu "không tìm thấy", không có lượt sau |
 | **15 / 15** | lượt "không tìm thấy" có đánh giá đều là 👎 — **không một lượt nào 👍** |
 

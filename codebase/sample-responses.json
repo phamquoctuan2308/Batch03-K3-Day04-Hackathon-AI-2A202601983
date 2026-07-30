@@ -12,7 +12,7 @@
   "_guardrail": "tu_choi KHÔNG phải tầng thứ 4 ngang hàng — nó là bước guardrail chạy TRƯỚC quyết định 3 tầng. Giữ lát cắt 'MỘT quyết định AI'. Xem CLAUDE.md. UI của tu_choi PHẢI khác hẳn khong: banner từ chối rõ ràng, không phải ô xám 'thiếu căn cứ'.",
 
   "du": {
-    "_case": "trang 9 — 615 ký tự căn cứ, 13 câu hỏi thật trong log",
+    "_case": "trang 9 — 1009 ký tự căn cứ, 13 câu hỏi thật trong log",
     "input": {
       "trang": 9,
       "cau_hoi": "giải thích nội dung trang này"

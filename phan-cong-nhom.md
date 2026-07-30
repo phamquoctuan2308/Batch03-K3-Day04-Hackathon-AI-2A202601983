@@ -64,7 +64,7 @@ Riêng `spec.md` có **hạn cứng 23:59 N1** — P4 mở PR sớm, đừng đ�
 
 **Hướng A — VLearn · Loại: Tối ưu tính năng có sẵn.**
 
-Vấn đề: VLearn AI tutor được thiết kế quanh flow *"bôi đen đoạn tài liệu + hỏi"*. Nhưng **69% lượt dùng thật không bôi đen** — và đúng ở nhóm đó tutor sụp **8 lần** nhiều hơn. Khi không tìm được căn cứ, tutor **đẩy việc lại cho học viên**: *"bạn cung cấp nội dung trang 4 giúp mình"* — đảo ngược đúng giá trị sản phẩm hứa.
+Vấn đề: VLearn AI tutor được thiết kế quanh flow *"bôi đen đoạn tài liệu + hỏi"*. Nhưng **62,7% lượt dùng thật không bôi đen** — và đúng ở nhóm đó tutor sụp **9,5 lần** nhiều hơn. Khi không tìm được căn cứ, tutor **đẩy việc lại cho học viên**: *"bạn cung cấp nội dung trang 4 giúp mình"* — đảo ngược đúng giá trị sản phẩm hứa.
 
 **Lát cắt MỘT CÂU:**
 
@@ -123,12 +123,12 @@ Màn hình P2 phải có: khung trang tài liệu + **dropdown chọn số trang
 Nguồn: `data/vlearn-pack/chatlog/chat_history_anonymized_for_hackathon.csv`
 Phạm vi: **1.261 turn · 369 học viên · 585 hội thoại · 22→29/07/2026 · 100% chế độ `in_class`**
 
-### Pain — chênh lệch 8 lần
+### Pain — chênh lệch 9,5 lần
 
 | Nhóm | Số turn | Tutor trả "không tìm thấy" |
 |---|---|---|
-| Học viên **có** bôi đen nội dung slide thật | 386 (31%) | **2,6%** (10) |
-| Học viên **không** bôi đen, chỉ gõ câu hỏi | 866 (**69%**) | **20,9%** (181) |
+| Học viên **có** bôi đen nội dung slide thật | 467 (37%) | **2,4%** (11) |
+| Học viên **không** bôi đen, chỉ gõ câu hỏi | 785 (**63%**) | **22,9%** (180) |
 
 ### Hậu quả — đếm được
 
@@ -151,7 +151,7 @@ Phạm vi: **1.261 turn · 369 học viên · 585 hội thoại · 22→29/07/20
 5. Hội thoại "chết" = turn cuối cùng theo `message_created_at` khớp regex ở bước 4.
 6. Ý định "tóm tắt" chỉ xét **phần học viên tự gõ**, không xét text slide dán vào — nếu xét cả text slide thì bắt nhầm những trang có chữ "tóm tắt" trong nội dung.
 
-**P1 sở hữu script này.** Chạy lại phải ra: `69,2%` không bôi đen · chênh `8,0` lần · kho `9/14/12` trang.
+**P1 sở hữu script này.** Chạy lại phải ra: `62,7%` không bôi đen · chênh `9,5` lần · kho `10/14/11` trang.
 
 ### Ví dụ nguyên văn (≥5, trích ngắn — mã turn để tra lại)
 
@@ -178,7 +178,7 @@ Phạm vi: **1.261 turn · 369 học viên · 585 hội thoại · 22→29/07/20
 
 **Case demo trung tâm: trang 6.** Trang **bị hỏi nhiều nhất tài liệu (17 câu hỏi)**, tutor bó tay **5 lần**, **0 ký tự căn cứ**. Trang học viên cần nhất là trang tutor không trả lời được.
 
-**Demo CP6 dùng đúng 2 case:** trang 9 (chuẩn, 615 ký tự căn cứ) + trang 6 (lỗi được xử lý).
+**Demo CP6 dùng đúng 2 case:** trang 9 (chuẩn, 1009 ký tự căn cứ) + trang 6 (lỗi được xử lý).
 
 ---
 

@@ -31,14 +31,14 @@ Loại: **[x] Tối ưu tính năng có sẵn** · [ ] Tính năng mới
 Nguồn: `data/vlearn-pack/chatlog/chat_history_anonymized_for_hackathon.csv`
 Phạm vi: **1.261 turn · 369 học viên · 585 hội thoại · 22→29/07/2026 · 100% chế độ `in_class`**
 
-**Chênh lệch cốt lõi — 8 lần:**
+**Chênh lệch cốt lõi — 9,5 lần:**
 
 | Nhóm | Số turn | Tutor bó tay |
 |---|---|---|
-| **Có** bôi đen nội dung slide thật | 386 (30,8%) | **2,6%** (10) |
-| **Không** bôi đen, chỉ gõ câu hỏi | 866 (**69,2%**) | **20,9%** (181) |
+| **Có** bôi đen nội dung slide thật | 467 (37,3%) | **2,4%** (11) |
+| **Không** bôi đen, chỉ gõ câu hỏi | 785 (**62,7%**) | **22,9%** (180) |
 
-Tutor được thiết kế cho flow *"bôi đen đoạn tài liệu rồi hỏi"*. Nhưng **69,2% lượt dùng không bôi đen** — và đúng ở nhóm đó tutor sụp 8 lần nhiều hơn.
+Tutor được thiết kế cho flow *"bôi đen đoạn tài liệu rồi hỏi"*. Nhưng **62,7% lượt dùng không bôi đen** — và đúng ở nhóm đó tutor sụp 9,5 lần nhiều hơn.
 
 **Hậu quả đếm được:**
 
@@ -72,7 +72,7 @@ Tutor được thiết kế cho flow *"bôi đen đoạn tài liệu rồi hỏi
 
 | Ứng viên | Bao nhiêu người | Tần suất | Tốn gì mỗi lần | Khả thi | Chọn? |
 |---|---|---|---|---|---|
-| **Tutor đòi học viên cung cấp nội dung khi không tra được** | 145/585 hội thoại có ≥1 lần · 866 turn thuộc nhóm rủi ro cao | 15,2% turn | Hội thoại chết (16,9%) · gõ lại vô ích (39/93) · 15/15 👎 | Có — kho tái tạo + prompt | **CHỌN** |
+| **Tutor đòi học viên cung cấp nội dung khi không tra được** | 145/585 hội thoại có ≥1 lần · 785 turn thuộc nhóm rủi ro cao | 15,2% turn | Hội thoại chết (16,9%) · gõ lại vô ích (39/93) · 15/15 👎 | Có — kho tái tạo + prompt | **CHỌN** |
 | Sinh quiz / câu hỏi ôn tập | 10 lượt hỏi · 4-7 học viên | 0,8% turn | — | Có | **LOẠI** |
 | 46,2% trả lời không có citation | 582/1.261 turn | Gần một nửa | Không kiểm chứng được, tin sai mức | Có | **LOẠI** |
 | Tutor không bao giờ kiểm tra hiểu bài | `asked_check_question` 3/1.261 · `validate_understanding` 1/1.261 · `follow_ups` 0/1.261 | Không bao giờ | Học viên tưởng hiểu mà chưa hiểu | Có | **LOẠI** |
@@ -83,7 +83,7 @@ Tutor được thiết kế cho flow *"bôi đen đoạn tài liệu rồi hỏi
 - **Thiếu citation** — loại vì trùng lõi với ứng viên chọn (cùng gốc: không tra được nội dung), và hậu quả khó demo trong 5 phút.
 - **Không kiểm tra hiểu bài** — loại vì bằng chứng là **sự vắng mặt của field**, không phải sự kiện đau quan sát được. Phải khảo sát ≥20 người mới đạt chuẩn A; đắt hơn ứng viên chọn vốn đã đủ chuẩn B.
 
-**Ứng viên chọn + vì sao (bằng số):** là ứng viên duy nhất có đủ **ba** thứ cùng lúc — số đếm được (15,2% turn, 69,2% lượt dùng rủi ro), hậu quả quan sát được (99/585 hội thoại chết), và tín hiệu trực tiếp từ người dùng (**15/15 👎, 0 👍** — loại lỗi bị ghét nhất trong log).
+**Ứng viên chọn + vì sao (bằng số):** là ứng viên duy nhất có đủ **ba** thứ cùng lúc — số đếm được (15,2% turn, 62,7% lượt dùng rủi ro), hậu quả quan sát được (99/585 hội thoại chết), và tín hiệu trực tiếp từ người dùng (**15/15 👎, 0 👍** — loại lỗi bị ghét nhất trong log).
 
 ---
 
@@ -125,8 +125,8 @@ Tutor được thiết kế cho flow *"bôi đen đoạn tài liệu rồi hỏi
 **Mức prototype: [x] Mock** — flow bấm được, AI thật ở lõi.
 
 *Phần nào MOCK, khai rõ:*
-- **Kho tài liệu là TÁI TẠO**, không phải slide gốc. Tài liệu tutor tra trong chatlog là `Lecture_material_ms2044ey_k6uor3`, **35 trang** — chưa được cấp dưới dạng file. `data/vlearn-pack/slides/` được ban tổ chức bổ sung trong ngày thi nhưng là hai bộ khác: Day 1 và Day 2 bản hackathon, **29 trang mỗi bộ**, bản rút gọn có watermark — số trang không khớp tài liệu demo. Nên kho dựng từ **đoạn học viên bôi đen trong chatlog**: 35 trang → 9 trang đủ căn cứ / 14 mỏng / 12 trống.
-- **Lỗ trong kho là CỐ Ý, không phải thiếu sót.** Hệ thống thật cũng thiếu — 20,9% lượt hỏi tutor không tra ra nội dung. Nhóm tái tạo đúng điều kiện lỗi đó; kho đầy đủ thì tầng `khong` không bao giờ chạy và không đo được gì.
+- **Kho tài liệu là TÁI TẠO**, không phải slide gốc. Tài liệu tutor tra trong chatlog là `Lecture_material_ms2044ey_k6uor3`, **35 trang** — chưa được cấp dưới dạng file. `data/vlearn-pack/slides/` được ban tổ chức bổ sung trong ngày thi nhưng là hai bộ khác: Day 1 và Day 2 bản hackathon, **29 trang mỗi bộ**, bản rút gọn có watermark — số trang không khớp tài liệu demo. Nên kho dựng từ **đoạn học viên bôi đen trong chatlog**: 35 trang → 10 trang đủ căn cứ / 14 mỏng / 11 trống.
+- **Lỗ trong kho là CỐ Ý, không phải thiếu sót.** Hệ thống thật cũng thiếu — 22,9% lượt hỏi tutor không tra ra nội dung. Nhóm tái tạo đúng điều kiện lỗi đó; kho đầy đủ thì tầng `khong` không bao giờ chạy và không đo được gì.
 - **2 case golden set là case gán lại** từ tài liệu khác sang kho demo: `Q-01` (nguồn `T0257`) và `H-01` (nguồn `T0286`). Không phải trích nguyên văn của trang được gán.
 - Không deploy, chạy localhost.
 
@@ -156,7 +156,7 @@ Lý do theo **cost-of-error**: sai kiến thức đến học viên thì **đắ
 | Lớp | Tên | Câu hỏi cốt lõi | Biểu hiện trong tutor |
 |---|---|---|---|
 | ① | **Nguồn sự thật** | AI bịa được ở đâu? Không có căn cứ thì làm gì? | Kho corpus là nguồn duy nhất. AI có thể bịa nội dung từ pre-training khi kho không có. Prompt chặn bằng luật cứng "KHÔNG BỊA NỘI DUNG". |
-| ② | **Mơ hồ / thiếu thông tin** | Input không đủ chắc: hỏi lại, đoán có báo, hay từ chối? | 69,2% học viên không bôi đen đoạn nào. Nội dung kho mỏng (tier mong) — AI phải nói rõ phần nào không có căn cứ, không được đoán. |
+| ② | **Mơ hồ / thiếu thông tin** | Input không đủ chắc: hỏi lại, đoán có báo, hay từ chối? | 62,7% học viên không bôi đen đoạn nào. Nội dung kho mỏng (tier mong) — AI phải nói rõ phần nào không có căn cứ, không được đoán. |
 | ③ | **Ngoài phạm vi / thẩm quyền** | User đòi gì mà feature không được phép làm? | Prompt injection (T0767, T0674, T0788 thật trong chatlog). Đòi tiết lộ system prompt. Yêu cầu hành chính. Guardrail chặn trước bước phân tầng, trả tier="tu_choi". |
 | ④ | **Đặc thù domain** | Sai cái gì thì học viên học sai kiến thức / mất điểm ngay? | Sai kiến thức trong câu trả lời dẫn đến học sai. Trang không có trong kho nhưng AI cố trả lời. Câu hỏi lạc chủ đề nhưng AI vẫn cố "giúp". |
 
@@ -165,7 +165,7 @@ Lý do theo **cost-of-error**: sai kiến thức đến học viên thì **đắ
 | # | Tình huống | Lớp | Hành vi mong muốn (nói gì, hiện gì, cho user làm gì tiếp) | Nguyên tắc áp |
 |---|---|---|---|---|
 | L1-01 | Trang 6 (0 ký tự), học viên hỏi "tóm tắt ý chính để làm quiz" (T0257 thật) | ① | Tier="khong". answer="". missing="Mình chưa có nội dung trang 6." narrowing: "Giải thích trang 4", "Giải thích trang 5". **Tuyệt đối không đòi học viên cung cấp nội dung.** | G10 (thu hẹp), G2 (làm rõ giới hạn) |
-| L1-02 | Trang 9 (615 ký tự), học viên hỏi "giải thích nội dung trang này" | ① | Tier="du". Trả lời đầy đủ về ưu/nhược ReAct + so sánh bot/chatbot/agent. citations=[9]. | G11 (giải thích vì sao — cite trang) |
+| L1-02 | Trang 9 (1009 ký tự), học viên hỏi "giải thích nội dung trang này" | ① | Tier="du". Trả lời đầy đủ về ưu/nhược ReAct + so sánh bot/chatbot/agent. citations=[9]. | G11 (giải thích vì sao — cite trang) |
 | L1-03 | Trang 1 (46 ký tự — chỉ có tiêu đề), học viên hỏi "tóm tắt slide này" | ① | Tier="mong". Trả lời: "Phần mình có là tiêu đề bài giảng về hành trình từ chatbot đến agent." missing: "Mình chỉ có tiêu đề, chưa có nội dung bên dưới." narrowing: "Xem trang 4 — có nội dung đầy đủ". | G10 (thu hẹp), G11 (giải thích) |
 | L1-04 | AI bịa nội dung không có trong kho | ① | Prompt có luật cứng "KHÔNG BỊA NỘI DUNG". Nếu AI vẫn bịa → output không chứa thông tin ngoài kho → test được bằng golden set (so khớp nội dung answer với corpus). | G2 (làm rõ làm tốt đến đâu) |
 | L2-01 | Học viên không bôi đen, chỉ gõ "trang này nói gì" | ② | Hệ thống vẫn hoạt động — input không phụ thuộc vào việc có bôi đen hay không. Kho được tra theo số trang, không theo đoạn bôi đen. | G1 (làm rõ hệ thống làm được gì) |
@@ -195,7 +195,7 @@ Lý do theo **cost-of-error**: sai kiến thức đến học viên thì **đắ
 ```
 Học viên gõ câu hỏi về trang 9
   → Guardrail: hop_le=true (câu hỏi hợp lệ)
-  → Phân tầng: tier="du" (kho có 615 ký tự)
+  → Phân tầng: tier="du" (kho có 1009 ký tự)
   → UI hiện: answer + [trang 9] + 👍👎
   → Học viên đọc, hiểu, tiếp tục học
 ```
@@ -340,3 +340,5 @@ Học viên đang xem trang 9 (ReAct), hỏi "Python list comprehension là gì"
 |---|---|---|
 | 30/07 11:46 | Sửa 3 số evidence: bó tay 25,0%→15,2% · đòi nội dung 8,4%→5,9% · tóm tắt fail 62,6%→39,5% | Regex cũ bắt cả "xin lỗi"/"rất tiếc" mà tutor dùng cả khi trả lời được → đếm vống. Số cốt lõi (69,2% · 8 lần · 15/15 👎) không đổi |
 | 30/07 12:31 | Thêm guardrail `tu_choi` chạy trước quyết định 3 tầng | P1 phát hiện lớp ③ không có tier trong hợp đồng JSON khi dựng golden set. Đặt trước thay vì thành tầng thứ 4 để giữ format lát cắt "MỘT quyết định AI" |
+| 30/07 15:42 | Sửa mô tả `data/vlearn-pack/slides/` | BTC bổ sung slide trong ngày thi nên câu "pack không có slides/" thành sai. Đối chiếu: slide mới 29 trang/bộ, tài liệu demo 35 trang — không khớp, kho vẫn phải tái tạo |
+| 30/07 15:47 | Sửa số evidence toàn cục: không bôi đen 69,2%→**62,7%** · chênh 8→**9,5 lần** · bó tay nhóm đó 20,9%→**22,9%** · kho 9/14/12→**10/14/11** · trang 9 615→**1009 ký tự** | PR #4 (P1): `la_boi_den_that()` đếm thiếu bôi đen thật — nút "Giải thích đoạn bôi đen ở Trang N" của VLearn tự nhét đoạn thật vào câu hỏi, check containment cũ hiểu nhầm là platform echo. Phát hiện khi soát trace `T0367`. Bằng chứng mạnh lên, không yếu đi. Trang 6 vẫn 0 ký tự, case demo trung tâm không đổi |

@@ -315,7 +315,7 @@ def bao_cao(kho, evidence):
     dem = e["kho_demo"]["so_trang_theo_tang"]
     print(f"\nTỔNG  đủ căn cứ {dem.get('du',0)} trang · "
           f"mỏng {dem.get('mong',0)} · không có {dem.get('khong',0)}")
-    print("KIỂM: phải ra  đủ 9 · mỏng 14 · không có 12. "
+    print("KIỂM: phải ra  đủ 10 · mỏng 14 · không có 11. "
           "Lệch → xem lại hàm la_boi_den_that().\n")
 
 
