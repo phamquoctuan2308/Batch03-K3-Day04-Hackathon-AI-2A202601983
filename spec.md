@@ -128,9 +128,10 @@ Regex bắt "bó tay" **cố ý không bắt** "xin lỗi"/"rất tiếc" vì tu
 3. Không sinh quiz, không kiểm tra hiểu bài
 4. Không trả lời câu hỏi hành chính (deadline, điểm, nộp bài)
 
-**Mức prototype: [x] Mock** — flow bấm được, AI thật ở lõi.
+**Mức prototype: [x] Mock** — flow bấm được; lời gọi AI thật có, nhưng chạy tách khỏi UI.
 
 *Phần nào MOCK, khai rõ:*
+- **UI và AI chưa nối nhau.** `codebase/index.html` render 4 trạng thái từ object hardcode trong `SAMPLES` — không có lệnh gọi mạng nào, gõ câu hỏi khác vẫn ra kết quả cài sẵn của kịch bản đang chọn. Lời gọi AI thật nằm ở `codebase/call_ai.py`, chạy bằng dòng lệnh, trace từng lượt lưu ở `codebase/traces/` (67 file, 2 lượt golden set). Không nối vì API key phải nằm phía server, mà dựng server lúc này rủi ro hơn giá trị thu được.
 - **Kho tài liệu là TÁI TẠO**, không phải slide gốc. Tài liệu tutor tra trong chatlog là `Lecture_material_ms2044ey_k6uor3`, **35 trang** — chưa được cấp dưới dạng file. `data/vlearn-pack/slides/` được ban tổ chức bổ sung trong ngày thi nhưng là hai bộ khác: Day 1 và Day 2 bản hackathon, **29 trang mỗi bộ**, bản rút gọn có watermark — số trang không khớp tài liệu demo. Nên kho dựng từ **đoạn học viên bôi đen trong chatlog**: 35 trang → 10 trang đủ căn cứ / 14 mỏng / 11 trống.
 - **Lỗ trong kho là CỐ Ý, không phải thiếu sót.** Hệ thống thật cũng thiếu — 22,9% lượt hỏi tutor không tra ra nội dung. Nhóm tái tạo đúng điều kiện lỗi đó; kho đầy đủ thì tầng `khong` không bao giờ chạy và không đo được gì.
 - **2 case golden set là case gán lại** từ tài liệu khác sang kho demo: `Q-01` (nguồn `T0257`) và `H-01` (nguồn `T0286`). Không phải trích nguyên văn của trang được gán.
@@ -151,9 +152,9 @@ Prototype: `codebase/index.html`. Mỗi nguyên tắc trỏ vào một phần t�
 | **G2** — Làm rõ nó làm tốt đến đâu | Hộp vàng **"Phần mình KHÔNG có căn cứ"** ở tầng `mong` — nói thẳng chỗ mình đuối thay vì lấp liếm | `.missing-box` dòng 316-319 |
 | **G15** — Mời feedback chi tiết | Nút 👍👎 dưới **mọi** câu trả lời, cả khi tutor từ chối *(khớp field `rating` trong data thật — chính chỗ đo ra 15/15 👎)* | `feedbackHtml()` dòng 353-359 |
 | **PAIR — Explainability + Trust** | Tầng `khong` hiện hàng chip **"Trang mình thực sự có"** thay vì bắt học viên tin lời từ chối suông — đây là chỗ lật ngược đúng lỗi gốc | `.have-instead` dòng 332-335 |
-| **G1** — Làm rõ hệ thống làm được gì | Câu từ chối ở guardrail `tu_choi`: nêu rõ phạm vi "chỉ trả lời dựa trên tài liệu bài giảng" | ⏳ **P2 chưa dựng màn `tu_choi`** |
+| **G1** — Làm rõ hệ thống làm được gì | Banner 🛑 **"Yêu cầu bị từ chối"** ở `tu_choi`, dòng phụ nói thẳng *"Guardrail chặn TRƯỚC khi vào bước tra cứu 3 tầng — không phải do thiếu nội dung trang N"*. Học viên biết ranh giới phạm vi nằm ở đâu | dòng 386-404 |
 
-> **P4 phải tự bấm qua 3 tầng trên trình duyệt và xác nhận 5 dòng đầu khớp thật, trước khi coi mục này là xong** — TA kiểm tại CP4 bằng cách bắt chỉ lên màn hình, không đọc code. Nếu P2 không kịp `tu_choi`, bỏ dòng G1 và giữ 5 nguyên tắc *(yêu cầu là ≥4)*.
+**Đã xác nhận trên trình duyệt (30/07 16:30):** render đủ 4 trạng thái, mỗi tầng một hình dạng khác hẳn — `du` thẻ xanh, `mong` thẻ vàng có hộp gạch nét đứt, `khong` thẻ xám trung tính, `tu_choi` banner đỏ viền trái. Ba tầng đầu dùng chung khung thẻ; `tu_choi` cố ý phá khung để không ai nhầm "bị chặn" với "thiếu dữ liệu".
 
 ---
 
