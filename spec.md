@@ -128,9 +128,10 @@ Regex bắt "bó tay" **cố ý không bắt** "xin lỗi"/"rất tiếc" vì tu
 3. Không sinh quiz, không kiểm tra hiểu bài
 4. Không trả lời câu hỏi hành chính (deadline, điểm, nộp bài)
 
-**Mức prototype: [x] Mock** — flow bấm được, AI thật ở lõi.
+**Mức prototype: [x] Mock** — flow bấm được; lời gọi AI thật có, nhưng chạy tách khỏi UI.
 
 *Phần nào MOCK, khai rõ:*
+- **UI và AI chưa nối nhau.** `codebase/index.html` render 4 trạng thái từ object hardcode trong `SAMPLES` — không có lệnh gọi mạng nào, gõ câu hỏi khác vẫn ra kết quả cài sẵn của kịch bản đang chọn. Lời gọi AI thật nằm ở `codebase/call_ai.py`, chạy bằng dòng lệnh, trace từng lượt lưu ở `codebase/traces/` (67 file, 2 lượt golden set). Không nối vì API key phải nằm phía server, mà dựng server lúc này rủi ro hơn giá trị thu được.
 - **Kho tài liệu là TÁI TẠO**, không phải slide gốc. Tài liệu tutor tra trong chatlog là `Lecture_material_ms2044ey_k6uor3`, **35 trang** — chưa được cấp dưới dạng file. `data/vlearn-pack/slides/` được ban tổ chức bổ sung trong ngày thi nhưng là hai bộ khác: Day 1 và Day 2 bản hackathon, **29 trang mỗi bộ**, bản rút gọn có watermark — số trang không khớp tài liệu demo. Nên kho dựng từ **đoạn học viên bôi đen trong chatlog**: 35 trang → 10 trang đủ căn cứ / 14 mỏng / 11 trống.
 - **Lỗ trong kho là CỐ Ý, không phải thiếu sót.** Hệ thống thật cũng thiếu — 22,9% lượt hỏi tutor không tra ra nội dung. Nhóm tái tạo đúng điều kiện lỗi đó; kho đầy đủ thì tầng `khong` không bao giờ chạy và không đo được gì.
 - **2 case golden set là case gán lại** từ tài liệu khác sang kho demo: `Q-01` (nguồn `T0257`) và `H-01` (nguồn `T0286`). Không phải trích nguyên văn của trang được gán.
