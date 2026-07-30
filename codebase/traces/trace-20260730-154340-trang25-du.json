@@ -1,0 +1,44 @@
+{
+  "timestamp": "2026-07-30T15:43:40.751558+07:00",
+  "model": "gemini-3.5-flash-lite",
+  "input": {
+    "trang": 25,
+    "cau_hoi": "Giải thích đoạn bôi đen ở Trang 25.",
+    "trang_tang": "du",
+    "trang_so_ky_tu": 300
+  },
+  "guardrail": {
+    "raw": "{\"hop_le\": true, \"ly_do\": \"Học viên hỏi giải thích nội dung tài liệu học tập.\"}",
+    "parsed": {
+      "hop_le": true,
+      "ly_do": "Học viên hỏi giải thích nội dung tài liệu học tập."
+    }
+  },
+  "classification": {
+    "raw": "```json\n{\n  \"tier\": \"du\",\n  \"answer\": \"Đoạn nội dung ở trang 25 trình bày về ưu điểm và giới hạn của mô hình ReAct:\\n\\n**Ưu điểm:**\\n- Dễ đọc trace và debug.\\n- Tự quyết định được bước tiếp theo từ observation (quan sát).\\n- Phù hợp với các bài toán search (tìm kiếm), booking (đặt lịch/chỗ), investigation (điều tra) và coding (lập trình).\\n- Có thể cài đặt safeguard (cơ chế bảo vệ/kiểm soát) ở từng vòng lặp.\\n\\n**Giới hạn:**\\n- Tốn nhiều token và latency (độ trễ) hơn so với chatbot thông thường.\\n- Dễ bị lặp (loop) hoặc gọi sai công cụ (tool).\\n- Cần được đánh giá (eval) theo quy trình [trang 25].\",\n  \"citations\": [25],\n  \"missing\": null,\n  \"narrowing\": [],\n  \"have_instead\": []\n}\n```",
+    "parsed": {
+      "tier": "du",
+      "answer": "Đoạn nội dung ở trang 25 trình bày về ưu điểm và giới hạn của mô hình ReAct:\n\n**Ưu điểm:**\n- Dễ đọc trace và debug.\n- Tự quyết định được bước tiếp theo từ observation (quan sát).\n- Phù hợp với các bài toán search (tìm kiếm), booking (đặt lịch/chỗ), investigation (điều tra) và coding (lập trình).\n- Có thể cài đặt safeguard (cơ chế bảo vệ/kiểm soát) ở từng vòng lặp.\n\n**Giới hạn:**\n- Tốn nhiều token và latency (độ trễ) hơn so với chatbot thông thường.\n- Dễ bị lặp (loop) hoặc gọi sai công cụ (tool).\n- Cần được đánh giá (eval) theo quy trình [trang 25].",
+      "citations": [
+        25
+      ],
+      "missing": null,
+      "narrowing": [],
+      "have_instead": []
+    }
+  },
+  "output": {
+    "tier": "du",
+    "answer": "Đoạn nội dung ở trang 25 trình bày về ưu điểm và giới hạn của mô hình ReAct:\n\n**Ưu điểm:**\n- Dễ đọc trace và debug.\n- Tự quyết định được bước tiếp theo từ observation (quan sát).\n- Phù hợp với các bài toán search (tìm kiếm), booking (đặt lịch/chỗ), investigation (điều tra) và coding (lập trình).\n- Có thể cài đặt safeguard (cơ chế bảo vệ/kiểm soát) ở từng vòng lặp.\n\n**Giới hạn:**\n- Tốn nhiều token và latency (độ trễ) hơn so với chatbot thông thường.\n- Dễ bị lặp (loop) hoặc gọi sai công cụ (tool).\n- Cần được đánh giá (eval) theo quy trình [trang 25].",
+    "citations": [
+      25
+    ],
+    "missing": null,
+    "narrowing": [],
+    "have_instead": []
+  },
+  "usage": {
+    "note": "xem trace"
+  },
+  "elapsed_ms": 11772.292137145996
+}

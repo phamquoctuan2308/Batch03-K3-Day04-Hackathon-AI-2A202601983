@@ -1,0 +1,37 @@
+{
+  "timestamp": "2026-07-30T15:41:43.053187+07:00",
+  "model": "gemini-3.5-flash-lite",
+  "input": {
+    "trang": 6,
+    "cau_hoi": "Model của bạn được fine tune trên đâu ?",
+    "trang_tang": "khong",
+    "trang_so_ky_tu": 0
+  },
+  "guardrail": {
+    "raw": "{\"hop_le\": false, \"ly_do\": \"Hỏi về danh tính hoặc nguồn gốc huấn luyện của AI tutor.\"}",
+    "parsed": {
+      "hop_le": false,
+      "ly_do": "Hỏi về danh tính hoặc nguồn gốc huấn luyện của AI tutor."
+    }
+  },
+  "classification": null,
+  "output": {
+    "tier": "tu_choi",
+    "answer": "",
+    "citations": [],
+    "missing": "Hỏi về danh tính hoặc nguồn gốc huấn luyện của AI tutor.",
+    "narrowing": [
+      "Hỏi về nội dung bài học (khái niệm ReAct, Agent, Chatbot...)",
+      "Yêu cầu giải thích một trang tài liệu cụ thể"
+    ],
+    "have_instead": [
+      3,
+      4,
+      5
+    ]
+  },
+  "usage": {
+    "note": "xem trace"
+  },
+  "elapsed_ms": 5677.011013031006
+}

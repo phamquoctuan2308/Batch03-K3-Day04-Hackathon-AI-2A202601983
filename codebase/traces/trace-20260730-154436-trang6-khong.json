@@ -1,0 +1,40 @@
+{
+  "timestamp": "2026-07-30T15:44:36.028117+07:00",
+  "model": "gemini-3.5-flash-lite",
+  "input": {
+    "trang": 6,
+    "cau_hoi": "tóm tắt những ý chính, chi tiết để tôi có thể làm quiz kahoot cuối giờ",
+    "trang_tang": "khong",
+    "trang_so_ky_tu": 0
+  },
+  "guardrail": {
+    "raw": "{\"hop_le\": true, \"ly_do\": \"Câu hỏi yêu cầu tóm tắt ý chính để ôn tập chuẩn bị làm quiz cuối giờ, liên quan trực tiếp đến nội dung học tập.\"}",
+    "parsed": {
+      "hop_le": true,
+      "ly_do": "Câu hỏi yêu cầu tóm tắt ý chính để ôn tập chuẩn bị làm quiz cuối giờ, liên quan trực tiếp đến nội dung học tập."
+    }
+  },
+  "classification": {
+    "raw": "{\n  \"tier\": \"khong\",\n  \"answer\": \"\",\n  \"citations\": [],\n  \"missing\": \"Hiện tại tôi chưa có nội dung cho trang 6 trong kho dữ liệu nên không thể cung cấp tóm tắt chi tiết cho bạn.\",\n  \"narrowing\": [],\n  \"have_instead\": []\n}",
+    "parsed": {
+      "tier": "khong",
+      "answer": "",
+      "citations": [],
+      "missing": "Hiện tại tôi chưa có nội dung cho trang 6 trong kho dữ liệu nên không thể cung cấp tóm tắt chi tiết cho bạn.",
+      "narrowing": [],
+      "have_instead": []
+    }
+  },
+  "output": {
+    "tier": "khong",
+    "answer": "",
+    "citations": [],
+    "missing": "Hiện tại tôi chưa có nội dung cho trang 6 trong kho dữ liệu nên không thể cung cấp tóm tắt chi tiết cho bạn.",
+    "narrowing": [],
+    "have_instead": []
+  },
+  "usage": {
+    "note": "xem trace"
+  },
+  "elapsed_ms": 12539.048910140991
+}
