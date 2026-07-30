@@ -114,7 +114,7 @@ Có hợp đồng này thì hai người **làm song song, không chờ nhau**:
 - **10:00-12:00** P2 hardcode 3 object mẫu, dựng UI đủ 3 tầng → **CP2 đạt, chưa cần AI**
 - **12:00-16:00** P3 làm AI thật trả về đúng format đó → **CP3 đạt, thay mock bằng thật, P2 không sửa gì**
 
-Màn hình P2 phải có: khung trang tài liệu + **dropdown chọn số trang** (để giám khảo tự chọn trang 6 hay trang 9) · ô gõ câu hỏi (mặc định **không bôi đen gì** — đúng 69% lượt dùng thật) · vùng trả lời render 3 tầng · nút 👍👎 (HAX G15, khớp field `rating` trong data thật).
+Màn hình P2 phải có: khung trang tài liệu + **dropdown chọn số trang** (để giám khảo tự chọn trang 6 hay trang 9) · ô gõ câu hỏi (mặc định **không bôi đen gì** — đúng 62,7% lượt dùng thật) · vùng trả lời render 3 tầng · nút 👍👎 (HAX G15, khớp field `rating` trong data thật).
 
 ---
 
@@ -172,9 +172,9 @@ Phạm vi: **1.261 turn · 369 học viên · 585 hội thoại · 22→29/07/20
 
 | Tầng | Trang | Dùng làm |
 |---|---|---|
-| **Đủ căn cứ** (≥200 ký tự) | 4, 8, 9, 12, 13, 15, 25, 27, 31 — **9 trang** | Case chuẩn / happy path |
-| **Căn cứ mỏng** (1-199) | 1, 2, 3, 5, 7, 11, 14, 17, 21, 22, 26, 35, 42, 67 — **14 trang** | Lớp ② mơ hồ |
-| **Không căn cứ** (0) | 6, 16, 18, 19, 23, 29, 30, 33, 37, 43, 45, 46 — **12 trang** | Lớp ① nguồn sự thật |
+| **Đủ căn cứ** (≥200 ký tự) | 4, 7, 8, 9, 12, 13, 15, 25, 27, 31 — **10 trang** | Case chuẩn / happy path |
+| **Căn cứ mỏng** (1-199) | 1, 2, 3, 5, 11, 14, 17, 21, 22, 26, 35, 42, 45, 67 — **14 trang** | Lớp ② mơ hồ |
+| **Không căn cứ** (0) | 6, 16, 18, 19, 23, 29, 30, 33, 37, 43, 46 — **11 trang** | Lớp ① nguồn sự thật |
 
 **Case demo trung tâm: trang 6.** Trang **bị hỏi nhiều nhất tài liệu (17 câu hỏi)**, tutor bó tay **5 lần**, **0 ký tự căn cứ**. Trang học viên cần nhất là trang tutor không trả lời được.
 
