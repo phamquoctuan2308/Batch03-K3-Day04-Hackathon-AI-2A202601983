@@ -13,6 +13,15 @@
 > không phải đòi học viên làm gì). Đổi sang regex đã validate sẵn trong
 > `tools/extract_corpus.py` (`RE_DOI_NOI_DUNG`, dùng tính evidence thật trên chatlog) — hai
 > case này thật ra ĐẠT. Đã chấm lại thủ công từ trace đã lưu, không gọi lại API.
+>
+> **⚠️ 2 case LỖI THỜI (2026-07-30), chưa chạy lại — chờ gộp vào `run-02`:** sửa bug
+> `la_boi_den_that()` trong `tools/extract_corpus.py` (không tính nhầm bôi đen thật thành
+> giả) làm trang 7 đổi từ 24 ký tự (`mong`) → 324 ký tự (`du`). Ảnh hưởng `L2-04` và `H-01`
+> (cả hai đều dùng trang 7) — tier mong đợi trong bảng dưới đây (`mong`) đã CŨ, xem
+> `eval/golden-set.md` để biết tier mong đợi mới (`du` cho cả hai). Cột "Đạt?"/"Tier thật"
+> của 2 dòng này vẫn là kết quả chạy trên KHO CŨ — không đại diện cho hành vi thật với kho
+> đã sửa. Chủ động không gọi lại API ngay (theo yêu cầu P4: chờ P3 sửa `CLASSIFICATION_PROMPT`
+> xong rồi chạy `run-02` một lần cho cả hai thay đổi, tránh tốn quota 2 lần).
 
 | Mã | Turn | Trang gọi | Tier mong đợi | Tier thật | Đạt? | Ghi chú | Trace |
 |---|---|---|---|---|---|---|---|

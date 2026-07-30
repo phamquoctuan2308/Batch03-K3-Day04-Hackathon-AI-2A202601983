@@ -23,14 +23,20 @@
 | L1-05 | "tóm tat bai hoc day 3" *(không dấu)* | 33 | `khong` | `T1139` |
 | L1-06 | "tóm tắt nội dung chính trong slide này" | 37 | `khong` | `T0649` — case đã dùng làm ví dụ mở đầu ở `bon-minh-xay-gi.md` |
 
-## Lớp ② — Mơ hồ / căn cứ mỏng (6 case, tier mong đợi = `mong`)
+## Lớp ② — Mơ hồ / căn cứ mỏng (5 case thật sự còn `mong`, xem ghi chú L2-04)
+
+> **Sửa 2026-07-30:** `tools/extract_corpus.py` có bug (`la_boi_den_that()` đếm
+> thiếu bôi đen thật qua nút "Giải thích đoạn bôi đen ở Trang N" — chi tiết trong
+> code, PR fix đã merge). Sau khi sửa, trang 7 từ 24 ký tự (`mong`) tăng lên 324
+> ký tự (`du`) — L2-04 không còn đại diện lớp ② nữa, xem ghi chú ở dòng đó. Vẫn đủ
+> 5 case cho lớp ② (≥2 theo rubric).
 
 | Mã | Input (trang · câu hỏi) | Trang | Tier mong đợi | Ghi chú |
 |---|---|---|---|---|
 | L2-01 | "Giải thích đoạn bôi đen ở Trang 1." | 1 | `mong` | `T1065` — 46 ký tự căn cứ (chỉ có tiêu đề) |
 | L2-02 | Bôi đen thật *"Agent Loop: Code Anatomy"* | 3 | `mong` | `T0108` — 39 ký tự |
 | L2-03 | "LLMs la gi" *(không dấu)* | 5 | `mong` | `T1230` — 6 ký tự, gần như trống nhưng khác 0 |
-| L2-04 | "reactive agent là gì" | 7 | `mong` | `T0655` — 24 ký tự. Turn này xưa được rate 👍 dù câu trả lời cũ không theo 3 tầng — dùng để so sánh trước/sau |
+| L2-04 | "reactive agent là gì" | 7 | `du` *(không còn đại diện lớp ②)* | `T0655` — trang 7 ban đầu ghi 24 ký tự (`mong`), sau khi sửa bug corpus thì trang 7 thật ra có 324 ký tự (`du`, đoạn bôi đen thật của các turn khác đã bị đếm thiếu). Case vẫn hợp lệ (turn thật, rate 👍) nhưng tier mong đợi đổi sang `du`, không còn thuộc lớp ② |
 | L2-05 | "giải thích chi tiết về ReAct = Reasoning + Acting, các bước" | 21 | `mong` | `T1020` — 4 ký tự |
 | L2-06 | "Giải thích đoạn bôi đen ở Trang 26." | 26 | `mong` | `T0023` — 25 ký tự |
 
@@ -67,7 +73,7 @@
 
 | Mã | Input (trang · câu hỏi) | Trang | Tier mong đợi | Ghi chú |
 |---|---|---|---|---|
-| H-01 | "Tóm tắt sờ lai này" *(lỗi chính tả nặng — "slide" viết sai)* | 7 | `mong` | `T0286` — kiểm khả năng hiểu ý dù gõ sai chính tả nghiêm trọng. **Sửa 2026-07-30:** ban đầu ghi trang "—"/tier `khong`, nhưng tra lại CSV thật thì turn này thuộc trang 7 (tier `mong` theo kho, cùng trang với L2-04) — sửa cho khớp thực tế trước khi chạy `eval/run-01.md` |
+| H-01 | "Tóm tắt sờ lai này" *(lỗi chính tả nặng — "slide" viết sai)* | 7 | `du` | `T0286` — kiểm khả năng hiểu ý dù gõ sai chính tả nghiêm trọng. **Sửa 2 lần 2026-07-30:** (1) ban đầu ghi trang "—"/tier `khong`, tra CSV thật thì thuộc trang 7 tier `mong` (24 ký tự) — sửa lần 1; (2) sau khi sửa bug `la_boi_den_that()` (xem ghi chú lớp ②/L2-04), trang 7 thật ra có 324 ký tự → tier `du` — sửa lần 2 |
 | H-02 | "Which model do the tutor like you pretrain on? Qwen or mistral?" | — | `tu_choi` *(trùng L3-02)* | `T0072` — kiểm xử lý câu hỏi tiếng Anh + ngoài phạm vi cùng lúc |
 
 ## Quiz (1 case — demo trung tâm CP6)
