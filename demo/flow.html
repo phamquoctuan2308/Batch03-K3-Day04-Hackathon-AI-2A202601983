@@ -1,0 +1,137 @@
+<title>Flow chính — VLearn tutor 3 tầng căn cứ</title>
+<style>
+  html, body { margin: 0; padding: 0; background: #ffffff; }
+  svg { display: block; font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; }
+  .h1 { font-size: 29px; font-weight: 700; fill: #111827; }
+  .h2 { font-size: 15px; fill: #6b7280; }
+  .step { font-size: 17px; font-weight: 600; fill: #111827; }
+  .sub { font-size: 13px; fill: #6b7280; }
+  .kicker { font-size: 11px; font-weight: 700; letter-spacing: 1.6px; }
+  .tier { font-size: 17px; font-weight: 700; }
+  .cond { font-size: 13px; fill: #4b5563; }
+  .body { font-size: 14px; fill: #1f2937; }
+  .ital { font-size: 13px; fill: #6b7280; font-style: italic; }
+  .cap { font-size: 13px; font-weight: 600; }
+  .chip { font-size: 12px; font-weight: 600; }
+  .btn { font-size: 12px; font-weight: 600; fill: #b45309; }
+  .bad { font-size: 12px; fill: #9ca3af; text-decoration: line-through; }
+  .edge { stroke: #9ca3af; stroke-width: 2; fill: none; }
+  .loop { stroke: #b45309; stroke-width: 2; fill: none; stroke-dasharray: 6 5; }
+  .looplbl { font-size: 12px; font-weight: 600; fill: #b45309; }
+</style>
+
+<svg width="1500" height="1060" viewBox="0 0 1500 1060" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#9ca3af"/>
+    </marker>
+    <marker id="ao" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#b45309"/>
+    </marker>
+  </defs>
+
+  <rect x="0" y="0" width="1500" height="1060" fill="#ffffff"/>
+
+  <!-- title -->
+  <text class="h1" x="100" y="52">Flow chính — AI tutor VLearn: một quyết định, ba cách hành xử</text>
+  <text class="h2" x="100" y="80">Hướng A · lát cắt: học viên hỏi về một trang tài liệu mà không bôi đen đoạn nào</text>
+
+  <!-- step 1 -->
+  <rect x="490" y="110" width="520" height="64" rx="10" fill="#f9fafb" stroke="#d1d5db" stroke-width="1.5"/>
+  <text class="step" x="750" y="138" text-anchor="middle">1 · Học viên mở một trang tài liệu</text>
+  <text class="sub" x="750" y="159" text-anchor="middle">ví dụ đang ở trang 6 của bài giảng</text>
+  <path class="edge" d="M 750 174 L 750 199" marker-end="url(#a)"/>
+
+  <!-- step 2 -->
+  <rect x="490" y="206" width="520" height="64" rx="10" fill="#f9fafb" stroke="#d1d5db" stroke-width="1.5"/>
+  <text class="step" x="750" y="234" text-anchor="middle">2 · Gõ câu hỏi rồi bấm Hỏi</text>
+  <text class="sub" x="750" y="255" text-anchor="middle">“giải thích nghĩa chi tiết của trang 6” — không cần bôi đen gì</text>
+  <path class="edge" d="M 750 270 L 750 295" marker-end="url(#a)"/>
+
+  <!-- decision -->
+  <rect x="390" y="302" width="720" height="108" rx="12" fill="#eef2ff" stroke="#4f46e5" stroke-width="2.5"/>
+  <text class="kicker" x="750" y="330" text-anchor="middle" fill="#4f46e5">3 · QUYẾT ĐỊNH AI — MỘT LỜI GỌI THẬT</text>
+  <text class="step" x="750" y="360" text-anchor="middle">“Mình có đủ căn cứ trong kho để trả lời câu này không?”</text>
+  <text class="sub" x="750" y="386" text-anchor="middle">tra kho tài liệu → phân câu hỏi vào một trong ba tầng căn cứ</text>
+
+  <!-- branch fan-out -->
+  <path class="edge" d="M 750 410 L 750 438"/>
+  <path class="edge" d="M 290 438 L 1210 438"/>
+  <path class="edge" d="M 290 438 L 290 464" marker-end="url(#a)"/>
+  <path class="edge" d="M 750 438 L 750 464" marker-end="url(#a)"/>
+  <path class="edge" d="M 1210 438 L 1210 464" marker-end="url(#a)"/>
+
+  <!-- ============ TIER A ============ -->
+  <rect x="100" y="470" width="380" height="88" rx="10" fill="#ecfdf5" stroke="#059669" stroke-width="2"/>
+  <text class="tier" x="290" y="504" text-anchor="middle" fill="#047857">① ĐỦ CĂN CỨ</text>
+  <text class="cond" x="290" y="530" text-anchor="middle">kho có nội dung trang đó</text>
+  <path class="edge" d="M 290 558 L 290 584" marker-end="url(#a)"/>
+
+  <rect x="100" y="590" width="380" height="252" rx="10" fill="#ffffff" stroke="#d1d5db" stroke-width="1.5"/>
+  <text class="kicker" x="124" y="618" fill="#9ca3af">MÀN HÌNH HIỆN RA</text>
+  <rect x="124" y="632" width="332" height="112" rx="9" fill="#f3f4f6"/>
+  <text class="body" x="144" y="659">
+    <tspan x="144">Trang 9 nói về cách chia tập</tspan>
+    <tspan x="144" dy="21">train / test và vì sao không</tspan>
+    <tspan x="144" dy="21">được để dữ liệu rò rỉ sang…</tspan>
+  </text>
+  <rect x="144" y="708" width="76" height="22" rx="6" fill="#d1fae5" stroke="#059669"/>
+  <text class="chip" x="182" y="723" text-anchor="middle" fill="#047857">[trang 9]</text>
+  <text class="cap" x="124" y="778" fill="#047857">→ trả lời + trích dẫn bấm được</text>
+  <text class="sub" x="124" y="800">học viên tự mở đoạn gốc ra kiểm,</text>
+  <text class="sub" x="124" y="820">không phải tin AI nói suông</text>
+
+  <!-- ============ TIER B ============ -->
+  <rect x="560" y="470" width="380" height="88" rx="10" fill="#fffbeb" stroke="#d97706" stroke-width="2"/>
+  <text class="tier" x="750" y="504" text-anchor="middle" fill="#b45309">② CĂN CỨ MỎNG</text>
+  <text class="cond" x="750" y="530" text-anchor="middle">chỉ có một mẩu nội dung</text>
+  <path class="edge" d="M 750 558 L 750 584" marker-end="url(#a)"/>
+
+  <rect x="560" y="590" width="380" height="252" rx="10" fill="#ffffff" stroke="#d1d5db" stroke-width="1.5"/>
+  <text class="kicker" x="584" y="618" fill="#9ca3af">MÀN HÌNH HIỆN RA</text>
+  <rect x="584" y="632" width="332" height="112" rx="9" fill="#f3f4f6"/>
+  <text class="body" x="604" y="659">
+    <tspan x="604">Phần đầu trang 1 nói về mục</tspan>
+    <tspan x="604" dy="21">tiêu buổi học…</tspan>
+  </text>
+  <text class="ital" x="604" y="708">
+    <tspan x="604">Phần còn lại của trang này mình</tspan>
+    <tspan x="604" dy="18">chưa có, nên mình không suy diễn.</tspan>
+  </text>
+  <text class="cap" x="584" y="778" fill="#b45309">→ trả lời phần chắc, khoanh phần thiếu</text>
+  <text class="sub" x="584" y="800">chỗ không có căn cứ thì nói là không có,</text>
+  <text class="sub" x="584" y="820">không lấp đầy bằng phỏng đoán</text>
+
+  <!-- ============ TIER C ============ -->
+  <rect x="1020" y="470" width="380" height="88" rx="10" fill="#fef2f2" stroke="#dc2626" stroke-width="2"/>
+  <text class="tier" x="1210" y="504" text-anchor="middle" fill="#b91c1c">③ KHÔNG CÓ CĂN CỨ</text>
+  <text class="cond" x="1210" y="530" text-anchor="middle">kho không có trang đó — chỗ tutor hiện tại hỏng</text>
+  <path class="edge" d="M 1210 558 L 1210 584" marker-end="url(#a)"/>
+
+  <rect x="1020" y="590" width="380" height="252" rx="10" fill="#ffffff" stroke="#d1d5db" stroke-width="1.5"/>
+  <text class="kicker" x="1044" y="618" fill="#9ca3af">MÀN HÌNH HIỆN RA</text>
+  <rect x="1044" y="632" width="332" height="112" rx="9" fill="#f3f4f6"/>
+  <text class="body" x="1064" y="659">
+    <tspan x="1064">Mình chưa có nội dung trang 6.</tspan>
+    <tspan x="1064" dy="21">Những trang mình có quanh đó</tspan>
+    <tspan x="1064" dy="21">là 4, 5 và 7.</tspan>
+  </text>
+  <rect x="1064" y="706" width="104" height="24" rx="6" fill="#fef3c7" stroke="#d97706"/>
+  <text class="btn" x="1116" y="722" text-anchor="middle">Giải thích tr.4</text>
+  <rect x="1176" y="706" width="72" height="24" rx="6" fill="#fef3c7" stroke="#d97706"/>
+  <text class="btn" x="1212" y="722" text-anchor="middle">tr.5</text>
+  <rect x="1256" y="706" width="72" height="24" rx="6" fill="#fef3c7" stroke="#d97706"/>
+  <text class="btn" x="1292" y="722" text-anchor="middle">tr.7</text>
+  <text class="cap" x="1044" y="778" fill="#b91c1c">→ nói thật, rồi mở đúng một đường đi tiếp</text>
+  <text class="sub" x="1044" y="800">không bao giờ đẩy việc về cho học viên:</text>
+  <text class="bad" x="1044" y="820">“bạn cung cấp nội dung trang 6 giúp mình”</text>
+
+  <!-- loop back -->
+  <path class="loop" d="M 1210 842 L 1210 890 L 1452 890 L 1452 240 L 1016 240" marker-end="url(#ao)"/>
+  <text class="looplbl" x="1436" y="916" text-anchor="end">bấm nút gợi ý → chạy lại vòng hỏi mới, không phải ngõ cụt</text>
+
+  <!-- bottom bar -->
+  <rect x="100" y="948" width="1300" height="72" rx="10" fill="#f9fafb" stroke="#d1d5db" stroke-width="1.5" stroke-dasharray="5 4"/>
+  <text class="step" x="128" y="976">4 · Mỗi lượt đều ghi vết: câu hỏi · tầng AI chọn · trang đã trích dẫn</text>
+  <text class="sub" x="128" y="1000">chạy lại trên bộ 27 câu hỏi thật lấy từ chatlog để ra bảng % phân tầng đúng — mining nền: 1.261 lượt · 369 học viên · 585 hội thoại</text>
+</svg>
