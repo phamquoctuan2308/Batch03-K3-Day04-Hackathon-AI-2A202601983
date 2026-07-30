@@ -55,7 +55,7 @@
 | L4-01 | Bôi đen thật *"Trang 15/46 ... Từ Anthropic: Agent Patterns..."* | 15 | `du` | `T1092` — hệ thống CŨ cite đúng `[15]` nhưng vẫn bị 👎 → lệch không nằm ở số trang mà ở nội dung diễn giải; case để kiểm tra "cite đúng nhưng vẫn có thể sai" |
 | L4-02 | "Giải thích đoạn bôi đen ở Trang 4." | 4 | `du` | `T1082` — hệ thống CŨ cite `[22]` dù học viên hỏi về trang 4 → ví dụ thật của lỗi "cite sai trang" trong chính kho demo |
 
-## Thường (9 case, tier mong đợi = `du` — đúng 9 trang "đủ căn cứ" trong kho)
+## Thường (9 case, tier mong đợi = `du` — 9 trong 10 trang "đủ căn cứ" hiện có trong kho; trang còn lại là trang 7, đại diện bởi `L2-04`/`H-01` ở lớp ②/Hiếm)
 
 | Mã | Input (trang · câu hỏi) | Trang | Tier mong đợi | Ghi chú |
 |---|---|---|---|---|
