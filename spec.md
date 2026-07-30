@@ -125,7 +125,7 @@ Tutor được thiết kế cho flow *"bôi đen đoạn tài liệu rồi hỏi
 **Mức prototype: [x] Mock** — flow bấm được, AI thật ở lõi.
 
 *Phần nào MOCK, khai rõ:*
-- **Kho tài liệu là TÁI TẠO**, không phải slide gốc. `data/vlearn-pack/` **không có `slides/`** (README của pack ghi "sẽ bổ sung trước sự kiện", chưa có). Kho dựng từ **đoạn học viên bôi đen trong chatlog**: 35 trang của `Lecture_material_ms2044ey_k6uor3` → 9 trang đủ căn cứ / 14 mỏng / 12 trống.
+- **Kho tài liệu là TÁI TẠO**, không phải slide gốc. Tài liệu tutor tra trong chatlog là `Lecture_material_ms2044ey_k6uor3`, **35 trang** — chưa được cấp dưới dạng file. `data/vlearn-pack/slides/` được ban tổ chức bổ sung trong ngày thi nhưng là hai bộ khác: Day 1 và Day 2 bản hackathon, **29 trang mỗi bộ**, bản rút gọn có watermark — số trang không khớp tài liệu demo. Nên kho dựng từ **đoạn học viên bôi đen trong chatlog**: 35 trang → 9 trang đủ căn cứ / 14 mỏng / 12 trống.
 - **Lỗ trong kho là CỐ Ý, không phải thiếu sót.** Hệ thống thật cũng thiếu — 20,9% lượt hỏi tutor không tra ra nội dung. Nhóm tái tạo đúng điều kiện lỗi đó; kho đầy đủ thì tầng `khong` không bao giờ chạy và không đo được gì.
 - **2 case golden set là case gán lại** từ tài liệu khác sang kho demo: `Q-01` (nguồn `T0257`) và `H-01` (nguồn `T0286`). Không phải trích nguyên văn của trang được gán.
 - Không deploy, chạy localhost.
