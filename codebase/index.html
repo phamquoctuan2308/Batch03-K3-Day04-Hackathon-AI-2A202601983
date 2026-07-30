@@ -247,6 +247,13 @@
   .live-row { display:flex; align-items:center; gap:10px; margin:8px 0 10px; font-size:13px; flex-wrap:wrap; }
   .live-row label { display:flex; align-items:center; gap:6px; cursor:pointer; font-weight:600; }
   #live-hint { color: var(--muted); font-size:12px; font-weight:400; }
+  #select-label { font-size:13px; color:var(--muted); display:block; margin-bottom:6px; }
+  .page-facts { margin-top:12px; display:flex; flex-direction:column; gap:8px; }
+  .page-facts > div { display:flex; flex-wrap:wrap; align-items:baseline; gap:6px;
+                      font-size:12px; line-height:1.4; }
+  .page-facts .k { color:var(--muted); }
+  .page-facts b { font-size:14px; color:var(--text); }
+  .page-facts.trong b { color:var(--khong); }
 </style>
 </head>
 <body>
@@ -260,16 +267,23 @@
 
   <section class="panel">
     <h2>Trang tài liệu</h2>
-    <label for="scenario-select" style="font-size:13px; color:var(--muted); display:block; margin-bottom:6px;">Chọn kịch bản demo</label>
+    <label for="scenario-select" id="select-label">Chọn kịch bản demo</label>
     <select id="scenario-select">
-      <option value="du">Trang 9 — hỏi bình thường (đủ căn cứ)</option>
-      <option value="mong">Trang 1 — hỏi bình thường (căn cứ mỏng)</option>
-      <option value="khong" selected>Trang 6 — hỏi bình thường (không có nội dung) — case demo trung tâm</option>
-      <option value="tu_choi">Trang 6 — hỏi kiểu jailbreak (guardrail chặn)</option>
+      <option value="du">Trang 9 — đủ căn cứ</option>
+      <option value="mong">Trang 1 — căn cứ mỏng</option>
+      <option value="khong" selected>Trang 6 — không có nội dung ★</option>
+      <option value="tu_choi">Trang 6 — hỏi kiểu jailbreak</option>
     </select>
+
+    <!-- Thay khung placeholder rỗng bằng dữ kiện thật của trang: người xem
+         thấy được CĂN CỨ của quyết định tầng, không chỉ thấy kết luận. -->
     <div class="slide-frame">
       <div class="page-num" id="page-num-display">6</div>
-      <small>Khung xem trang tài liệu (placeholder)</small>
+      <small>trang tài liệu học viên đang xem</small>
+    </div>
+    <div class="page-facts">
+      <div><span class="k">Kho có</span><b id="fact-kytu">0 ký tự</b><span class="k">căn cứ cho trang này</span></div>
+      <div><span class="k">Trong log thật</span><b id="fact-hoi">17 câu hỏi</b><span class="k" id="fact-botay">tutor cũ bó tay 5 lần</span></div>
     </div>
   </section>
 
@@ -278,7 +292,7 @@
     <textarea id="question-input"></textarea>
     <div class="live-row">
       <label><input type="checkbox" id="live-toggle"> <b>Hỏi AI thật</b></label>
-      <span id="live-hint">tắt = dùng 4 kịch bản mẫu · bật = gọi Gemini qua <code>server.py</code></span>
+      <span id="live-hint">tắt = 4 kịch bản mẫu dựng sẵn · bật = gọi AI thật, mất vài giây</span>
     </div>
     <button class="send-btn" id="send-btn">Gửi câu hỏi</button>
 
@@ -345,10 +359,45 @@
   const sendBtn = document.getElementById("send-btn");
   const answerArea = document.getElementById("answer-area");
 
+  // Dữ kiện thật của từng trang, lấy từ out/corpus.json (tools/extract_corpus.py).
+  // Hiện lên để người xem thấy CĂN CỨ của quyết định tầng, không chỉ thấy kết luận.
+  const FACTS = {
+    9: { ky_tu: 1009, hoi: 13, bo_tay: 3 },
+    1: { ky_tu: 46,   hoi: 14, bo_tay: 2 },
+    6: { ky_tu: 0,    hoi: 17, bo_tay: 5 },
+  };
+
+  function syncFacts(trang) {
+    const f = FACTS[trang];
+    pageNumDisplay.textContent = trang;
+    const box = document.querySelector(".page-facts");
+    if (!f) {                       // trang ngoài 3 trang demo — không bịa số
+      document.getElementById("fact-kytu").textContent = "—";
+      document.getElementById("fact-hoi").textContent = "—";
+      document.getElementById("fact-botay").textContent = "";
+      box.classList.remove("trong");
+      return;
+    }
+    document.getElementById("fact-kytu").textContent = `${f.ky_tu} ký tự`;
+    document.getElementById("fact-hoi").textContent = `${f.hoi} câu hỏi`;
+    document.getElementById("fact-botay").textContent = `tutor cũ bó tay ${f.bo_tay} lần`;
+    box.classList.toggle("trong", f.ky_tu === 0);
+  }
+
   function syncScenario() {
     const data = SAMPLES[scenarioSelect.value];
-    pageNumDisplay.textContent = data.input.trang;
-    questionInput.value = data.input.cau_hoi;
+    syncFacts(data.input.trang);
+    // Chế độ "hỏi thật": dropdown chỉ còn nghĩa CHỌN TRANG, không phải chọn
+    // kịch bản — nên không ghi đè câu hỏi người dùng đang gõ dở.
+    const live = document.getElementById("live-toggle").checked;
+    if (!live) questionInput.value = data.input.cau_hoi;
+  }
+
+  function syncMode() {
+    const live = document.getElementById("live-toggle").checked;
+    document.getElementById("select-label").textContent =
+      live ? "Chọn trang tài liệu" : "Chọn kịch bản demo";
+    if (!live) syncScenario();      // quay về mock thì nạp lại câu hỏi mẫu
   }
 
   function renderTier(data) {
@@ -511,7 +560,8 @@
   });
 
   scenarioSelect.addEventListener("change", syncScenario);
-  syncScenario();
+  liveToggle.addEventListener("change", syncMode);
+  syncMode();
 </script>
 
 </body>
