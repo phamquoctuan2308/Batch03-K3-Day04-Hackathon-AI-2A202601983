@@ -1,0 +1,61 @@
+{
+  "_doc": "3 object mẫu cho P2 hardcode ở CP2 (12:00) — dựng UI render 3 trạng thái mà KHÔNG cần chờ AI. Đến CP3 (16:00) P3 thay bằng output thật, P2 không phải sửa gì. Đây là hợp đồng dữ liệu giữa P2 và P3.",
+  "_hop_dong": {
+    "tier": "du | mong | khong — tầng căn cứ, AI quyết định",
+    "answer": "câu trả lời; RỖNG khi tier=khong",
+    "citations": "mảng số trang làm căn cứ; rỗng khi không có",
+    "missing": "nói rõ phần nào KHÔNG có căn cứ; dùng khi tier=mong",
+    "narrowing": "các lựa chọn thu hẹp, hiện thành nút bấm được",
+    "have_instead": "số trang mình THỰC SỰ có, để đề xuất khi tier=khong"
+  },
+  "_luat_cung": "tier=khong thì TUYỆT ĐỐI không được đòi học viên cung cấp nội dung. Đó chính là lỗi mà nhóm đang sửa.",
+
+  "du": {
+    "_case": "trang 9 — 615 ký tự căn cứ, 13 câu hỏi thật trong log",
+    "input": {
+      "trang": 9,
+      "cau_hoi": "giải thích nội dung trang này"
+    },
+    "tier": "du",
+    "answer": "Đoạn này nói về ưu điểm và hạn chế của mô hình ReAct: dễ đọc trace và debug, tự quyết được bước tiếp theo từ observation, phù hợp các bài toán search / booking / investigation / coding.",
+    "citations": [9],
+    "missing": null,
+    "narrowing": [],
+    "have_instead": []
+  },
+
+  "mong": {
+    "_case": "trang 1 — chỉ 46 ký tự căn cứ, 14 câu hỏi thật, tutor bó tay 2 lần",
+    "input": {
+      "trang": 1,
+      "cau_hoi": "tóm tắt slide này"
+    },
+    "tier": "mong",
+    "answer": "Phần mình có của trang 1 là tiêu đề bài giảng về hành trình từ chatbot đến agentic agent.",
+    "citations": [1],
+    "missing": "Mình chỉ có tiêu đề trang này, chưa có phần nội dung bên dưới — nên mình không tóm tắt cả trang, vì sẽ phải suy diễn.",
+    "narrowing": [
+      "Xem trang 4 — có nội dung đầy đủ",
+      "Hỏi về một khái niệm cụ thể trên trang 1"
+    ],
+    "have_instead": [4, 8, 9]
+  },
+
+  "khong": {
+    "_case": "trang 6 — CASE DEMO TRUNG TÂM. Trang bị hỏi nhiều nhất tài liệu (17 câu hỏi), tutor bó tay 5 lần, 0 ký tự căn cứ. Input lấy từ T0257 (yêu cầu quiz thật đã thất bại).",
+    "input": {
+      "trang": 6,
+      "cau_hoi": "tóm tắt ý chính để tôi làm quiz cuối giờ"
+    },
+    "tier": "khong",
+    "answer": "",
+    "citations": [],
+    "missing": "Mình chưa có nội dung trang 6 trong tài liệu này.",
+    "narrowing": [
+      "Giải thích trang 4",
+      "Giải thích trang 5",
+      "Giải thích trang 7"
+    ],
+    "have_instead": [4, 5, 7]
+  }
+}

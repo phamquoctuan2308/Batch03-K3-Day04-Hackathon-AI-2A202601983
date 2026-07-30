@@ -128,24 +128,26 @@ Phạm vi: **1.261 turn · 369 học viên · 585 hội thoại · 22→29/07/20
 
 ### Hậu quả — đếm được
 
-- **315/1.261 (25,0%)** turn tutor có lời xin lỗi / không tìm thấy
-- **106 turn (8,4%)** kết thúc bằng việc **đòi học viên tự cung cấp nội dung**
-- **99/585 hội thoại (16,9%)** chết ngay tại một câu "không tìm thấy" — đó là turn cuối
-- **60/309** hội thoại một-lượt là hỏi một câu, bị từ chối, bỏ đi luôn
+- **192/1.261 (15,2%)** turn tutor bó tay, không tra được nội dung
+- **74 turn (5,9%)** kết thúc bằng việc **đòi học viên tự cung cấp nội dung**
+- **99/585 hội thoại (16,9%)** chết ngay tại một câu bó tay — đó là turn cuối
 - **39/93** trường hợp học viên gõ lại gần y nguyên câu hỏi sau khi bị từ chối
-- **15/15** turn "không tìm thấy" được rating đều 👎 — **không một cái nào 👍**. Turn khác: 22/55 👎
-- Yêu cầu "tóm tắt slide/trang này": **131 turn (10,4%)**, thất bại **62,6%**
+- **15/15** turn bó tay được rating đều 👎 — **không một cái nào 👍**. Turn khác: 33 👍 / 22 👎
+- Yêu cầu "tóm tắt": **119 turn**, thất bại **39,5%** — loại câu hỏi bị fail nhiều nhất
 - **582/1.261 (46,2%)** câu trả lời không có citation nào, dù sản phẩm hứa trích dẫn `[trang N]`
 
-### Phương pháp đếm — để người ngoài kiểm lại được (yêu cầu R1)
+### Phương pháp đếm — người ngoài kiểm lại được (yêu cầu R1)
+
+**Chạy: `python3 tools/extract_corpus.py`** — script này sinh ra mọi con số ở trên cùng với kho 3 tầng ở §3. Không có số nào trong file này là gõ tay.
 
 1. Ghép 2 dòng cùng `turn_id` thành 1 turn (`role=student` + `role=tutor`).
 2. Parse tin học viên theo regex `^\(Trang (\d+), đoạn được chọn: "(.*)"\)\s*(.*)$`.
 3. **Phân biệt bôi đen thật vs giả:** nếu "đoạn được chọn" trùng ≥80% với câu hỏi (`difflib.SequenceMatcher`) hoặc hai chuỗi chứa nhau → học viên **tự gõ**, không bôi đen text slide.
-4. Đếm "tutor bó tay" bằng regex trên `content` của tutor: `không tìm thấy|chưa tìm thấy|không thể truy cập|không thể tìm thấy|không có thông tin|không tìm được`.
+4. Đếm "tutor bó tay" bằng regex trên `content` của tutor: `không tìm thấy|chưa tìm thấy|không thể truy cập|không thể tìm thấy|không có thông tin|không tìm được`. **Cố ý KHÔNG bắt "xin lỗi" / "rất tiếc"** — tutor dùng hai từ đó cả khi trả lời được, bắt vào sẽ đếm vống lên gần gấp đôi.
 5. Hội thoại "chết" = turn cuối cùng theo `message_created_at` khớp regex ở bước 4.
+6. Ý định "tóm tắt" chỉ xét **phần học viên tự gõ**, không xét text slide dán vào — nếu xét cả text slide thì bắt nhầm những trang có chữ "tóm tắt" trong nội dung.
 
-**P1 sở hữu script này.** Chạy lại phải ra đúng các số trên.
+**P1 sở hữu script này.** Chạy lại phải ra: `69,2%` không bôi đen · chênh `8,0` lần · kho `9/14/12` trang.
 
 ### Ví dụ nguyên văn (≥5, trích ngắn — mã turn để tra lại)
 
@@ -184,10 +186,11 @@ Phạm vi: **1.261 turn · 369 học viên · 585 hội thoại · 22→29/07/20
 |---|---|---|
 | ① Không căn cứ | Câu hỏi thật về trang 6, 16, 18, 19, 33, 37 | 6 |
 | ② Mơ hồ / căn cứ mỏng | Câu hỏi thật về trang 1, 3, 5, 7, 21, 26 | 6 |
-| ③ Ngoài phạm vi / thẩm quyền | `T0583` "Model của bạn được fine tune trên đâu?" · `T0072` "Which model do the tutor like you pretrain on? Qwen or mistral?" | 2 |
+| ③ Ngoài phạm vi / thẩm quyền | `T0583` "Model của bạn được fine tune trên đâu?" · `T0072` "Which model do the tutor like you pretrain on? Qwen or mistral?" · `T0767` **thử prompt injection** ("bài kiểm tra bảo mật prompt…") | 3 |
 | ④ Đặc thù domain | `T1092` — tutor cite `[15]` nhưng bị 👎 (cite đúng trang, nội dung lệch) · cite sai trang | 2 |
 | Thường | Trang 4, 8, 9, 12, 13, 15, 25, 27, 31 | 9 |
 | Hiếm | `T0286` "Tóm tắt sờ lai này" (lỗi chính tả) · `T0072` (tiếng Anh) | 2 |
+| **Quiz** *(ý của nhóm, có case thật)* | `T0257` "tóm tắt ý chính để tôi làm quiz kahoot cuối giờ" → tutor bó tay, đòi gửi nội dung. **Dùng làm input demo** | 1 |
 
 **Quality bar — P4 chốt trước 23:59 N1, sau đó KHOÁ:**
 
