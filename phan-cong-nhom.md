@@ -5,14 +5,27 @@
 
 ## Thành viên
 
-| Vai | Mã HV + Tên | Sở hữu artifact | Câu sẽ bị hỏi ở CP5 |
-|---|---|---|---|
-| **P1** — Data & Evidence & Eval | *(điền)* | script mining, kho corpus, `eval/`, golden set | "3 tầng căn cứ được tính thế nào?" |
-| **P2** — Build flow | *(điền)* | `codebase/`, flow bấm được, backup screenshot | "flow đi từ đâu đến đâu?" |
-| **P3** — Prompt & AI call | *(điền)* | prompt quyết định căn cứ, lời gọi AI thật, log/trace | "AI quyết định gì, dựa vào cái gì?" |
-| **P4** — Spec & Validation & Slides | *(điền)* | `spec.md`, `validation/`, `demo-slides.pdf` | "quality bar là gì, vì sao chọn số đó?" |
+| Vai | Mã HV + Tên | Sở hữu artifact | Điểm | Câu sẽ bị hỏi ở CP5 |
+|---|---|---|---|---|
+| **P1** — Data & Eval | *(điền)* | script mining · kho corpus · `eval/` · golden set · **spec §7** | 15 | "3 tầng căn cứ được tính thế nào?" |
+| **P2** — Build | *(điền)* | `codebase/` flow + UI · backup screenshot · **dựng file `demo-slides.pdf`** | 8 | "flow đi từ đâu đến đâu?" |
+| **P3** — Prompt & AI call | *(điền)* | prompt quyết định căn cứ · lời gọi AI thật · log/trace · **spec §5-§6** | 11 | "AI quyết định gì, dựa vào cái gì?" |
+| **P4** — Spec lead *(trưởng nhóm)* | *(điền)* | **spec §1-§4** · `validation/` · changelog §9 · nội dung slide | 38 | "quality bar là gì, vì sao chọn số đó?" |
 
 Mỗi người tự viết `reflection/` của mình. **Vibe-coding rule:** không giải thích được phần có tên mình → 0 điểm phần đó.
+
+**Vì sao chia thế này:** §7 Kiểm thử về P1 vì định nghĩa chiều chất lượng + golden set + bảng % *là* việc của P1. §5-§6 Kiểu lỗi & 4 đường đi về P3 vì người viết prompt chính là người quyết định "khi không chắc thì nói gì". Kết quả: **cả 4 người đều có phần trong `spec.md`** → CP6 ai cũng có phần thật để nói, CP5 ai cũng trả lời được về phần mình *thiết kế*.
+
+### Việc riêng của trưởng nhóm (P4)
+
+| Việc | Vì sao |
+|---|---|
+| **Nhắc cả 4 người nộp trước từng mốc** — 10:00 · 12:00 · 16:00 · 17:30 N1 · 09:00 N2 | **25 điểm.** Mỗi người nộp riêng, muộn = 0đ mốc đó. Mất vì quên thì không cứu được |
+| **Gọi TA khi ai kẹt >20 phút** | Guide §3.4 — CP2 chính là mốc hỗ trợ kỹ thuật, không gọi là tự thiệt |
+| **Giữ feature freeze sau CP4 17:30** | Sẽ có người muốn thêm tính năng lúc 20:00. Nói không |
+| **Review PR, merge vào `main`** | Xem §0 |
+| Đảm bảo **mỗi người nói ≥1 phần** ở CP6 | Điều kiện vòng demo |
+| Gom §3 giải pháp tương tự: mỗi người thử 1 sản phẩm 15' | Guide §2.2 — chia người, P4 gom vào spec |
 
 ---
 
@@ -70,6 +83,34 @@ Vấn đề: VLearn AI tutor được thiết kế quanh flow *"bôi đen đoạ
 2. Không tóm tắt cả tài liệu / cả buổi học.
 3. Không sinh quiz, không kiểm tra hiểu bài.
 4. Không trả lời câu hỏi hành chính (deadline, điểm, nộp bài).
+
+### Ranh giới P2 ↔ P3 — chốt trước 10:00, không thì tắc cả ngày
+
+**"Build flow" KHÔNG phải là làm UI đẹp.** Guide §3.1: *"đừng dựng UI đẹp trước khi flow thông"*. UI đẹp 0 điểm — R5 chỉ 8đ. Việc của UI là làm cho **sự khác nhau giữa 3 tầng nhìn thấy được**, vì đó là chỗ 6 điểm nguyên tắc HAX của R2 nằm (G10 thu hẹp phạm vi · G11 giải thích vì sao · G9 sửa dễ dàng · G2 làm rõ tốt đến đâu). UI đẹp mà 3 tầng nhìn giống nhau thì mất cả 6 điểm. P2 dùng v0.dev / Lovable / Bolt sinh khung, đừng tự gõ CSS.
+
+| | Làm gì |
+|---|---|
+| **P3** = bộ não | Prompt phân loại 3 tầng → gọi AI → trả về object có cấu trúc → lưu trace |
+| **P2** = vỏ | Nhận object đó → render ra 3 hình dạng khác nhau |
+
+Hợp đồng dữ liệu giữa hai người:
+
+```json
+{
+  "tier": "du | mong | khong",
+  "answer": "...",              // rỗng khi tier = khong
+  "citations": [9],             // số trang; rỗng khi không có căn cứ
+  "missing": "...",             // phần nào KHÔNG có căn cứ (tier = mong)
+  "narrowing": ["...", "..."],  // câu thu hẹp bấm được (tier = mong | khong)
+  "have_instead": [4, 8, 9]     // trang mình THỰC SỰ có, để đề xuất
+}
+```
+
+Có hợp đồng này thì hai người **làm song song, không chờ nhau**:
+- **10:00-12:00** P2 hardcode 3 object mẫu, dựng UI đủ 3 tầng → **CP2 đạt, chưa cần AI**
+- **12:00-16:00** P3 làm AI thật trả về đúng format đó → **CP3 đạt, thay mock bằng thật, P2 không sửa gì**
+
+Màn hình P2 phải có: khung trang tài liệu + **dropdown chọn số trang** (để giám khảo tự chọn trang 6 hay trang 9) · ô gõ câu hỏi (mặc định **không bôi đen gì** — đúng 69% lượt dùng thật) · vùng trả lời render 3 tầng · nút 👍👎 (HAX G15, khớp field `rating` trong data thật).
 
 ---
 
@@ -154,27 +195,46 @@ Phạm vi: **1.261 turn · 369 học viên · 585 hội thoại · 22→29/07/20
 
 Không đạt bar nhưng phân tích được nguyên nhân **vẫn đủ điểm**. Sửa số thì mất điểm.
 
+**Chấm phải hai người, không phải P1 một mình** — đây là yêu cầu rubric, không phải chuyện chia việc:
+
+> R4, 4đ: *"Mỗi chiều chất lượng có định nghĩa kiểm chứng được (**người ngoài nhóm chấm ra cùng kết quả**)"*
+> Guide §2.6: *"Hai thành viên chấm độc lập cùng 5 output → so. Lệch = định nghĩa mơ hồ → viết lại."*
+
+P1 chấm 27 case một mình thì không có bằng chứng định nghĩa rõ ràng → **mất 4 điểm**. P4 chấm độc lập ≥5 case khó rồi so với P1; lệch chỗ nào thì viết lại định nghĩa và ghi vào changelog §9.
+
+**Cảnh báo cho P1:** CP5 hỏi *"3 tầng căn cứ được tính thế nào?"* — copy số từ file này mà không tự chạy lại được thì vibe-coding rule bắn trúng. File này là đầu vào để làm nhanh, **không phải thứ để đọc thuộc**.
+
 ---
 
 ## 5. Timeline — mốc Khoá 3
 
 Lợi thế: **evidence đã mining xong trước khai mạc**, nhóm vào CP1 với chuẩn B gần đạt sẵn.
 
-| Giờ | P1 | P2 | P3 | P4 |
+**Không ai phải chờ ai lúc 09:00** — evidence và kho 3 tầng đã tính xong sẵn ở §2-§3. Cả 4 người khởi động song song.
+
+| Giờ | P1 | P2 | P3 | P4 *(trưởng nhóm)* |
 |---|---|---|---|---|
-| 09:00-10:00 | Chạy lại script, chốt số | Dựng khung màn hình | Đăng ký Google AI Studio, test 1 call | Viết Canvas 7 dòng |
+| 09:00-10:00 | **Tự viết lại script** đến khi ra đúng số ở §2 | Dựng khung màn hình | Đăng ký Google AI Studio, test 1 call · **chốt hợp đồng JSON với P2** | Canvas 7 dòng · hỏi BTC có `slides/` không |
 | **CP1 · 10:00** | Cả nhóm show Canvas — đem bảng 3 tầng + số "trang 6: 17 câu hỏi / 5 lần bó tay" ||||
-| 10:00-12:00 | Xuất corpus 3 tầng ra JSON | **Flow bấm hết được, data giả** | Prompt v1, chạy tay 10 input | spec §1-§2 |
+| **10:30** | ⚠️ **Corpus 3 tầng ra JSON — hạn cứng**, P3 đang chờ cái này ||||
+| 10:00-12:00 | Corpus JSON (xong 10:30) rồi bắt golden set | **Flow bấm hết được, 3 object hardcode** | Prompt v1 trên trang 9 + trang 6 | spec §1-§2 (số đã có sẵn) |
 | **CP2 · 12:00** | Show flow bấm hết + commit đầu. **Kẹt kỹ thuật >20' gọi TA tại đây** ||||
-| 12:00-14:00 | Golden set 27 case | Nối UI vào AI call | Prompt v2 theo 3 tầng | spec §3-§4 + §4b nguyên tắc HAX |
-| 14:00-16:00 | **Chạy trọn bộ lượt 1, bảng %** | 4 đường đi trên UI | Sửa 1 failure đau nhất | spec §5-§6 (4 lớp + ≥8 kịch bản) |
+| 12:00-14:00 | Golden set 27 case | Nối UI vào AI call thật | Prompt v2 theo 3 tầng | spec §3 (gom bài mỗi người) + §4 |
+| 14:00-16:00 | **Chạy trọn bộ lượt 1, bảng %** | 4 đường đi trên UI | Sửa 1 failure đau nhất · **spec §5-§6** | **§4b — ngồi cạnh P2/P3 xem UI thật** rồi mới viết |
 | **CP3 · 16:00** | AI thật không hardcode + golden set ≥20 + bảng lượt 1 có % ||||
-| 16:00-17:30 | Lượt 2 sau khi sửa | Backup screenshot/video | Chốt prompt | spec §7 + **chốt quality bar bằng số** |
+| 16:00-17:30 | Lượt 2 · **§7** · chấm chéo với P4 | Backup screenshot/video | Chốt prompt | **Chấm độc lập ≥5 case khó, so với P1** → chốt quality bar bằng số |
 | **CP4 · 17:30** | Spec gần cuối. **Sau mốc này KHÔNG thêm feature mới** ||||
 | → **23:59** | Bảng đủ mọi case | Freeze code | Freeze prompt | **COMMIT `spec.md` — bar chốt vĩnh viễn** |
-| N2 trước 09:00 | Hỗ trợ log | Chạy thử | Chạy thử | **5 phiên validation 10'/người + slide 6 trang + dry run bấm giờ** |
+| N2 trước 09:00 | **Phỏng vấn song song** với P2 | **Phỏng vấn song song** với P1 · dựng file slide PDF | Chạy thử | Viết nội dung slide · log validation · changelog · **dry run bấm giờ** |
 | **CP5 · 09:00** | Log ≥5 người có tên + changelog + dry run xong + **bị hỏi ngẫu nhiên** ||||
 | **CP6 · 10:00** | 5' demo (**trang 9 chuẩn + trang 6 lỗi**) + 5' Q&A, mỗi người nói ≥1 phần ||||
+
+**Hai chỗ sequencing dễ chết:**
+
+1. **§4b không viết được từ tưởng tượng.** Bốn nguyên tắc HAX phải *trỏ vào vị trí cụ thể trong prototype* và TA kiểm tại CP4. P4 phải xem UI thật của P2 rồi mới viết — đừng viết trước 14:00.
+2. **P1 nằm ở cả hai đầu đường tới hạn**: mở đường bằng corpus JSON, chốt cửa bằng bảng %. P1 chậm là CP3 mất 5 điểm. Vì vậy corpus hạn 10:30, không phải 12:00.
+
+**Phỏng vấn validation phải 2 người hỏi song song** (P1 + P2): 5 phiên × 10' làm tuần tự mất 50 phút, song song còn ~25 phút. Sáng N2 rất ngắn.
 
 ### Ba câu hỏi validation (P4, mỗi người 10 phút)
 
