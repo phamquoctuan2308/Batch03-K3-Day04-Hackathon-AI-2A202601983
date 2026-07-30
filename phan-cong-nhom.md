@@ -16,6 +16,33 @@ Mỗi người tự viết `reflection/` của mình. **Vibe-coding rule:** khô
 
 ---
 
+## 0. Quy tắc làm việc trên git — đọc trước khi commit dòng đầu tiên
+
+**`main` là nhánh chốt. Không ai push thẳng vào `main`.**
+
+1. **Làm trên nhánh của mình**, đặt tên theo phần mình sở hữu:
+
+   | Vai | Nhánh |
+   |---|---|
+   | P1 | `data/...` — vd `data/corpus-3-tang`, `data/golden-set` |
+   | P2 | `build/...` — vd `build/flow-chinh` |
+   | P3 | `prompt/...` — vd `prompt/quyet-dinh-can-cu` |
+   | P4 | `spec/...` — vd `spec/section-1-2` |
+
+2. **Push nhánh của mình lên sớm và thường xuyên.** Đừng giữ code trên máy — CP2 xác minh "repo có commit", và nếu máy ai chết thì cả nhóm gánh.
+
+3. **Muốn vào `main` thì mở Pull Request** — Đức review rồi merge. Không tự merge, không force push vào `main`.
+
+4. **Trước khi bắt đầu việc mới:** `git checkout main && git pull` rồi mới tạo nhánh, để đỡ conflict.
+
+5. **Commit message ghi rõ đã đổi cái gì** — CP5 hỏi ngẫu nhiên "phần này hoạt động thế nào?", lịch sử commit là bằng chứng phần đó là của bạn.
+
+6. **Tuyệt đối không commit:** API key / `.env` · thư mục `data/` hoặc file corpus · thông tin cá nhân của người thật. Key để trong biến môi trường. Xem thêm §6.
+
+Riêng `spec.md` có **hạn cứng 23:59 N1** — P4 mở PR sớm, đừng để 23:50 mới push.
+
+---
+
 ## 1. Chốt hướng & lát cắt
 
 **Hướng A — VLearn · Loại: Tối ưu tính năng có sẵn.**
