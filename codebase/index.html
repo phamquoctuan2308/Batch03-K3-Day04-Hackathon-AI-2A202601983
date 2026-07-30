@@ -30,90 +30,15 @@
     background: var(--bg);
     color: var(--text);
   }
-  header {
-    padding: 16px 24px;
-    border-bottom: 1px solid var(--border);
-    background: var(--panel);
-  }
-  header h1 { font-size: 16px; margin: 0; }
-  header p { margin: 4px 0 0; font-size: 13px; color: var(--muted); }
 
-  .layout {
-    display: grid;
-    grid-template-columns: 320px 1fr;
-    gap: 20px;
-    padding: 20px;
-    max-width: 1100px;
-    margin: 0 auto;
-    align-items: start;
-  }
-  @media (max-width: 760px) {
-    .layout { grid-template-columns: 1fr; }
-  }
 
-  .panel {
-    background: var(--panel);
-    border: 1px solid var(--border);
-    border-radius: 10px;
-    padding: 16px;
-  }
-  .panel h2 {
-    font-size: 13px;
-    text-transform: uppercase;
-    letter-spacing: 0.04em;
-    color: var(--muted);
-    margin: 0 0 10px;
-  }
 
-  select, textarea, button {
-    font: inherit;
-    border-radius: 8px;
-    border: 1px solid var(--border);
-  }
-  select {
-    width: 100%;
-    padding: 8px 10px;
-    margin-bottom: 14px;
-    background: #fff;
-  }
 
-  .slide-frame {
-    aspect-ratio: 4 / 3;
-    background: repeating-linear-gradient(135deg, #f0f1f4, #f0f1f4 10px, #e8e9ed 10px, #e8e9ed 20px);
-    border: 1px dashed var(--border);
-    border-radius: 8px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    gap: 4px;
-    color: var(--muted);
-    text-align: center;
-    padding: 12px;
-  }
-  .slide-frame .page-num { font-size: 28px; font-weight: 700; color: var(--text); }
-  .slide-frame small { font-size: 11px; }
 
-  textarea {
-    width: 100%;
-    min-height: 70px;
-    padding: 10px 12px;
-    resize: vertical;
-    margin-bottom: 10px;
-  }
 
-  .send-btn {
-    background: var(--accent);
-    color: #fff;
-    border: none;
-    padding: 9px 18px;
-    cursor: pointer;
-    font-weight: 600;
-  }
   .send-btn:disabled { opacity: 0.6; cursor: default; }
   .send-btn:hover:not(:disabled) { filter: brightness(1.08); }
 
-  .answer-area { margin-top: 20px; min-height: 60px; }
   .placeholder-hint { color: var(--muted); font-size: 13px; }
 
   .tier-card {
@@ -244,8 +169,6 @@
     font-size: 15px;
   }
   .fb-btn.active { border-color: var(--accent); background: #eef0ff; }
-  .live-row { display:flex; align-items:center; gap:10px; margin:8px 0 10px; font-size:13px; flex-wrap:wrap; }
-  .live-row label { display:flex; align-items:center; gap:6px; cursor:pointer; font-weight:600; }
   #live-hint { color: var(--muted); font-size:12px; font-weight:400; }
   #select-label { font-size:13px; color:var(--muted); display:block; margin-bottom:6px; }
   .page-facts { margin-top:12px; display:flex; flex-direction:column; gap:8px; }
@@ -254,52 +177,183 @@
   .page-facts .k { color:var(--muted); }
   .page-facts b { font-size:14px; color:var(--text); }
   .page-facts.trong b { color:var(--khong); }
+
+  /* ══ Bố cục dựng theo VLearn thật: khung đọc bên trái, panel tutor bên phải ══ */
+  select, textarea, button { font: inherit; }
+
+  header {
+    display:flex; align-items:center; gap:14px;
+    padding:10px 18px; background:var(--panel); border-bottom:1px solid var(--border);
+  }
+  .brand { display:flex; align-items:center; gap:7px; font-size:15px; }
+  .logo {
+    width:22px; height:22px; border-radius:5px; background:var(--accent); color:#fff;
+    display:grid; place-items:center; font-weight:800; font-size:13px;
+  }
+  .doc { border-left:1px solid var(--border); padding-left:14px; }
+  .doc-name { font-size:13.5px; font-weight:700; }
+  .doc-meta { font-size:11.5px; color:var(--muted); margin-top:1px; }
+
+  .layout {
+    display:grid; grid-template-columns:1fr 400px;
+    height:calc(100vh - 52px); overflow:hidden;
+  }
+  @media (max-width:900px){ .layout { grid-template-columns:1fr; height:auto; } }
+
+  /* ── khung đọc ── */
+  .reader { padding:16px 20px; overflow-y:auto; }
+  .reader-bar { display:flex; align-items:center; gap:10px; margin-bottom:14px; }
+  #select-label { font-size:12.5px; color:var(--muted); white-space:nowrap; }
+  #scenario-select {
+    flex:1; padding:7px 10px; background:#fff;
+    border:1px solid var(--border); border-radius:8px;
+  }
+  .page {
+    background:#fff; border:1px solid var(--border); border-radius:10px;
+    min-height:340px; display:flex; flex-direction:column;
+  }
+  .page-head {
+    font-size:12px; color:var(--muted);
+    padding:9px 14px; border-bottom:1px solid var(--border);
+  }
+  .page-head b { color:var(--text); font-size:13px; }
+  .page-body {
+    flex:1; padding:18px; display:flex; flex-direction:column; gap:10px;
+    font-size:13px; line-height:1.55;
+  }
+  .doan {
+    background:#fbfbfc; border:1px solid var(--border); border-left:3px solid var(--accent);
+    border-radius:6px; padding:9px 12px; white-space:pre-wrap;
+  }
+  .page-trong {
+    flex:1; display:grid; place-items:center; text-align:center;
+    color:var(--khong); font-size:13px; padding:26px;
+  }
+  .page-trong b { display:block; font-size:15px; margin-bottom:5px; }
+
+  /* ── panel tutor ── */
+  .tutor {
+    background:var(--panel); border-left:1px solid var(--border);
+    display:flex; flex-direction:column; height:100%;
+  }
+  .tutor-head {
+    display:flex; align-items:flex-start; justify-content:space-between; gap:10px;
+    padding:12px 14px; border-bottom:1px solid var(--border);
+  }
+  .tutor-name { font-size:14px; font-weight:700; }
+  .tutor-sub { font-size:11.5px; color:var(--du); margin-top:1px; }
+  .page-badge {
+    font-size:11px; color:var(--muted); background:var(--bg);
+    border:1px solid var(--border); border-radius:999px; padding:3px 9px; white-space:nowrap;
+  }
+  .tutor-mode {
+    display:flex; align-items:center; gap:8px; flex-wrap:wrap;
+    padding:8px 14px; border-bottom:1px solid var(--border); font-size:12px;
+  }
+  .tutor-mode label { display:flex; align-items:center; gap:5px; font-weight:600; cursor:pointer; }
+  #live-hint { color:var(--muted); font-size:11px; }
+  .tutor-ctx {
+    padding:7px 14px; font-size:11.5px; color:var(--muted);
+    font-family:ui-monospace,SFMono-Regular,Menlo,monospace; background:var(--bg);
+    border-bottom:1px solid var(--border);
+  }
+
+  .chat { flex:1; overflow-y:auto; padding:14px; display:flex; flex-direction:column; gap:12px; }
+  .bubble { max-width:100%; font-size:13px; line-height:1.5; border-radius:12px; padding:10px 13px; }
+  .bubble.greet { background:var(--bg); border:1px solid var(--border); color:var(--text); }
+  .bubble.me { background:var(--accent); color:#fff; align-self:flex-end; border-bottom-right-radius:4px; }
+  .bubble.bot { background:transparent; padding:0; }
+  .cho { color:var(--muted); font-size:12.5px; font-style:italic; }
+
+  .composer {
+    display:flex; gap:8px; align-items:flex-end;
+    padding:10px 12px; border-top:1px solid var(--border); background:var(--panel);
+  }
+  .composer textarea {
+    flex:1; resize:none; padding:9px 11px; font-size:13px;
+    border:1px solid var(--border); border-radius:9px;
+  }
+  .send-btn {
+    background:var(--accent); color:#fff; border:none; border-radius:9px;
+    width:38px; height:38px; font-size:15px; cursor:pointer; flex:none;
+  }
+  .send-btn:disabled { opacity:.5; cursor:default; }
+
+  /* thẻ tầng nằm trong panel hẹp -> giảm padding, cho chip/nút xuống dòng */
+  .tier-card { padding:13px; }
+  .narrow-btn { font-size:12px; padding:4px 10px; }
+  .page-facts { margin-top:14px; display:flex; flex-direction:column; gap:7px; }
+  .page-facts > div { display:flex; flex-wrap:wrap; align-items:baseline; gap:6px; font-size:12px; }
+  .page-facts .k { color:var(--muted); }
+  .page-facts b { font-size:14px; }
+  .page-facts.trong b { color:var(--khong); }
 </style>
 </head>
 <body>
 
 <header>
-  <h1>VLearn — AI Tutor trong trang học (demo 3 tầng căn cứ + guardrail)</h1>
-  <p>Học viên gõ câu hỏi không bôi đen (62,7% lượt dùng thật) → guardrail lọc câu hỏi ngoài phạm vi trước, rồi tutor mới tự quyết "đủ căn cứ trả lời hay không" theo 3 tầng.</p>
+  <div class="brand">
+    <span class="logo">V</span><b>VLearn</b>
+  </div>
+  <div class="doc">
+    <div class="doc-name">day03-tu-chatbot-den-agentic-agent-react.pdf</div>
+    <div class="doc-meta">COMP2010 · Lecture_material_ms2044ey_k6uor3 · demo 3 tầng căn cứ + guardrail</div>
+  </div>
 </header>
 
 <div class="layout">
 
-  <section class="panel">
-    <h2>Trang tài liệu</h2>
-    <label for="scenario-select" id="select-label">Chọn kịch bản demo</label>
-    <select id="scenario-select">
-      <option value="du">Trang 9 — đủ căn cứ</option>
-      <option value="mong">Trang 1 — căn cứ mỏng</option>
-      <option value="khong" selected>Trang 6 — không có nội dung ★</option>
-      <option value="tu_choi">Trang 6 — hỏi kiểu jailbreak</option>
-    </select>
-
-    <!-- Thay khung placeholder rỗng bằng dữ kiện thật của trang: người xem
-         thấy được CĂN CỨ của quyết định tầng, không chỉ thấy kết luận. -->
-    <div class="slide-frame">
-      <div class="page-num" id="page-num-display">6</div>
-      <small>trang tài liệu học viên đang xem</small>
+  <!-- ── KHUNG ĐỌC TÀI LIỆU ───────────────────────────────── -->
+  <main class="reader">
+    <div class="reader-bar">
+      <label for="scenario-select" id="select-label">Chọn kịch bản demo</label>
+      <select id="scenario-select">
+        <option value="du">Trang 9 — đủ căn cứ</option>
+        <option value="mong">Trang 1 — căn cứ mỏng</option>
+        <option value="khong" selected>Trang 6 — không có nội dung ★</option>
+        <option value="tu_choi">Trang 6 — hỏi kiểu jailbreak</option>
+      </select>
     </div>
+
+    <div class="page">
+      <div class="page-head">Trang <b id="page-num-display">6</b> / 46</div>
+      <!-- Hiện chính nội dung kho của trang: người xem thấy CĂN CỨ của quyết
+           định tầng. Trang 6 trống trơn — đó là cả luận điểm của sản phẩm. -->
+      <div class="page-body" id="page-body"></div>
+    </div>
+
     <div class="page-facts">
       <div><span class="k">Kho có</span><b id="fact-kytu">0 ký tự</b><span class="k">căn cứ cho trang này</span></div>
       <div><span class="k">Trong log thật</span><b id="fact-hoi">17 câu hỏi</b><span class="k" id="fact-botay">tutor cũ bó tay 5 lần</span></div>
     </div>
-  </section>
+  </main>
 
-  <section class="panel">
-    <h2>Hỏi AI tutor</h2>
-    <textarea id="question-input"></textarea>
-    <div class="live-row">
-      <label><input type="checkbox" id="live-toggle"> <b>Hỏi AI thật</b></label>
-      <span id="live-hint">tắt = 4 kịch bản mẫu dựng sẵn · bật = gọi AI thật, mất vài giây</span>
+  <!-- ── PANEL TUTOR (dựng theo bố cục VLearn thật) ────────── -->
+  <aside class="tutor">
+    <div class="tutor-head">
+      <div>
+        <div class="tutor-name">🤖 VLearn Tutor</div>
+        <div class="tutor-sub">Trợ lý học theo ngữ cảnh</div>
+      </div>
+      <span class="page-badge">Trang slide: <b id="badge-trang">6</b></span>
     </div>
-    <button class="send-btn" id="send-btn">Gửi câu hỏi</button>
 
-    <div class="answer-area" id="answer-area">
-      <p class="placeholder-hint">Chưa có câu trả lời. Chọn kịch bản rồi bấm Gửi.</p>
+    <div class="tutor-mode">
+      <label><input type="checkbox" id="live-toggle"> Hỏi AI thật</label>
+      <span id="live-hint">tắt = kịch bản mẫu · bật = gọi AI thật</span>
     </div>
-  </section>
+
+    <div class="tutor-ctx">Ngữ cảnh: Slide trang <b id="ctx-trang">6</b></div>
+
+    <div class="chat" id="chat">
+      <div class="bubble bot greet">Xin chào! Mình là VLearn Tutor. Bạn có thể bôi đen một đoạn trên slide để hỏi hoặc gửi câu hỏi tự do nhé!</div>
+    </div>
+
+    <div class="composer">
+      <textarea id="question-input" rows="2" placeholder="Nhập câu hỏi hoặc bôi đen tài liệu..."></textarea>
+      <button class="send-btn" id="send-btn" title="Gửi câu hỏi">➤</button>
+    </div>
+  </aside>
 
 </div>
 
@@ -357,27 +411,53 @@
   const pageNumDisplay = document.getElementById("page-num-display");
   const questionInput = document.getElementById("question-input");
   const sendBtn = document.getElementById("send-btn");
-  const answerArea = document.getElementById("answer-area");
+  const chatEl = document.getElementById("chat");
+
+  function addMe(t){
+    const d=document.createElement("div"); d.className="bubble me"; d.textContent=t;
+    chatEl.appendChild(d); chatEl.scrollTop=chatEl.scrollHeight;
+  }
+  function setBot(html){
+    let d=chatEl.querySelector(".bubble.bot.cur");
+    if(!d){ d=document.createElement("div"); d.className="bubble bot cur"; chatEl.appendChild(d); }
+    d.innerHTML=html; chatEl.scrollTop=chatEl.scrollHeight;
+  }
+  function newBot(){
+    chatEl.querySelectorAll(".bubble.bot.cur").forEach(e=>e.classList.remove("cur"));
+    setBot('<div class="cho">Đang xử lý…</div>');
+  }
 
   // Dữ kiện thật của từng trang, lấy từ out/corpus.json (tools/extract_corpus.py).
   // Hiện lên để người xem thấy CĂN CỨ của quyết định tầng, không chỉ thấy kết luận.
-  const FACTS = {
-    9: { ky_tu: 1009, hoi: 13, bo_tay: 3 },
-    1: { ky_tu: 46,   hoi: 14, bo_tay: 2 },
-    6: { ky_tu: 0,    hoi: 17, bo_tay: 5 },
-  };
+  const FACTS = {"9": {"ky_tu": 1009, "hoi": 13, "bo_tay": 3, "doan": ["Bài toán: “Tìm vé HAN → HCM dưới 2 triệu, rồi gợi ý mang gì nếu trời mưa.” Bot có rule ■ Trả menu lựa chọn cố định ■ Không search được dữ liệu mới ■ Không tổng hợp nhiều điều kiện LLM chatbot ■ Viết câu trả lời mượt ■ Nhưng không tự truy vấn giá vé thật", "Nếu bài toán không cần dữ liệu mới, nhiều bước, hay quyết định động, agent thường là overkill.", "Ví Dụ Nhanh: Cùng Một Câu Hỏi, 3 Mức Độ Hệ Thống Bài toán: “Tìm vé HAN → HCM dưới 2 triệu, rồi gợi ý mang gì nếu trời mưa.” Bot có rule ■ Trả menu lựa chọn cố định ■ Không search được dữ liệu mới ■ Không tổng hợp nhiều điều kiện LLM chatbot ■ Viết câu trả lời mượt ■ Nhưng không tự truy vấn giá vé th"]}, "1": {"ky_tu": 46, "hoi": 14, "bo_tay": 2, "doan": ["Từ Chatbot Đến Agentic Ag", "· Design Pattern ReAc"]}, "6": {"ky_tu": 0, "hoi": 17, "bo_tay": 5, "doan": []}};
+
+  function esc(t){ return t.replace(/[&<>]/g, m => ({'&':'&amp;','<':'&lt;','>':'&gt;'}[m])); }
 
   function syncFacts(trang) {
     const f = FACTS[trang];
     pageNumDisplay.textContent = trang;
-    const box = document.querySelector(".page-facts");
+    document.getElementById("badge-trang").textContent = trang;
+    document.getElementById("ctx-trang").textContent = trang;
+
+    const body = document.getElementById("page-body");
+    const box  = document.querySelector(".page-facts");
+
     if (!f) {                       // trang ngoài 3 trang demo — không bịa số
+      body.innerHTML = `<div class="page-trong">Không nằm trong 3 trang demo</div>`;
       document.getElementById("fact-kytu").textContent = "—";
       document.getElementById("fact-hoi").textContent = "—";
       document.getElementById("fact-botay").textContent = "";
       box.classList.remove("trong");
       return;
     }
+
+    // Đổ CHÍNH nội dung kho — người xem thấy căn cứ, không chỉ thấy kết luận.
+    // Trang 6 rỗng trơn: đó là cả luận điểm của sản phẩm.
+    body.innerHTML = f.doan.length
+      ? f.doan.map(d => `<div class="doan">${esc(d)}</div>`).join("")
+      : `<div class="page-trong"><b>Không có nội dung nào cho trang này</b>
+           Kho tái tạo từ đoạn học viên bôi đen — trang này chưa ai bôi đen câu nào</div>`;
+
     document.getElementById("fact-kytu").textContent = `${f.ky_tu} ký tự`;
     document.getElementById("fact-hoi").textContent = `${f.hoi} câu hỏi`;
     document.getElementById("fact-botay").textContent = `tutor cũ bó tay ${f.bo_tay} lần`;
@@ -403,15 +483,15 @@
   function renderTier(data) {
     const trang = data.input.trang;
     if (data.tier === "du") {
-      answerArea.innerHTML = `
+      setBot(`
         <div class="tier-card tier-du">
           <span class="tier-badge">✅ Đủ căn cứ</span>
           <p>${data.answer}</p>
           <span class="citation-chip">📄 Trang ${data.citations.join(", ")}</span>
           ${feedbackHtml()}
-        </div>`;
+        </div>`);
     } else if (data.tier === "mong") {
-      answerArea.innerHTML = `
+      setBot(`
         <div class="tier-card tier-mong">
           <span class="tier-badge">⚠️ Căn cứ mỏng</span>
           <p>${data.answer}</p>
@@ -422,9 +502,9 @@
           </div>
           ${narrowingHtml(data.narrowing, "Thu hẹp phạm vi")}
           ${feedbackHtml()}
-        </div>`;
+        </div>`);
     } else if (data.tier === "khong") {
-      answerArea.innerHTML = `
+      setBot(`
         <div class="tier-card tier-khong">
           <span class="tier-badge">— Không có nội dung trang này</span>
           <p class="no-answer-note">Không đưa ra câu trả lời cho trang ${trang} — tránh suy diễn nội dung không có. Đây là kho thiếu dữ liệu, không phải lỗi hệ thống.</p>
@@ -438,9 +518,9 @@
           </div>
           ${narrowingHtml(data.narrowing, "Thu hẹp phạm vi")}
           ${feedbackHtml()}
-        </div>`;
+        </div>`);
     } else if (data.tier === "tu_choi") {
-      answerArea.innerHTML = `
+      setBot(`
         <div class="tier-card tier-tuchoi">
           <div class="refuse-banner">
             <span class="refuse-icon">🛑</span>
@@ -457,7 +537,7 @@
             ${narrowingHtml(data.narrowing, "Bạn có thể hỏi")}
             ${feedbackHtml()}
           </div>
-        </div>`;
+        </div>`);
     }
     wireNarrowingButtons();
     wireFeedbackButtons();
@@ -482,7 +562,7 @@
   }
 
   function wireNarrowingButtons() {
-    answerArea.querySelectorAll(".narrow-btn").forEach(btn => {
+    chatEl.querySelectorAll(".narrow-btn").forEach(btn => {
       btn.addEventListener("click", () => {
         questionInput.value = btn.dataset.narrow;
         questionInput.focus();
@@ -491,7 +571,7 @@
   }
 
   function wireFeedbackButtons() {
-    const buttons = answerArea.querySelectorAll(".fb-btn");
+    const buttons = chatEl.querySelectorAll(".fb-btn");
     buttons.forEach(btn => {
       btn.addEventListener("click", () => {
         buttons.forEach(b => b.classList.remove("active"));
@@ -506,7 +586,8 @@
   // demo chạy tiếp bằng 4 kịch bản mẫu.
   function guiMock() {
     const data = SAMPLES[scenarioSelect.value];
-    answerArea.innerHTML = `<p class="placeholder-hint">Đang xử lý câu hỏi...</p>`;
+    addMe(questionInput.value.trim() || data.input.cau_hoi);
+    newBot();
     setTimeout(() => {
       renderTier(data);
       sendBtn.disabled = false;
@@ -517,11 +598,10 @@
     const trang = SAMPLES[scenarioSelect.value].input.trang;
     const cauHoi = questionInput.value.trim();
     if (!cauHoi) {
-      answerArea.innerHTML = `<p class="placeholder-hint">Gõ câu hỏi trước đã.</p>`;
+      setBot(`<div class="cho">Gõ câu hỏi trước đã.</div>`);
       sendBtn.disabled = false;
       return;
     }
-    answerArea.innerHTML = `<p class="placeholder-hint">Đang gọi AI thật (guardrail → phân tầng)… mất khoảng 10 giây.</p>`;
     try {
       const res = await fetch("/ask", {
         method: "POST",
@@ -543,12 +623,12 @@
         input: { trang, cau_hoi: cauHoi },
       });
     } catch (e) {
-      answerArea.innerHTML = `
+      setBot(`
         <p class="placeholder-hint">
           Không gọi được AI thật: ${e.message}<br>
           Kiểm tra <code>server.py</code> đang chạy và đã set <code>GEMINI_API_KEY</code>.
           Bỏ tick "Hỏi AI thật" để quay về kịch bản mẫu.
-        </p>`;
+        </p>`);
     } finally {
       sendBtn.disabled = false;
     }

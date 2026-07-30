@@ -1,0 +1,53 @@
+{
+  "timestamp": "2026-07-30T18:38:07.144662+07:00",
+  "model": "gemini-3.5-flash-lite",
+  "input": {
+    "trang": 6,
+    "cau_hoi": "tóm tắt trang này",
+    "trang_tang": "khong",
+    "trang_so_ky_tu": 0
+  },
+  "guardrail": {
+    "raw": "{\"hop_le\": true, \"ly_do\": \"Học viên yêu cầu tóm tắt nội dung slide/trang học tập, phù hợp với phạm vi lớp học về AI.\"}",
+    "parsed": {
+      "hop_le": true,
+      "ly_do": "Học viên yêu cầu tóm tắt nội dung slide/trang học tập, phù hợp với phạm vi lớp học về AI."
+    }
+  },
+  "classification": {
+    "raw": "{\n  \"tier\": \"khong\",\n  \"answer\": \"\",\n  \"citations\": [],\n  \"missing\": \"Kho hiện không có nội dung cho trang 6.\",\n  \"narrowing\": [\n    \"Bạn có muốn xem tóm tắt nội dung về Agentic Fit ở trang 4 không?\",\n    \"Bạn có muốn tìm hiểu về Spectrum: Bot, Chatbot và Agent ở trang 7 không?\"\n  ],\n  \"have_instead\": [\n    4,\n    7\n  ]\n}",
+    "parsed": {
+      "tier": "khong",
+      "answer": "",
+      "citations": [],
+      "missing": "Kho hiện không có nội dung cho trang 6.",
+      "narrowing": [
+        "Bạn có muốn xem tóm tắt nội dung về Agentic Fit ở trang 4 không?",
+        "Bạn có muốn tìm hiểu về Spectrum: Bot, Chatbot và Agent ở trang 7 không?"
+      ],
+      "have_instead": [
+        4,
+        7
+      ]
+    }
+  },
+  "output": {
+    "tier": "khong",
+    "answer": "",
+    "citations": [],
+    "missing": "Kho hiện không có nội dung cho trang 6.",
+    "narrowing": [
+      "Bạn có muốn xem tóm tắt nội dung về Agentic Fit ở trang 4 không?",
+      "Bạn có muốn tìm hiểu về Spectrum: Bot, Chatbot và Agent ở trang 7 không?"
+    ],
+    "have_instead": [
+      4,
+      7
+    ]
+  },
+  "usage": {
+    "input_tokens": 1836,
+    "output_tokens": 155
+  },
+  "elapsed_ms": 4735.6321811676025
+}
