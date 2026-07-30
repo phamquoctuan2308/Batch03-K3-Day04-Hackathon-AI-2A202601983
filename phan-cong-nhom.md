@@ -7,10 +7,14 @@
 
 | Vai | Mã HV + Tên | Sở hữu artifact | Điểm | Câu sẽ bị hỏi ở CP5 |
 |---|---|---|---|---|
-| **P1** — Data & Eval | *(điền)* | script mining · kho corpus · `eval/` · golden set · **spec §7** | 15 | "3 tầng căn cứ được tính thế nào?" |
-| **P2** — Build | *(điền)* | `codebase/` flow + UI · backup screenshot · **dựng file `demo-slides.pdf`** | 8 | "flow đi từ đâu đến đâu?" |
-| **P3** — Prompt & AI call | *(điền)* | prompt quyết định căn cứ · lời gọi AI thật · log/trace · **spec §5-§6** | 11 | "AI quyết định gì, dựa vào cái gì?" |
-| **P4** — Spec lead *(trưởng nhóm)* | *(điền)* | **spec §1-§4** · `validation/` · changelog §9 · nội dung slide | 38 | "quality bar là gì, vì sao chọn số đó?" |
+| **P1** — Data & Eval | `2A202602030` **Trần Văn Hiếu** | script mining · kho corpus · `eval/` · golden set · **spec §7** | 15 | "3 tầng căn cứ được tính thế nào?" |
+| **P2** — Build | `2A202601983` **Phạm Quốc Tuấn** | `codebase/` flow + UI · backup screenshot · **dựng file `demo-slides.pdf`** | 8 | "flow đi từ đâu đến đâu?" |
+| **P3** — Prompt & AI call | `2A202602002` **Trần Trung Hiếu** | prompt quyết định căn cứ · lời gọi AI thật · log/trace · **spec §5-§6** | 11 | "AI quyết định gì, dựa vào cái gì?" |
+| **P4** — Spec lead *(trưởng nhóm)* | `2A202601581` **Trương Công Thái Đức** | **spec §1-§4** · `validation/` · changelog §9 · nội dung slide | 38 | "quality bar là gì, vì sao chọn số đó?" |
+
+> ⚠️ **Nhóm có hai bạn tên Hiếu** — Trần Văn **Hiếu** (P1, kho tài liệu & đo) và Trần Trung **Hiếu** (P3, prompt & AI). Trong mọi tin nhắn và commit, gọi bằng **vai** (`P1` / `P3`) hoặc tên đầy đủ, đừng gọi "Hiếu" — giao việc nhầm người là mất cả buổi.
+>
+> ⚠️ **Mã HV của P2 cần xác nhận lại.** Bạn ấy khai `2A2026101983` (12 số) nhưng các mã khác đều 11 số, và repo nhóm tên `...-2A202601983` — nên ở đây ghi `2A202601983`. **P2 kiểm lại trước khi nộp checkpoint đầu tiên**, sai mã HV là mất điểm nộp.
 
 Mỗi người tự viết `reflection/` của mình. **Vibe-coding rule:** không giải thích được phần có tên mình → 0 điểm phần đó.
 
