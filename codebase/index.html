@@ -1,0 +1,397 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>VLearn AI Tutor — Demo 3 tầng căn cứ</title>
+<style>
+  :root {
+    --bg: #f6f7f9;
+    --panel: #ffffff;
+    --border: #e0e2e7;
+    --text: #1b1e24;
+    --muted: #6b7280;
+    --accent: #3b5bfd;
+    --du: #1a7f4b;
+    --du-bg: #e9f7ef;
+    --mong: #a15c00;
+    --mong-bg: #fdf3df;
+    --khong: #b3261e;
+    --khong-bg: #fbe9e8;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+  }
+  header {
+    padding: 16px 24px;
+    border-bottom: 1px solid var(--border);
+    background: var(--panel);
+  }
+  header h1 { font-size: 16px; margin: 0; }
+  header p { margin: 4px 0 0; font-size: 13px; color: var(--muted); }
+
+  .layout {
+    display: grid;
+    grid-template-columns: 320px 1fr;
+    gap: 20px;
+    padding: 20px;
+    max-width: 1100px;
+    margin: 0 auto;
+    align-items: start;
+  }
+  @media (max-width: 760px) {
+    .layout { grid-template-columns: 1fr; }
+  }
+
+  .panel {
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 16px;
+  }
+  .panel h2 {
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: var(--muted);
+    margin: 0 0 10px;
+  }
+
+  select, textarea, button {
+    font: inherit;
+    border-radius: 8px;
+    border: 1px solid var(--border);
+  }
+  select {
+    width: 100%;
+    padding: 8px 10px;
+    margin-bottom: 14px;
+    background: #fff;
+  }
+
+  .slide-frame {
+    aspect-ratio: 4 / 3;
+    background: repeating-linear-gradient(135deg, #f0f1f4, #f0f1f4 10px, #e8e9ed 10px, #e8e9ed 20px);
+    border: 1px dashed var(--border);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 4px;
+    color: var(--muted);
+    text-align: center;
+    padding: 12px;
+  }
+  .slide-frame .page-num { font-size: 28px; font-weight: 700; color: var(--text); }
+  .slide-frame small { font-size: 11px; }
+
+  textarea {
+    width: 100%;
+    min-height: 70px;
+    padding: 10px 12px;
+    resize: vertical;
+    margin-bottom: 10px;
+  }
+
+  .send-btn {
+    background: var(--accent);
+    color: #fff;
+    border: none;
+    padding: 9px 18px;
+    cursor: pointer;
+    font-weight: 600;
+  }
+  .send-btn:disabled { opacity: 0.6; cursor: default; }
+  .send-btn:hover:not(:disabled) { filter: brightness(1.08); }
+
+  .answer-area { margin-top: 20px; min-height: 60px; }
+  .placeholder-hint { color: var(--muted); font-size: 13px; }
+
+  .tier-card {
+    border-radius: 10px;
+    padding: 16px;
+    border: 1px solid var(--border);
+  }
+  .tier-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 12px;
+    font-weight: 700;
+    padding: 3px 10px;
+    border-radius: 999px;
+    margin-bottom: 10px;
+  }
+
+  /* tier: du */
+  .tier-du { border-color: var(--du); background: var(--du-bg); }
+  .tier-du .tier-badge { background: var(--du); color: #fff; }
+  .citation-chip {
+    display: inline-block;
+    margin-top: 10px;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--du);
+    background: #fff;
+    border: 1px solid var(--du);
+    border-radius: 999px;
+    padding: 3px 10px;
+  }
+
+  /* tier: mong */
+  .tier-mong { border-color: var(--mong); background: var(--mong-bg); }
+  .tier-mong .tier-badge { background: var(--mong); color: #fff; }
+  .missing-box {
+    margin-top: 12px;
+    border: 1px dashed var(--mong);
+    background: #fff;
+    border-radius: 8px;
+    padding: 10px 12px;
+    font-size: 13px;
+  }
+  .missing-box .label { font-weight: 700; color: var(--mong); display: block; margin-bottom: 4px; }
+
+  /* tier: khong */
+  .tier-khong { border-color: var(--khong); background: var(--khong-bg); }
+  .tier-khong .tier-badge { background: var(--khong); color: #fff; }
+  .no-answer-note {
+    font-style: italic;
+    color: var(--muted);
+    font-size: 13px;
+    margin-bottom: 10px;
+  }
+  .have-instead {
+    margin-top: 10px;
+    font-size: 13px;
+  }
+  .have-instead .label { font-weight: 700; color: var(--khong); display: block; margin-bottom: 6px; }
+  .page-chip {
+    display: inline-block;
+    background: #fff;
+    border: 1px solid var(--khong);
+    color: var(--khong);
+    border-radius: 999px;
+    padding: 2px 10px;
+    font-size: 12px;
+    font-weight: 600;
+    margin: 0 4px 4px 0;
+  }
+
+  .narrowing {
+    margin-top: 14px;
+  }
+  .narrowing .label { font-size: 12px; font-weight: 700; color: var(--muted); display: block; margin-bottom: 6px; }
+  .narrow-btn {
+    display: inline-block;
+    background: #fff;
+    border: 1px solid var(--accent);
+    color: var(--accent);
+    border-radius: 999px;
+    padding: 5px 12px;
+    font-size: 13px;
+    margin: 0 6px 6px 0;
+    cursor: pointer;
+  }
+  .narrow-btn:hover { background: var(--accent); color: #fff; }
+
+  .feedback {
+    margin-top: 16px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+    color: var(--muted);
+  }
+  .fb-btn {
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 5px 10px;
+    cursor: pointer;
+    font-size: 15px;
+  }
+  .fb-btn.active { border-color: var(--accent); background: #eef0ff; }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>VLearn — AI Tutor trong trang học (demo 3 tầng căn cứ)</h1>
+  <p>Học viên gõ câu hỏi không bôi đen (69% lượt dùng thật) → tutor tự quyết "đủ căn cứ trả lời hay không" và hành xử theo 3 tầng.</p>
+</header>
+
+<div class="layout">
+
+  <section class="panel">
+    <h2>Trang tài liệu</h2>
+    <label for="page-select" style="font-size:13px; color:var(--muted); display:block; margin-bottom:6px;">Chọn số trang</label>
+    <select id="page-select">
+      <option value="9">Trang 9 — căn cứ đủ (case chuẩn)</option>
+      <option value="6" selected>Trang 6 — không căn cứ (case demo trung tâm)</option>
+      <option value="1">Trang 1 — căn cứ mỏng</option>
+    </select>
+    <div class="slide-frame">
+      <div class="page-num" id="page-num-display">6</div>
+      <small>Khung xem trang tài liệu (placeholder)</small>
+    </div>
+  </section>
+
+  <section class="panel">
+    <h2>Hỏi AI tutor</h2>
+    <textarea id="question-input" placeholder="Gõ câu hỏi về trang đang xem... (không cần bôi đen)"></textarea>
+    <button class="send-btn" id="send-btn">Gửi câu hỏi</button>
+
+    <div class="answer-area" id="answer-area">
+      <p class="placeholder-hint">Chưa có câu trả lời. Chọn trang, gõ câu hỏi rồi bấm Gửi.</p>
+    </div>
+  </section>
+
+</div>
+
+<script>
+  // Hợp đồng dữ liệu P2 <-> P3 (xem CLAUDE.md). 3 object dưới đây copy nguyên văn
+  // từ codebase/sample-responses.json — không bịa thêm nội dung slide.
+  const SAMPLES = {
+    9: {
+      cau_hoi: "giải thích nội dung trang này",
+      tier: "du",
+      answer: "Đoạn này nói về ưu điểm và hạn chế của mô hình ReAct: dễ đọc trace và debug, tự quyết được bước tiếp theo từ observation, phù hợp các bài toán search / booking / investigation / coding.",
+      citations: [9],
+      missing: null,
+      narrowing: [],
+      have_instead: []
+    },
+    1: {
+      cau_hoi: "tóm tắt slide này",
+      tier: "mong",
+      answer: "Phần mình có của trang 1 là tiêu đề bài giảng về hành trình từ chatbot đến agentic agent.",
+      citations: [1],
+      missing: "Mình chỉ có tiêu đề trang này, chưa có phần nội dung bên dưới — nên mình không tóm tắt cả trang, vì sẽ phải suy diễn.",
+      narrowing: ["Xem trang 4 — có nội dung đầy đủ", "Hỏi về một khái niệm cụ thể trên trang 1"],
+      have_instead: [4, 8, 9]
+    },
+    6: {
+      cau_hoi: "tóm tắt ý chính để tôi làm quiz cuối giờ",
+      tier: "khong",
+      answer: "",
+      citations: [],
+      missing: "Mình chưa có nội dung trang 6 trong tài liệu này.",
+      narrowing: ["Giải thích trang 4", "Giải thích trang 5", "Giải thích trang 7"],
+      have_instead: [4, 5, 7]
+    }
+  };
+
+  const pageSelect = document.getElementById("page-select");
+  const pageNumDisplay = document.getElementById("page-num-display");
+  const questionInput = document.getElementById("question-input");
+  const sendBtn = document.getElementById("send-btn");
+  const answerArea = document.getElementById("answer-area");
+
+  function syncPlaceholder() {
+    const page = pageSelect.value;
+    pageNumDisplay.textContent = page;
+    questionInput.placeholder = "vd: \"" + SAMPLES[page].cau_hoi + "\" (không cần bôi đen)";
+  }
+
+  function renderTier(data, page) {
+    if (data.tier === "du") {
+      answerArea.innerHTML = `
+        <div class="tier-card tier-du">
+          <span class="tier-badge">✅ Đủ căn cứ</span>
+          <p>${data.answer}</p>
+          <span class="citation-chip">📄 Trang ${data.citations.join(", ")}</span>
+          ${feedbackHtml()}
+        </div>`;
+    } else if (data.tier === "mong") {
+      answerArea.innerHTML = `
+        <div class="tier-card tier-mong">
+          <span class="tier-badge">⚠️ Căn cứ mỏng</span>
+          <p>${data.answer}</p>
+          <span class="citation-chip" style="color:var(--mong); border-color:var(--mong);">📄 Trang ${data.citations.join(", ")}</span>
+          <div class="missing-box">
+            <span class="label">Phần mình KHÔNG có căn cứ</span>
+            ${data.missing}
+          </div>
+          ${narrowingHtml(data.narrowing)}
+          ${feedbackHtml()}
+        </div>`;
+    } else if (data.tier === "khong") {
+      answerArea.innerHTML = `
+        <div class="tier-card tier-khong">
+          <span class="tier-badge">❌ Không có căn cứ</span>
+          <p class="no-answer-note">Không đưa ra câu trả lời cho trang ${page} — tránh suy diễn nội dung không có.</p>
+          <div class="missing-box" style="border-color:var(--khong);">
+            <span class="label" style="color:var(--khong);">Vì sao không trả lời</span>
+            ${data.missing}
+          </div>
+          <div class="have-instead">
+            <span class="label">Trang mình thực sự có</span>
+            ${data.have_instead.map(p => `<span class="page-chip">Trang ${p}</span>`).join("")}
+          </div>
+          ${narrowingHtml(data.narrowing)}
+          ${feedbackHtml()}
+        </div>`;
+    }
+    wireNarrowingButtons();
+    wireFeedbackButtons();
+  }
+
+  function narrowingHtml(list) {
+    if (!list || list.length === 0) return "";
+    return `
+      <div class="narrowing">
+        <span class="label">Thu hẹp phạm vi</span>
+        ${list.map(n => `<button class="narrow-btn" data-narrow="${n}">${n}</button>`).join("")}
+      </div>`;
+  }
+
+  function feedbackHtml() {
+    return `
+      <div class="feedback">
+        Câu trả lời này có hữu ích không?
+        <button class="fb-btn" data-fb="up">👍</button>
+        <button class="fb-btn" data-fb="down">👎</button>
+      </div>`;
+  }
+
+  function wireNarrowingButtons() {
+    answerArea.querySelectorAll(".narrow-btn").forEach(btn => {
+      btn.addEventListener("click", () => {
+        questionInput.value = btn.dataset.narrow;
+        questionInput.focus();
+      });
+    });
+  }
+
+  function wireFeedbackButtons() {
+    const buttons = answerArea.querySelectorAll(".fb-btn");
+    buttons.forEach(btn => {
+      btn.addEventListener("click", () => {
+        buttons.forEach(b => b.classList.remove("active"));
+        btn.classList.add("active");
+      });
+    });
+  }
+
+  sendBtn.addEventListener("click", () => {
+    const page = pageSelect.value;
+    const data = SAMPLES[page];
+    sendBtn.disabled = true;
+    answerArea.innerHTML = `<p class="placeholder-hint">Đang tra kho tài liệu...</p>`;
+    setTimeout(() => {
+      renderTier(data, page);
+      sendBtn.disabled = false;
+    }, 350);
+  });
+
+  pageSelect.addEventListener("change", syncPlaceholder);
+  syncPlaceholder();
+</script>
+
+</body>
+</html>
