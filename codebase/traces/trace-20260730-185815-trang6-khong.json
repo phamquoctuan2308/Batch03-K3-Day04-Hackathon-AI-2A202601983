@@ -1,0 +1,53 @@
+{
+  "timestamp": "2026-07-30T18:58:15.466667+07:00",
+  "model": "gemini-3.5-flash-lite",
+  "input": {
+    "trang": 6,
+    "cau_hoi": "tóm tắt ý chính để tôi làm quiz",
+    "trang_tang": "khong",
+    "trang_so_ky_tu": 0
+  },
+  "guardrail": {
+    "raw": "{\"hop_le\": true, \"ly_do\": \"Yêu cầu tóm tắt ý chính để ôn tập chuẩn bị làm quiz là câu hỏi học tập hợp lệ.\"}",
+    "parsed": {
+      "hop_le": true,
+      "ly_do": "Yêu cầu tóm tắt ý chính để ôn tập chuẩn bị làm quiz là câu hỏi học tập hợp lệ."
+    }
+  },
+  "classification": {
+    "raw": "{\n  \"tier\": \"khong\",\n  \"answer\": \"\",\n  \"citations\": [],\n  \"missing\": \"Trang 6 hiện chưa có nội dung trong kho để tóm tắt ý chính.\",\n  \"narrowing\": [\n    \"Bạn muốn xem ý chính của trang 4 về Agentic Fit?\",\n    \"Bạn muốn xem nội dung trang 7 về phân loại Bot, Chatbot và Agent?\"\n  ],\n  \"have_instead\": [4, 7]\n}",
+    "parsed": {
+      "tier": "khong",
+      "answer": "",
+      "citations": [],
+      "missing": "Trang 6 hiện chưa có nội dung trong kho để tóm tắt ý chính.",
+      "narrowing": [
+        "Bạn muốn xem ý chính của trang 4 về Agentic Fit?",
+        "Bạn muốn xem nội dung trang 7 về phân loại Bot, Chatbot và Agent?"
+      ],
+      "have_instead": [
+        4,
+        7
+      ]
+    }
+  },
+  "output": {
+    "tier": "khong",
+    "answer": "",
+    "citations": [],
+    "missing": "Trang 6 hiện chưa có nội dung trong kho để tóm tắt ý chính.",
+    "narrowing": [
+      "Bạn muốn xem ý chính của trang 4 về Agentic Fit?",
+      "Bạn muốn xem nội dung trang 7 về phân loại Bot, Chatbot và Agent?"
+    ],
+    "have_instead": [
+      4,
+      7
+    ]
+  },
+  "usage": {
+    "input_tokens": 1844,
+    "output_tokens": 146
+  },
+  "elapsed_ms": 3487.17999458313
+}

@@ -466,9 +466,24 @@
     box.classList.toggle("trong", f.ky_tu === 0);
   }
 
+  let curTrang = 6;
+
+  // Mở một trang bất kỳ. Có server thì lấy nội dung kho từ /page (mọi trang);
+  // mở file tĩnh thì chỉ có 3 trang nhúng sẵn trong FACTS.
+  async function goToPage(trang) {
+    curTrang = trang;
+    if (FACTS[trang]) { syncFacts(trang); return; }
+    try {
+      const r = await fetch(`/page?trang=${trang}`);
+      const d = await r.json();
+      FACTS[trang] = { ky_tu: d.ky_tu, hoi: d.hoi, bo_tay: d.bo_tay, doan: d.doan };
+      syncFacts(trang);
+    } catch { syncFacts(trang); }
+  }
+
   function syncScenario() {
     const data = SAMPLES[scenarioSelect.value];
-    syncFacts(data.input.trang);
+    goToPage(data.input.trang);
     // Chế độ "hỏi thật": dropdown chỉ còn nghĩa CHỌN TRANG, không phải chọn
     // kịch bản — nên không ghi đè câu hỏi người dùng đang gõ dở.
     const live = document.getElementById("live-toggle").checked;
@@ -565,9 +580,14 @@
 
   function wireNarrowingButtons() {
     chatEl.querySelectorAll(".narrow-btn").forEach(btn => {
-      btn.addEventListener("click", () => {
-        questionInput.value = btn.dataset.narrow;
-        questionInput.focus();
+      btn.addEventListener("click", async () => {
+        const t = btn.dataset.narrow;
+        questionInput.value = t;
+        // Nút gợi ý "…trang 5…" phải MỞ trang 5, không thì tutor vẫn tra
+        // trang cũ và lại trả lời "không có nội dung" — nút thành vô dụng.
+        const m = t.match(/trang\s*(\d+)/i);
+        if (m) await goToPage(parseInt(m[1], 10));
+        sendBtn.click();
       });
     });
   }
@@ -598,7 +618,7 @@
   }
 
   async function guiThat() {
-    const trang = SAMPLES[scenarioSelect.value].input.trang;
+    const trang = curTrang;
     const cauHoi = questionInput.value.trim();
     if (!cauHoi) {
       newBot();

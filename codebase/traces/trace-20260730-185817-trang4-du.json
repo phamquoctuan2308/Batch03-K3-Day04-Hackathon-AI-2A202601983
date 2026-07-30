@@ -1,0 +1,45 @@
+{
+  "timestamp": "2026-07-30T18:58:17.734963+07:00",
+  "model": "gemini-3.5-flash-lite",
+  "input": {
+    "trang": 4,
+    "cau_hoi": "Bạn muốn xem ý chính của trang 4 về Agentic Fit?",
+    "trang_tang": "du",
+    "trang_so_ky_tu": 232
+  },
+  "guardrail": {
+    "raw": "{\"hop_le\": true, \"ly_do\": \"Câu hỏi liên quan đến nội dung bài học (trang 4 về Agentic Fit).\"}",
+    "parsed": {
+      "hop_le": true,
+      "ly_do": "Câu hỏi liên quan đến nội dung bài học (trang 4 về Agentic Fit)."
+    }
+  },
+  "classification": {
+    "raw": "{\n  \"tier\": \"du\",\n  \"answer\": \"Ý chính của trang 4 về Agentic Fit là dùng Agentic Fit để biết khi nào nên nâng từ chatbot lên agent. Ngoài ra, trang này giúp bạn hiểu và giải thích được vòng lặp ReAct (Thought → Action → Observation), cũng như phân biệt được rule-based bot, LLM chatbot và agent [4].\",\n  \"citations\": [\n    4\n  ],\n  \"missing\": null,\n  \"narrowing\": [],\n  \"have_instead\": []\n}",
+    "parsed": {
+      "tier": "du",
+      "answer": "Ý chính của trang 4 về Agentic Fit là dùng Agentic Fit để biết khi nào nên nâng từ chatbot lên agent. Ngoài ra, trang này giúp bạn hiểu và giải thích được vòng lặp ReAct (Thought → Action → Observation), cũng như phân biệt được rule-based bot, LLM chatbot và agent [4].",
+      "citations": [
+        4
+      ],
+      "missing": null,
+      "narrowing": [],
+      "have_instead": []
+    }
+  },
+  "output": {
+    "tier": "du",
+    "answer": "Ý chính của trang 4 về Agentic Fit là dùng Agentic Fit để biết khi nào nên nâng từ chatbot lên agent. Ngoài ra, trang này giúp bạn hiểu và giải thích được vòng lặp ReAct (Thought → Action → Observation), cũng như phân biệt được rule-based bot, LLM chatbot và agent [4].",
+    "citations": [
+      4
+    ],
+    "missing": null,
+    "narrowing": [],
+    "have_instead": []
+  },
+  "usage": {
+    "input_tokens": 1707,
+    "output_tokens": 153
+  },
+  "elapsed_ms": 2232.2378158569336
+}

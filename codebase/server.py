@@ -39,6 +39,38 @@ class Handler(SimpleHTTPRequestHandler):
         # Bớt ồn, chỉ in dòng gọn khi có request /ask
         pass
 
+    def do_GET(self):
+        # /page?trang=N — trả nội dung kho của một trang bất kỳ.
+        # Có endpoint này thì UI điều hướng được tới MỌI trang (nút thu hẹp
+        # gợi ý trang nào cũng mở được), mà index.html không phải nhúng sẵn
+        # nội dung data pack — repo public, luật 5.
+        if self.path.startswith("/page"):
+            from urllib.parse import urlparse, parse_qs
+            try:
+                trang = int(parse_qs(urlparse(self.path).query).get("trang", ["0"])[0])
+                corpus = call_ai.load_corpus()
+                v = corpus.get(str(trang))
+                if not v:
+                    self._json(200, {"trang": trang, "ky_tu": 0, "hoi": 0,
+                                     "bo_tay": 0, "doan": [], "ngoai_kho": True})
+                    return
+                # gộp xuống dòng, bỏ đoạn trùng, cắt còn 4 đoạn cho vừa khung
+                seen = []
+                for d in v.get("noi_dung", []):
+                    d = " ".join(d.split())
+                    if not any(d in x or x in d for x in seen):
+                        seen.append(d)
+                self._json(200, {
+                    "trang": trang, "ky_tu": v.get("so_ky_tu", 0),
+                    "hoi": v.get("so_cau_hoi_that", 0),
+                    "bo_tay": v.get("so_lan_tutor_bo_tay", 0),
+                    "doan": seen[:4],
+                })
+            except Exception as e:
+                self._json(500, {"loi": str(e)})
+            return
+        return super().do_GET()
+
     def do_POST(self):
         if self.path != "/ask":
             self.send_error(404)
