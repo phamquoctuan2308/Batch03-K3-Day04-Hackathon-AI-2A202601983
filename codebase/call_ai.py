@@ -291,23 +291,26 @@ def tu_choi_response(ly_do: str, trang: int, corpus: dict) -> dict:
 
 
 # ============================================================
-# MAIN
+# PIPELINE — dùng chung cho CLI và server
 # ============================================================
-def main():
-    if len(sys.argv) < 3:
-        print("Dùng: python codebase/call_ai.py <số_trang> \"<câu_hỏi>\"")
-        sys.exit(1)
+def run_pipeline(trang: int, cau_hoi: str, verbose: bool = True) -> dict:
+    """Chạy trọn guardrail → phân tầng, trả về dict đúng hợp đồng P2-P3.
 
-    trang = int(sys.argv[1])
-    cau_hoi = sys.argv[2]
+    Tách khỏi main() để codebase/server.py gọi lại được. CLI vẫn in như cũ
+    (verbose=True); server gọi với verbose=False.
+    Trace vẫn được lưu ở cả hai đường — không mất bằng chứng.
+    """
+    def log(*a):
+        if verbose:
+            log(*a)
 
     corpus = load_corpus()
     page = get_page_content(corpus, trang)
 
-    print(f"=== P3 — Guardrail → Phân tầng ===")
-    print(f"Trang: {trang} | Tầng kho: {page['tang']} | Ký tự: {page['so_ky_tu']}")
-    print(f"Câu hỏi: {cau_hoi[:120]}{'...' if len(cau_hoi) > 120 else ''}")
-    print()
+    log(f"=== P3 — Guardrail → Phân tầng ===")
+    log(f"Trang: {trang} | Tầng kho: {page['tang']} | Ký tự: {page['so_ky_tu']}")
+    log(f"Câu hỏi: {cau_hoi[:120]}{'...' if len(cau_hoi) > 120 else ''}")
+    log()
 
     total_usage = {"input_tokens": 0, "output_tokens": 0}
     t0 = time.time()
@@ -315,27 +318,27 @@ def main():
     # ================================================================
     # BƯỚC 1: GUARDRAIL — kiểm tra input hợp lệ
     # ================================================================
-    print("── Bước 1: Guardrail ──")
+    log("── Bước 1: Guardrail ──")
     guardrail_input = f"CÂU HỎI HỌC VIÊN: {cau_hoi}"
     guardrail_result = call_gemini(GUARDRAIL_PROMPT, guardrail_input)
     total_usage["input_tokens"] += guardrail_result["usage"]["input_tokens"]
     total_usage["output_tokens"] += guardrail_result["usage"]["output_tokens"]
 
-    print(f"Guardrail raw: {guardrail_result['text'][:200]}...")
+    log(f"Guardrail raw: {guardrail_result['text'][:200]}...")
     guardrail_parsed = parse_json(guardrail_result["text"])
-    print(f"Guardrail parsed: {json.dumps(guardrail_parsed, ensure_ascii=False)}")
+    log(f"Guardrail parsed: {json.dumps(guardrail_parsed, ensure_ascii=False)}")
 
     hop_le = guardrail_parsed.get("hop_le", True)  # default an toàn: cho qua
 
     if not hop_le:
         # Bị injection / không hợp lệ → từ chối, không phân tầng
-        print("\n⛔ GUARDRAIL: Phát hiện injection / câu hỏi không hợp lệ → tier=tu_choi")
+        log("\n⛔ GUARDRAIL: Phát hiện injection / câu hỏi không hợp lệ → tier=tu_choi")
         ly_do = guardrail_parsed.get("ly_do", "Câu hỏi không hợp lệ.")
         final = tu_choi_response(ly_do, trang, corpus)
 
         elapsed_ms = (time.time() - t0) * 1000
-        print(f"\n=== KẾT QUẢ: tier={final['tier']} ===")
-        print(json.dumps(final, ensure_ascii=False, indent=2))
+        log(f"\n=== KẾT QUẢ: tier={final['tier']} ===")
+        log(json.dumps(final, ensure_ascii=False, indent=2))
 
         save_trace(
             trang=trang, cau_hoi=cau_hoi, page_info=page,
@@ -345,14 +348,14 @@ def main():
             usage=total_usage,
             elapsed_ms=elapsed_ms,
         )
-        print(f"\nHoàn thành trong {elapsed_ms:.0f}ms (chỉ guardrail, không phân tầng)")
-        return
+        log(f"\nHoàn thành trong {elapsed_ms:.0f}ms (chỉ guardrail, không phân tầng)")
+        return final
 
     # ================================================================
     # BƯỚC 2: PHÂN TẦNG — chỉ chạy nếu guardrail cho qua
     # ================================================================
-    print("\n✅ GUARDRAIL: Câu hỏi hợp lệ → chạy bước phân tầng")
-    print("── Bước 2: Phân tầng ──")
+    log("\n✅ GUARDRAIL: Câu hỏi hợp lệ → chạy bước phân tầng")
+    log("── Bước 2: Phân tầng ──")
 
     user_message = build_user_message(page, cau_hoi)
     classification_result = call_gemini(CLASSIFICATION_PROMPT, user_message)
@@ -360,14 +363,14 @@ def main():
     total_usage["output_tokens"] += classification_result["usage"]["output_tokens"]
 
     raw_text = classification_result["text"]
-    print(f"Classification raw: {raw_text[:300]}...")
+    log(f"Classification raw: {raw_text[:300]}...")
 
     try:
         final = parse_json(raw_text)
-        print(f"\n=== KẾT QUẢ: tier={final.get('tier', '???')} ===")
-        print(json.dumps(final, ensure_ascii=False, indent=2))
+        log(f"\n=== KẾT QUẢ: tier={final.get('tier', '???')} ===")
+        log(json.dumps(final, ensure_ascii=False, indent=2))
     except json.JSONDecodeError as e:
-        print(f"LỖI PARSE JSON: {e}")
+        log(f"LỖI PARSE JSON: {e}")
         final = {"error": "parse_failed", "raw": raw_text}
 
     elapsed_ms = (time.time() - t0) * 1000
@@ -381,7 +384,17 @@ def main():
         elapsed_ms=elapsed_ms,
     )
 
-    print(f"\nHoàn thành trong {elapsed_ms:.0f}ms (2 bước)")
+    log(f"\nHoàn thành trong {elapsed_ms:.0f}ms (2 bước)")
+    return final
+
+# ============================================================
+# MAIN — CLI
+# ============================================================
+def main():
+    if len(sys.argv) < 3:
+        print("Dùng: python codebase/call_ai.py <số_trang> \"<câu_hỏi>\"")
+        sys.exit(1)
+    run_pipeline(int(sys.argv[1]), sys.argv[2], verbose=True)
 
 
 if __name__ == "__main__":

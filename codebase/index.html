@@ -244,6 +244,9 @@
     font-size: 15px;
   }
   .fb-btn.active { border-color: var(--accent); background: #eef0ff; }
+  .live-row { display:flex; align-items:center; gap:10px; margin:8px 0 10px; font-size:13px; flex-wrap:wrap; }
+  .live-row label { display:flex; align-items:center; gap:6px; cursor:pointer; font-weight:600; }
+  #live-hint { color: var(--muted); font-size:12px; font-weight:400; }
 </style>
 </head>
 <body>
@@ -273,6 +276,10 @@
   <section class="panel">
     <h2>Hỏi AI tutor</h2>
     <textarea id="question-input"></textarea>
+    <div class="live-row">
+      <label><input type="checkbox" id="live-toggle"> <b>Hỏi AI thật</b></label>
+      <span id="live-hint">tắt = dùng 4 kịch bản mẫu · bật = gọi Gemini qua <code>server.py</code></span>
+    </div>
     <button class="send-btn" id="send-btn">Gửi câu hỏi</button>
 
     <div class="answer-area" id="answer-area">
@@ -444,14 +451,52 @@
     });
   }
 
-  sendBtn.addEventListener("click", () => {
+  const liveToggle = document.getElementById("live-toggle");
+
+  // Đường MOCK giữ nguyên làm phương án lùi: server chết thì tắt công tắc,
+  // demo chạy tiếp bằng 4 kịch bản mẫu.
+  function guiMock() {
     const data = SAMPLES[scenarioSelect.value];
-    sendBtn.disabled = true;
     answerArea.innerHTML = `<p class="placeholder-hint">Đang xử lý câu hỏi...</p>`;
     setTimeout(() => {
       renderTier(data);
       sendBtn.disabled = false;
     }, 350);
+  }
+
+  async function guiThat() {
+    const trang = SAMPLES[scenarioSelect.value].input.trang;
+    const cauHoi = questionInput.value.trim();
+    if (!cauHoi) {
+      answerArea.innerHTML = `<p class="placeholder-hint">Gõ câu hỏi trước đã.</p>`;
+      sendBtn.disabled = false;
+      return;
+    }
+    answerArea.innerHTML = `<p class="placeholder-hint">Đang gọi AI thật (guardrail → phân tầng)… mất khoảng 10 giây.</p>`;
+    try {
+      const res = await fetch("/ask", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ trang, cau_hoi: cauHoi }),
+      });
+      const data = await res.json();
+      if (data.loi) throw new Error(data.loi);
+      renderTier(data);
+    } catch (e) {
+      answerArea.innerHTML = `
+        <p class="placeholder-hint">
+          Không gọi được AI thật: ${e.message}<br>
+          Kiểm tra <code>server.py</code> đang chạy và đã set <code>GEMINI_API_KEY</code>.
+          Bỏ tick "Hỏi AI thật" để quay về kịch bản mẫu.
+        </p>`;
+    } finally {
+      sendBtn.disabled = false;
+    }
+  }
+
+  sendBtn.addEventListener("click", () => {
+    sendBtn.disabled = true;
+    if (liveToggle.checked) guiThat(); else guiMock();
   });
 
   scenarioSelect.addEventListener("change", syncScenario);
