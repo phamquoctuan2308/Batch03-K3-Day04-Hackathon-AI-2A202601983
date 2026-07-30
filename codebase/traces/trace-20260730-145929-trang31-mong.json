@@ -1,0 +1,54 @@
+{
+  "timestamp": "2026-07-30T14:59:29.038232+07:00",
+  "model": "gemini-3.5-flash-lite",
+  "input": {
+    "trang": 31,
+    "cau_hoi": "LangGraph là gì",
+    "trang_tang": "du",
+    "trang_so_ky_tu": 212
+  },
+  "guardrail": {
+    "raw": "{\"hop_le\": true, \"ly_do\": \"Câu hỏi về khái niệm LangGraph, liên quan trực tiếp đến chủ đề Agent trong bài học.\"}",
+    "parsed": {
+      "hop_le": true,
+      "ly_do": "Câu hỏi về khái niệm LangGraph, liên quan trực tiếp đến chủ đề Agent trong bài học."
+    }
+  },
+  "classification": {
+    "raw": "{\n  \"tier\": \"mong\",\n  \"answer\": \"Dựa trên nội dung kho, LangGraph được đề cập là công cụ giúp biểu diễn state, nodes, edges, conditional routing rõ hơn, và giúp workflow nhiều nhánh hoặc khi cần persist state thì dễ maintain hơn loop ad-hoc [trang 31].\",\n  \"citations\": [31],\n  \"missing\": \"Kho không có định nghĩa chi tiết hoàn chỉnh về LangGraph là gì, mà chỉ nêu các lợi ích và tính năng của nó.\",\n  \"narrowing\": [\n    \"LangGraph giúp biểu diễn những gì trong workflow?\",\n    \"Tại sao graph approach dễ maintain hơn loop ad-hoc khi workflow nhiều nhánh hoặc cần persist state?\"\n  ],\n  \"have_instead\": [31]\n}",
+    "parsed": {
+      "tier": "mong",
+      "answer": "Dựa trên nội dung kho, LangGraph được đề cập là công cụ giúp biểu diễn state, nodes, edges, conditional routing rõ hơn, và giúp workflow nhiều nhánh hoặc khi cần persist state thì dễ maintain hơn loop ad-hoc [trang 31].",
+      "citations": [
+        31
+      ],
+      "missing": "Kho không có định nghĩa chi tiết hoàn chỉnh về LangGraph là gì, mà chỉ nêu các lợi ích và tính năng của nó.",
+      "narrowing": [
+        "LangGraph giúp biểu diễn những gì trong workflow?",
+        "Tại sao graph approach dễ maintain hơn loop ad-hoc khi workflow nhiều nhánh hoặc cần persist state?"
+      ],
+      "have_instead": [
+        31
+      ]
+    }
+  },
+  "output": {
+    "tier": "mong",
+    "answer": "Dựa trên nội dung kho, LangGraph được đề cập là công cụ giúp biểu diễn state, nodes, edges, conditional routing rõ hơn, và giúp workflow nhiều nhánh hoặc khi cần persist state thì dễ maintain hơn loop ad-hoc [trang 31].",
+    "citations": [
+      31
+    ],
+    "missing": "Kho không có định nghĩa chi tiết hoàn chỉnh về LangGraph là gì, mà chỉ nêu các lợi ích và tính năng của nó.",
+    "narrowing": [
+      "LangGraph giúp biểu diễn những gì trong workflow?",
+      "Tại sao graph approach dễ maintain hơn loop ad-hoc khi workflow nhiều nhánh hoặc cần persist state?"
+    ],
+    "have_instead": [
+      31
+    ]
+  },
+  "usage": {
+    "note": "xem trace"
+  },
+  "elapsed_ms": 12593.169212341309
+}

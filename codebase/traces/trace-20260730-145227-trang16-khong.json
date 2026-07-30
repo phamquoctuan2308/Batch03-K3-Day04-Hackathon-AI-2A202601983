@@ -1,0 +1,44 @@
+{
+  "timestamp": "2026-07-30T14:52:27.248141+07:00",
+  "model": "gemini-3.5-flash-lite",
+  "input": {
+    "trang": 16,
+    "cau_hoi": "cho ví dụ cụ thể đi",
+    "trang_tang": "khong",
+    "trang_so_ky_tu": 0
+  },
+  "guardrail": {
+    "raw": "{\"hop_le\": true, \"ly_do\": \"Câu hỏi yêu cầu cung cấp ví dụ cụ thể, liên quan đến nội dung học tập.\"}",
+    "parsed": {
+      "hop_le": true,
+      "ly_do": "Câu hỏi yêu cầu cung cấp ví dụ cụ thể, liên quan đến nội dung học tập."
+    }
+  },
+  "classification": {
+    "raw": "{\n  \"tier\": \"khong\",\n  \"answer\": \"\",\n  \"citations\": [],\n  \"missing\": \"Kho hiện không có nội dung cho trang này nên không thể cung cấp ví dụ cụ thể theo yêu cầu của bạn.\",\n  \"narrowing\": [\n    \"Bạn có muốn xem lại các nội dung ví dụ hoặc khái niệm có sẵn ở các trang khác trong kho không?\"\n  ],\n  \"have_instead\": []\n}",
+    "parsed": {
+      "tier": "khong",
+      "answer": "",
+      "citations": [],
+      "missing": "Kho hiện không có nội dung cho trang này nên không thể cung cấp ví dụ cụ thể theo yêu cầu của bạn.",
+      "narrowing": [
+        "Bạn có muốn xem lại các nội dung ví dụ hoặc khái niệm có sẵn ở các trang khác trong kho không?"
+      ],
+      "have_instead": []
+    }
+  },
+  "output": {
+    "tier": "khong",
+    "answer": "",
+    "citations": [],
+    "missing": "Kho hiện không có nội dung cho trang này nên không thể cung cấp ví dụ cụ thể theo yêu cầu của bạn.",
+    "narrowing": [
+      "Bạn có muốn xem lại các nội dung ví dụ hoặc khái niệm có sẵn ở các trang khác trong kho không?"
+    ],
+    "have_instead": []
+  },
+  "usage": {
+    "note": "xem trace"
+  },
+  "elapsed_ms": 2206.341028213501
+}

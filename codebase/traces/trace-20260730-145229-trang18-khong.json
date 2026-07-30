@@ -1,0 +1,46 @@
+{
+  "timestamp": "2026-07-30T14:52:29.682302+07:00",
+  "model": "gemini-3.5-flash-lite",
+  "input": {
+    "trang": 18,
+    "cau_hoi": "ví dụ nhanh ở slide nào",
+    "trang_tang": "khong",
+    "trang_so_ky_tu": 0
+  },
+  "guardrail": {
+    "raw": "{\"hop_le\": true, \"ly_do\": \"Học viên hỏi về vị trí ví dụ trong slide bài học, liên quan trực tiếp đến nội dung học tập.\"}",
+    "parsed": {
+      "hop_le": true,
+      "ly_do": "Học viên hỏi về vị trí ví dụ trong slide bài học, liên quan trực tiếp đến nội dung học tập."
+    }
+  },
+  "classification": {
+    "raw": "{\n  \"tier\": \"khong\",\n  \"answer\": \"\",\n  \"citations\": [],\n  \"missing\": \"Trang 18 hiện không có nội dung trong kho dữ liệu nên không thể xác định được ví dụ nhanh ở slide nào.\",\n  \"narrowing\": [\n    \"Bạn có muốn xem lại các khái niệm cơ bản về AI ở các trang đầu không?\",\n    \"Bạn có muốn kiểm tra nội dung ở các trang khác có sẵn không?\"\n  ],\n  \"have_instead\": []\n}",
+    "parsed": {
+      "tier": "khong",
+      "answer": "",
+      "citations": [],
+      "missing": "Trang 18 hiện không có nội dung trong kho dữ liệu nên không thể xác định được ví dụ nhanh ở slide nào.",
+      "narrowing": [
+        "Bạn có muốn xem lại các khái niệm cơ bản về AI ở các trang đầu không?",
+        "Bạn có muốn kiểm tra nội dung ở các trang khác có sẵn không?"
+      ],
+      "have_instead": []
+    }
+  },
+  "output": {
+    "tier": "khong",
+    "answer": "",
+    "citations": [],
+    "missing": "Trang 18 hiện không có nội dung trong kho dữ liệu nên không thể xác định được ví dụ nhanh ở slide nào.",
+    "narrowing": [
+      "Bạn có muốn xem lại các khái niệm cơ bản về AI ở các trang đầu không?",
+      "Bạn có muốn kiểm tra nội dung ở các trang khác có sẵn không?"
+    ],
+    "have_instead": []
+  },
+  "usage": {
+    "note": "xem trace"
+  },
+  "elapsed_ms": 2432.874917984009
+}

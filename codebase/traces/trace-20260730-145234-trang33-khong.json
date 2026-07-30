@@ -1,0 +1,40 @@
+{
+  "timestamp": "2026-07-30T14:52:34.487784+07:00",
+  "model": "gemini-3.5-flash-lite",
+  "input": {
+    "trang": 33,
+    "cau_hoi": "tóm tat bai hoc day 3",
+    "trang_tang": "khong",
+    "trang_so_ky_tu": 0
+  },
+  "guardrail": {
+    "raw": "{\"hop_le\": true, \"ly_do\": \"Yêu cầu tóm tắt bài học là một câu hỏi học tập hợp lệ.\"}",
+    "parsed": {
+      "hop_le": true,
+      "ly_do": "Yêu cầu tóm tắt bài học là một câu hỏi học tập hợp lệ."
+    }
+  },
+  "classification": {
+    "raw": "{\n  \"tier\": \"khong\",\n  \"answer\": \"\",\n  \"citations\": [],\n  \"missing\": \"Kho hiện tại không có nội dung cho trang 33 cũng như không có thông tin tóm tắt bài học của ngày 3.\",\n  \"narrowing\": [],\n  \"have_instead\": []\n}",
+    "parsed": {
+      "tier": "khong",
+      "answer": "",
+      "citations": [],
+      "missing": "Kho hiện tại không có nội dung cho trang 33 cũng như không có thông tin tóm tắt bài học của ngày 3.",
+      "narrowing": [],
+      "have_instead": []
+    }
+  },
+  "output": {
+    "tier": "khong",
+    "answer": "",
+    "citations": [],
+    "missing": "Kho hiện tại không có nội dung cho trang 33 cũng như không có thông tin tóm tắt bài học của ngày 3.",
+    "narrowing": [],
+    "have_instead": []
+  },
+  "usage": {
+    "note": "xem trace"
+  },
+  "elapsed_ms": 2159.820079803467
+}

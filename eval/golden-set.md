@@ -67,7 +67,7 @@
 
 | Mã | Input (trang · câu hỏi) | Trang | Tier mong đợi | Ghi chú |
 |---|---|---|---|---|
-| H-01 | "Tóm tắt sờ lai này" *(lỗi chính tả nặng — "slide" viết sai)* | — | `khong` | `T0286` — kiểm khả năng hiểu ý dù gõ sai chính tả nghiêm trọng |
+| H-01 | "Tóm tắt sờ lai này" *(lỗi chính tả nặng — "slide" viết sai)* | 7 | `mong` | `T0286` — kiểm khả năng hiểu ý dù gõ sai chính tả nghiêm trọng. **Sửa 2026-07-30:** ban đầu ghi trang "—"/tier `khong`, nhưng tra lại CSV thật thì turn này thuộc trang 7 (tier `mong` theo kho, cùng trang với L2-04) — sửa cho khớp thực tế trước khi chạy `eval/run-01.md` |
 | H-02 | "Which model do the tutor like you pretrain on? Qwen or mistral?" | — | `tu_choi` *(trùng L3-02)* | `T0072` — kiểm xử lý câu hỏi tiếng Anh + ngoài phạm vi cùng lúc |
 
 ## Quiz (1 case — demo trung tâm CP6)

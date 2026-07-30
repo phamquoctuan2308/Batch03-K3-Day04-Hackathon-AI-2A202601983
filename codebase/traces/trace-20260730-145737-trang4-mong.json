@@ -1,0 +1,56 @@
+{
+  "timestamp": "2026-07-30T14:57:37.004873+07:00",
+  "model": "gemini-3.5-flash-lite",
+  "input": {
+    "trang": 4,
+    "cau_hoi": "Giải thích đoạn bôi đen ở Trang 4.",
+    "trang_tang": "du",
+    "trang_so_ky_tu": 221
+  },
+  "guardrail": {
+    "raw": "{\"hop_le\": true, \"ly_do\": \"Câu hỏi yêu cầu giải thích nội dung tài liệu học tập hợp lệ.\"}",
+    "parsed": {
+      "hop_le": true,
+      "ly_do": "Câu hỏi yêu cầu giải thích nội dung tài liệu học tập hợp lệ."
+    }
+  },
+  "classification": {
+    "raw": "{\n  \"tier\": \"mong\",\n  \"answer\": \"Theo nội dung trang 4, khái niệm \\\"Agentic Fit\\\" được dùng để biết khi nào nên nâng từ chatbot lên agent.\",\n  \"citations\": [\n    4\n  ],\n  \"missing\": \"Học viên đề cập đến \\\"đoạn bôi đen\\\" nhưng nội dung kho không thể hiện phần nào được bôi đen, do đó không rõ chính xác câu hỏi đang nhắm tới đoạn cụ thể nào ngoài tiêu đề và các mục liệt kê.\",\n  \"narrowing\": [\n    \"Dùng Agentic Fit để biết khi nào nên nâng từ chatbot lên agent là gì?\",\n    \"Vòng lặp ReAct gồm những bước nào theo trang 4?\",\n    \"Phân biệt rule-based bot, LLM chatbot, và agent như thế nào?\"\n  ],\n  \"have_instead\": [\n    4\n  ]\n}",
+    "parsed": {
+      "tier": "mong",
+      "answer": "Theo nội dung trang 4, khái niệm \"Agentic Fit\" được dùng để biết khi nào nên nâng từ chatbot lên agent.",
+      "citations": [
+        4
+      ],
+      "missing": "Học viên đề cập đến \"đoạn bôi đen\" nhưng nội dung kho không thể hiện phần nào được bôi đen, do đó không rõ chính xác câu hỏi đang nhắm tới đoạn cụ thể nào ngoài tiêu đề và các mục liệt kê.",
+      "narrowing": [
+        "Dùng Agentic Fit để biết khi nào nên nâng từ chatbot lên agent là gì?",
+        "Vòng lặp ReAct gồm những bước nào theo trang 4?",
+        "Phân biệt rule-based bot, LLM chatbot, và agent như thế nào?"
+      ],
+      "have_instead": [
+        4
+      ]
+    }
+  },
+  "output": {
+    "tier": "mong",
+    "answer": "Theo nội dung trang 4, khái niệm \"Agentic Fit\" được dùng để biết khi nào nên nâng từ chatbot lên agent.",
+    "citations": [
+      4
+    ],
+    "missing": "Học viên đề cập đến \"đoạn bôi đen\" nhưng nội dung kho không thể hiện phần nào được bôi đen, do đó không rõ chính xác câu hỏi đang nhắm tới đoạn cụ thể nào ngoài tiêu đề và các mục liệt kê.",
+    "narrowing": [
+      "Dùng Agentic Fit để biết khi nào nên nâng từ chatbot lên agent là gì?",
+      "Vòng lặp ReAct gồm những bước nào theo trang 4?",
+      "Phân biệt rule-based bot, LLM chatbot, và agent như thế nào?"
+    ],
+    "have_instead": [
+      4
+    ]
+  },
+  "usage": {
+    "note": "xem trace"
+  },
+  "elapsed_ms": 11778.455972671509
+}
