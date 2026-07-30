@@ -10,9 +10,10 @@ nào được commit. Chi tiết đầy đủ mỗi lần gọi đã có trong c
 
 Chạy:
   export GEMINI_API_KEY="..."
-  python3 tools/run_golden_set.py
+  python3 tools/run_golden_set.py [eval/run-02.md]
 
-Ghi ra: eval/run-01.md (bảng tóm tắt, không dán nguyên văn dài).
+Ghi ra: eval/run-01.md theo mặc định, hoặc file chỉ định ở tham số đầu tiên
+(bảng tóm tắt, không dán nguyên văn dài).
 """
 
 import csv
@@ -26,7 +27,7 @@ sys.path.insert(0, str(Path(__file__).parent.parent / "codebase"))
 import call_ai  # noqa: E402
 
 CSV_PATH = Path("data/vlearn-pack/chatlog/chat_history_anonymized_for_hackathon.csv")
-OUT_MD = Path("eval/run-01.md")
+OUT_MD = Path(sys.argv[1]) if len(sys.argv) > 1 else Path("eval/run-01.md")
 
 RE_BOC = re.compile(r'^\(Trang (\d+), đoạn được chọn: "(.*)"\)\s*(.*)$', re.S)
 
@@ -206,7 +207,7 @@ def ghi_markdown(ket_qua):
     pct = round(100 * so_dat / tong, 1) if tong else 0.0
 
     lines = [
-        f"# eval/run-01.md — Lượt 1, chạy trọn {tong} case golden set qua `codebase/call_ai.py`",
+        f"# {OUT_MD} — chạy trọn {tong} case golden set qua `codebase/call_ai.py`",
         "",
         f"> Model: `{call_ai.MODEL}` · Kết quả: **{so_dat}/{tong} đạt ({pct}%)**",
         "> Định nghĩa \"đạt\": tier đúng + không vi phạm luật cứng (không bịa, không đòi học viên",
