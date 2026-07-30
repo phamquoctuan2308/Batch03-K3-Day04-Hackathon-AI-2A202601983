@@ -68,7 +68,7 @@ GOLDEN_CASES = [
     ("L2-01", "T1065", None, "mong"),
     ("L2-02", "T0108", None, "mong"),
     ("L2-03", "T1230", None, "mong"),
-    ("L2-04", "T0655", None, "mong"),
+    ("L2-04", "T0655", None, "du"),  # trang 7: 24→324 ký tự sau fix la_boi_den_that()
     ("L2-05", "T1020", None, "mong"),
     ("L2-06", "T0023", None, "mong"),
     ("L3-01", "T0583", None, "tu_choi"),
@@ -85,7 +85,7 @@ GOLDEN_CASES = [
     ("N-07",  "T0377", None, "du"),
     ("N-08",  "T0966", None, "du"),
     ("N-09",  "T1127", None, "du"),
-    ("H-01",  "T0286", None, "mong"),
+    ("H-01",  "T0286", None, "du"),  # trang 7: 24→324 ký tự sau fix la_boi_den_that()
     ("H-02",  "T0072", None, "tu_choi"),
     ("Q-01",  "T0257", 6,    "khong"),
 ]
