@@ -1,0 +1,45 @@
+{
+  "timestamp": "2026-07-30T17:38:06.516622+07:00",
+  "model": "gemini-3.5-flash-lite",
+  "input": {
+    "trang": 9,
+    "cau_hoi": "giải thích nội dung trang này",
+    "trang_tang": "du",
+    "trang_so_ky_tu": 1009
+  },
+  "guardrail": {
+    "raw": "{\"hop_le\": true, \"ly_do\": \"Câu hỏi yêu cầu giải thích nội dung bài học/slide, phù hợp với phạm vi học tập.\"}",
+    "parsed": {
+      "hop_le": true,
+      "ly_do": "Câu hỏi yêu cầu giải thích nội dung bài học/slide, phù hợp với phạm vi học tập."
+    }
+  },
+  "classification": {
+    "raw": "{\n  \"tier\": \"du\",\n  \"answer\": \"Trang này trình bày ví dụ nhanh về \\\"Cùng một câu hỏi, 3 mức độ hệ thống\\\" thông qua bài toán: \\\"Tìm vé HAN → HCM dưới 2 triệu, rồi gợi ý mang gì nếu trời mưa.\\\"\\n\\n1. Bot có rule:\\n- Trả menu lựa chọn cố định.\\n- Không search được dữ liệu mới.\\n- Không tổng hợp nhiều điều kiện.\\n\\n2. LLM chatbot:\\n- Viết câu trả lời mượt.\\n- Nhưng không tự truy vấn giá vé thật.\\n\\n3. Reactive agent:\\n- Tách goal thành nhiều việc (ví dụ: tìm vé).\\n\\nNgoài ra, trang cũng lưu ý rằng nếu bài toán không cần dữ liệu mới, nhiều bước, hay quyết định động thì dùng agent thường là quá mức cần thiết (overkill) [trang 9].\",\n  \"citations\": [9],\n  \"missing\": null,\n  \"narrowing\": [],\n  \"have_instead\": []\n}",
+    "parsed": {
+      "tier": "du",
+      "answer": "Trang này trình bày ví dụ nhanh về \"Cùng một câu hỏi, 3 mức độ hệ thống\" thông qua bài toán: \"Tìm vé HAN → HCM dưới 2 triệu, rồi gợi ý mang gì nếu trời mưa.\"\n\n1. Bot có rule:\n- Trả menu lựa chọn cố định.\n- Không search được dữ liệu mới.\n- Không tổng hợp nhiều điều kiện.\n\n2. LLM chatbot:\n- Viết câu trả lời mượt.\n- Nhưng không tự truy vấn giá vé thật.\n\n3. Reactive agent:\n- Tách goal thành nhiều việc (ví dụ: tìm vé).\n\nNgoài ra, trang cũng lưu ý rằng nếu bài toán không cần dữ liệu mới, nhiều bước, hay quyết định động thì dùng agent thường là quá mức cần thiết (overkill) [trang 9].",
+      "citations": [
+        9
+      ],
+      "missing": null,
+      "narrowing": [],
+      "have_instead": []
+    }
+  },
+  "output": {
+    "tier": "du",
+    "answer": "Trang này trình bày ví dụ nhanh về \"Cùng một câu hỏi, 3 mức độ hệ thống\" thông qua bài toán: \"Tìm vé HAN → HCM dưới 2 triệu, rồi gợi ý mang gì nếu trời mưa.\"\n\n1. Bot có rule:\n- Trả menu lựa chọn cố định.\n- Không search được dữ liệu mới.\n- Không tổng hợp nhiều điều kiện.\n\n2. LLM chatbot:\n- Viết câu trả lời mượt.\n- Nhưng không tự truy vấn giá vé thật.\n\n3. Reactive agent:\n- Tách goal thành nhiều việc (ví dụ: tìm vé).\n\nNgoài ra, trang cũng lưu ý rằng nếu bài toán không cần dữ liệu mới, nhiều bước, hay quyết định động thì dùng agent thường là quá mức cần thiết (overkill) [trang 9].",
+    "citations": [
+      9
+    ],
+    "missing": null,
+    "narrowing": [],
+    "have_instead": []
+  },
+  "usage": {
+    "input_tokens": 2137,
+    "output_tokens": 268
+  },
+  "elapsed_ms": 2571.4972019195557
+}

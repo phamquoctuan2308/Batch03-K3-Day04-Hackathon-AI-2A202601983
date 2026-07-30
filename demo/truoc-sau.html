@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8" />
+<title>Trước / Sau — tutor khi không tra được nội dung</title>
+<style>
+  :root {
+    --bg:#f6f7f9; --panel:#fff; --border:#e0e2e7; --text:#1b1e24; --muted:#6b7280;
+    --xau:#b3261e; --xau-bg:#fbe9e8; --tot:#1a7f4b; --tot-bg:#e9f7ef; --khong:#52606d;
+  }
+  * { box-sizing:border-box; }
+  body { margin:0; font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+         background:var(--bg); color:var(--text); padding:28px; }
+  h1 { font-size:20px; margin:0 0 4px; }
+  .sub { color:var(--muted); font-size:13px; margin:0 0 22px; }
+  .grid { display:grid; grid-template-columns:1fr 1fr; gap:18px; align-items:start; max-width:1180px; }
+  @media (max-width:820px){ .grid{ grid-template-columns:1fr; } }
+
+  .col { background:var(--panel); border:1px solid var(--border); border-radius:12px; overflow:hidden; }
+  .col-head { padding:12px 16px; font-weight:800; font-size:14px; display:flex; align-items:center; gap:8px; }
+  .col-xau .col-head { background:var(--xau-bg); color:var(--xau); border-bottom:1px solid var(--xau); }
+  .col-tot .col-head { background:var(--tot-bg); color:var(--tot); border-bottom:1px solid var(--tot); }
+  .col-body { padding:16px; }
+
+  .hoi { font-size:13px; color:var(--muted); border-left:3px solid var(--border);
+         padding:4px 0 4px 10px; margin-bottom:14px; }
+  .hoi b { color:var(--text); }
+
+  .quote { font-size:14px; line-height:1.55; background:#fff; border:1px dashed var(--border);
+           border-radius:8px; padding:12px 14px; }
+  .col-xau .quote { border-color:var(--xau); }
+  .doi { background:#ffe9e7; border-radius:3px; padding:0 3px; font-weight:700; color:var(--xau); }
+
+  .ma { font-size:11px; color:var(--muted); margin-top:8px; }
+  .ma code { background:#eef0f3; padding:1px 5px; border-radius:4px; }
+
+  .chips { margin-top:14px; }
+  .chips .label { font-size:12px; font-weight:700; color:var(--khong); display:block; margin-bottom:6px; }
+  .chip { display:inline-block; background:#fff; border:1px solid var(--khong); color:var(--khong);
+          border-radius:999px; padding:2px 11px; font-size:12px; font-weight:600; margin:0 5px 5px 0; }
+  .btn { display:inline-block; background:#fff; border:1px solid #3b5bfd; color:#3b5bfd;
+         border-radius:999px; padding:5px 12px; font-size:12.5px; margin:0 6px 6px 0; }
+
+  .ket { margin-top:22px; max-width:1180px; background:var(--panel); border:1px solid var(--border);
+         border-radius:12px; padding:16px 18px; }
+  .ket h2 { font-size:14px; margin:0 0 10px; }
+  .so { display:flex; gap:26px; flex-wrap:wrap; }
+  .so div { font-size:13px; }
+  .so b { display:block; font-size:22px; color:var(--xau); }
+  .note { font-size:12px; color:var(--muted); margin-top:14px; line-height:1.6; }
+</style>
+</head>
+<body>
+
+<h1>Cùng một tình huống: học viên hỏi về trang tutor không tra được nội dung</h1>
+<p class="sub">Bên trái là nguyên văn tutor VLearn hiện tại, trích từ chatlog thật. Bên phải là hành vi hệ thống nhóm xây, chạy AI thật.</p>
+
+<div class="grid">
+
+  <div class="col col-xau">
+    <div class="col-head">✗ Tutor hiện tại</div>
+    <div class="col-body">
+      <div class="hoi">Học viên hỏi: <b>"giải thích nghĩa chi tiết của trang 4"</b></div>
+      <div class="quote">
+        "Chào bạn, rất xin lỗi vì hiện tại hệ thống tìm kiếm không tìm thấy nội dung cụ thể cho trang 4
+        trong tài liệu của bài học hôm nay. Bạn có thể vui lòng
+        <span class="doi">cung cấp nội dung hoặc tiêu đề của trang 4</span> đó để mình hỗ trợ giải thích
+        rõ hơn cho bạn không?"
+      </div>
+      <div class="ma">turn <code>T0769</code> · học viên đánh giá 👎</div>
+
+      <div class="hoi" style="margin-top:18px">Học viên hỏi: <b>"tóm tắt slide này"</b> (trang 33)</div>
+      <div class="quote">
+        "Rất tiếc là tôi đã tra cứu trong tài liệu nhưng chưa tìm thấy nội dung cụ thể của Trang 33…
+        Bạn có thể <span class="doi">cho tôi biết tiêu đề của slide đó hoặc một vài từ khóa</span>
+        có trên trang để tôi tìm…"
+      </div>
+      <div class="ma">turn <code>T1258</code> · học viên đánh giá 👎</div>
+    </div>
+  </div>
+
+  <div class="col col-tot">
+    <div class="col-head">✓ Hệ thống nhóm xây</div>
+    <div class="col-body">
+      <div class="hoi">Học viên hỏi: <b>"tóm tắt ý chính để tôi làm quiz cuối giờ"</b> (trang 6 — 0 ký tự căn cứ)</div>
+      <div class="quote" style="border-color:var(--khong)">
+        "Kho hiện tại hoàn toàn không có nội dung cho trang 6 để có thể tóm tắt ý chính cho bạn."
+        <div class="chips">
+          <span class="label">Trang mình thực sự có</span>
+          <span class="chip">Trang 7</span><span class="chip">Trang 4</span><span class="chip">Trang 3</span>
+        </div>
+        <div class="chips">
+          <span class="label">Thu hẹp phạm vi</span>
+          <span class="btn">Autonomous Agent, Bot, Chatbot ở trang 7?</span>
+          <span class="btn">Agentic Fit Framework ở trang 4?</span>
+          <span class="btn">Agent Loop ở trang 3?</span>
+        </div>
+      </div>
+      <div class="ma">output AI thật, tier <code>khong</code> · trang 6 là trang bị hỏi nhiều nhất tài liệu (17 câu hỏi thật)</div>
+
+      <div class="note" style="margin-top:18px">
+        <b>Khác biệt ở một chỗ:</b> cả hai đều không có nội dung. Tutor cũ đẩy việc về phía học viên —
+        đòi họ tự cung cấp đúng thứ họ đang cần được giúp. Hệ thống nhóm đưa ra những trang nó
+        <i>thực sự có</i>, kèm câu hỏi bấm được để đi tiếp.
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<div class="ket">
+  <h2>Vì sao chọn đúng lỗi này — đo trên 1.261 lượt hỏi thật</h2>
+  <div class="so">
+    <div><b>62,7%</b> lượt dùng không bôi đen đoạn nào</div>
+    <div><b>9,5×</b> tỉ lệ tutor bó tay ở nhóm đó (22,9% vs 2,4%)</div>
+    <div><b>74</b> turn kết thúc bằng việc đòi học viên cung cấp nội dung</div>
+    <div><b>99/585</b> hội thoại chết ngay tại câu bó tay</div>
+    <div><b>15/15</b> lượt bó tay bị 👎 — không một lượt nào 👍</div>
+  </div>
+  <p class="note">
+    Mọi con số sinh ra từ <code>tools/extract_corpus.py</code>, chạy lại được trên data pack.
+    Trích dẫn bên trái là nguyên văn từ chatlog, rút gọn cho vừa khung — mã turn để tra lại đầy đủ.
+  </p>
+</div>
+
+</body>
+</html>
