@@ -379,7 +379,7 @@ Cả 2 bảng ghi **đủ mọi case, kể cả case fail** — không cắt b�
 | P3 | `2A202602002` Trần Trung Hiếu | prompt · AI call · trace · spec §5-§6 |
 | P4 | `2A202601581` Trương Công Thái Đức | spec §1-§4 · `validation/` · changelog *(trưởng nhóm)* |
 
-**Willing users (≥3 tên):** *(TODO P4 — điền tên thật)*
+**Willing users (≥3 tên):** Phan Hoàng Long · Phạm Nguyên Việt · Lục Minh Đức — học viên cùng khoá, ngoài nhóm. Đây cũng là ba người sẽ tham gia vòng validation CP5.
 
 **Kế hoạch validation CP5:** ≥5 người ngoài nhóm, P1 + P2 phỏng vấn **song song** (5 phiên × 10' tuần tự mất 50 phút, song song ~25), P4 log. Giao task thật → im lặng quan sát → hỏi đúng 3 câu: ① "Điều gì khó hiểu hoặc khó chịu nhất?" ② "Kết quả này bạn có tin không — vì sao?" ③ "Bạn có dùng thật không — vì sao / vì sao chưa?"
 

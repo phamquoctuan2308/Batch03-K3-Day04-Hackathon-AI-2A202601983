@@ -42,11 +42,11 @@ Quote nguyên văn mới tính điểm; lời tóm tắt thì không.
 
 | # | Người thử (tên · vai · willing user?) | Task giao | Quan sát *(họ bấm gì, kẹt đâu)* | Quote nguyên văn | Mức |
 |---|---|---|---|---|---|
-| 1 |  |  |  |  |  |
-| 2 |  |  |  |  |  |
-| 3 |  |  |  |  |  |
-| 4 |  |  |  |  |  |
-| 5 |  |  |  |  |  |
+| 1 | Phan Hoàng Long · học viên cùng khoá · willing user | *(điền sau phiên)* |  |  |  |
+| 2 | Phạm Nguyên Việt · học viên cùng khoá · willing user | *(điền sau phiên)* |  |  |  |
+| 3 | Lục Minh Đức · học viên cùng khoá · willing user | *(điền sau phiên)* |  |  |  |
+| 4 | *(chưa mời được)* |  |  |  |  |
+| 5 | *(chưa mời được)* |  |  |  |  |
 
 ---
 
