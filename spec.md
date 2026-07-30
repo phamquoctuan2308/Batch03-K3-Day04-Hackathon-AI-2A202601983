@@ -379,7 +379,11 @@ Cả 2 bảng ghi **đủ mọi case, kể cả case fail** — không cắt b�
 
 **Kế hoạch validation CP5:** ≥5 người ngoài nhóm, P1 + P2 phỏng vấn **song song** (5 phiên × 10' tuần tự mất 50 phút, song song ~25), P4 log. Giao task thật → im lặng quan sát → hỏi đúng 3 câu: ① "Điều gì khó hiểu hoặc khó chịu nhất?" ② "Kết quả này bạn có tin không — vì sao?" ③ "Bạn có dùng thật không — vì sao / vì sao chưa?"
 
-**Multi-prototype:** *(TODO — nếu làm)* trục dự kiến: khi không đủ căn cứ thì **hỏi lại thu hẹp** vs **trả lời kèm giới hạn rõ ràng**.
+**Multi-prototype: không làm.** Trục đáng thử là *hỏi lại thu hẹp* vs *trả lời kèm giới hạn rõ ràng* ở tầng `mong`. Nhóm chọn **trả lời kèm giới hạn** ngay từ đầu, không dựng bản đối chứng.
+
+Lý do chọn, lấy từ evidence §1: học viên bị chặn một lần là bỏ luôn — **99/585 hội thoại chết ngay tại câu tutor bó tay**, và **39/93** trường hợp gõ lại gần y nguyên câu cũ rồi mới bỏ. Thêm một lượt "ý bạn là X hay Y?" là thêm một chỗ để rơi, đúng vào nhóm người đã sẵn sàng bỏ cuộc. Trả lời phần chắc chắn rồi nói rõ phần thiếu giữ được giá trị ngay ở lượt đầu.
+
+Lý do không dựng bản đối chứng: guide xếp multi-prototype vào cửa sổ CP2→CP3, nhóm đã qua mốc đó. Dựng bản A mà không có người thử thật thì không phải bằng chứng, chỉ là hai màn hình. Quỹ thời gian còn lại dồn vào đo lường (`eval/run-01→03`) — thứ có bằng chứng kiểm lại được.
 
 ---
 
