@@ -1,0 +1,40 @@
+{
+  "timestamp": "2026-07-30T14:55:18.131455+07:00",
+  "model": "gemini-3.5-flash-lite",
+  "input": {
+    "trang": 19,
+    "cau_hoi": "tóm tắt bài hôm nay đi xem nào",
+    "trang_tang": "khong",
+    "trang_so_ky_tu": 0
+  },
+  "guardrail": {
+    "raw": "```json\n{\"hop_le\": true, \"ly_do\": \"Yêu cầu tóm tắt nội dung bài học là câu hỏi học tập hợp lệ.\"}\n```",
+    "parsed": {
+      "hop_le": true,
+      "ly_do": "Yêu cầu tóm tắt nội dung bài học là câu hỏi học tập hợp lệ."
+    }
+  },
+  "classification": {
+    "raw": "{\n  \"tier\": \"khong\",\n  \"answer\": \"\",\n  \"citations\": [],\n  \"missing\": \"Kho hiện không có nội dung cho trang 19 và không có thông tin tóm tắt bài học trong nội dung được cung cấp.\",\n  \"narrowing\": [],\n  \"have_instead\": []\n}",
+    "parsed": {
+      "tier": "khong",
+      "answer": "",
+      "citations": [],
+      "missing": "Kho hiện không có nội dung cho trang 19 và không có thông tin tóm tắt bài học trong nội dung được cung cấp.",
+      "narrowing": [],
+      "have_instead": []
+    }
+  },
+  "output": {
+    "tier": "khong",
+    "answer": "",
+    "citations": [],
+    "missing": "Kho hiện không có nội dung cho trang 19 và không có thông tin tóm tắt bài học trong nội dung được cung cấp.",
+    "narrowing": [],
+    "have_instead": []
+  },
+  "usage": {
+    "note": "xem trace"
+  },
+  "elapsed_ms": 12386.006832122803
+}

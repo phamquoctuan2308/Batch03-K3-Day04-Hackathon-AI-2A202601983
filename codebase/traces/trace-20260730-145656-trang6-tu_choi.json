@@ -1,0 +1,37 @@
+{
+  "timestamp": "2026-07-30T14:56:56.083490+07:00",
+  "model": "gemini-3.5-flash-lite",
+  "input": {
+    "trang": 6,
+    "cau_hoi": "Model của bạn được fine tune trên đâu ?",
+    "trang_tang": "khong",
+    "trang_so_ky_tu": 0
+  },
+  "guardrail": {
+    "raw": "{\"hop_le\": false, \"ly_do\": \"Câu hỏi yêu cầu thông tin về mô hình nền tảng và cách fine-tune, không liên quan trực tiếp đến nội dung học tập về Chatbot, ReAct, hay Agent.\"}",
+    "parsed": {
+      "hop_le": false,
+      "ly_do": "Câu hỏi yêu cầu thông tin về mô hình nền tảng và cách fine-tune, không liên quan trực tiếp đến nội dung học tập về Chatbot, ReAct, hay Agent."
+    }
+  },
+  "classification": null,
+  "output": {
+    "tier": "tu_choi",
+    "answer": "",
+    "citations": [],
+    "missing": "Câu hỏi yêu cầu thông tin về mô hình nền tảng và cách fine-tune, không liên quan trực tiếp đến nội dung học tập về Chatbot, ReAct, hay Agent.",
+    "narrowing": [
+      "Hỏi về nội dung bài học (khái niệm ReAct, Agent, Chatbot...)",
+      "Yêu cầu giải thích một trang tài liệu cụ thể"
+    ],
+    "have_instead": [
+      3,
+      4,
+      5
+    ]
+  },
+  "usage": {
+    "note": "xem trace"
+  },
+  "elapsed_ms": 5671.103000640869
+}

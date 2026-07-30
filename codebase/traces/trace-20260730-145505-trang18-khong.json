@@ -1,0 +1,40 @@
+{
+  "timestamp": "2026-07-30T14:55:05.743848+07:00",
+  "model": "gemini-3.5-flash-lite",
+  "input": {
+    "trang": 18,
+    "cau_hoi": "ví dụ nhanh ở slide nào",
+    "trang_tang": "khong",
+    "trang_so_ky_tu": 0
+  },
+  "guardrail": {
+    "raw": "{\"hop_le\": true, \"ly_do\": \"Học viên hỏi về vị trí ví dụ trong slide học tập, liên quan đến nội dung bài học.\"}",
+    "parsed": {
+      "hop_le": true,
+      "ly_do": "Học viên hỏi về vị trí ví dụ trong slide học tập, liên quan đến nội dung bài học."
+    }
+  },
+  "classification": {
+    "raw": "```json\n{\n  \"tier\": \"khong\",\n  \"answer\": \"\",\n  \"citations\": [],\n  \"missing\": \"Hiện tại không có nội dung cho trang 18 trong kho dữ liệu để xác định ví dụ nhanh nằm ở slide nào.\",\n  \"narrowing\": [],\n  \"have_instead\": []\n}\n```",
+    "parsed": {
+      "tier": "khong",
+      "answer": "",
+      "citations": [],
+      "missing": "Hiện tại không có nội dung cho trang 18 trong kho dữ liệu để xác định ví dụ nhanh nằm ở slide nào.",
+      "narrowing": [],
+      "have_instead": []
+    }
+  },
+  "output": {
+    "tier": "khong",
+    "answer": "",
+    "citations": [],
+    "missing": "Hiện tại không có nội dung cho trang 18 trong kho dữ liệu để xác định ví dụ nhanh nằm ở slide nào.",
+    "narrowing": [],
+    "have_instead": []
+  },
+  "usage": {
+    "note": "xem trace"
+  },
+  "elapsed_ms": 13339.404106140137
+}

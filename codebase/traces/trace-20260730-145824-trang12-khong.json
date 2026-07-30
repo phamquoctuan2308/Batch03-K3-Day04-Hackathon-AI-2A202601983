@@ -1,0 +1,50 @@
+{
+  "timestamp": "2026-07-30T14:58:24.023741+07:00",
+  "model": "gemini-3.5-flash-lite",
+  "input": {
+    "trang": 12,
+    "cau_hoi": "Giải thích đoạn bôi đen ở Trang 12: \"Reasoning\"",
+    "trang_tang": "du",
+    "trang_so_ky_tu": 365
+  },
+  "guardrail": {
+    "raw": "{\"hop_le\": true, \"ly_do\": \"Học viên hỏi giải thích khái niệm 'Reasoning' trong tài liệu học tập.\"}",
+    "parsed": {
+      "hop_le": true,
+      "ly_do": "Học viên hỏi giải thích khái niệm 'Reasoning' trong tài liệu học tập."
+    }
+  },
+  "classification": {
+    "raw": "{\n  \"tier\": \"khong\",\n  \"answer\": \"\",\n  \"citations\": [],\n  \"missing\": \"Nội dung kho ở trang 12 chỉ liệt kê bảng tổng hợp điểm số các use case (như FAQ nội bộ HR, Tóm tắt hợp đồng, Booking assistant, Research agent, Code assistant) theo các tiêu chí như Reasoning, Tool use, Dynamic decision, nhưng không có phần giải thích chi tiết cho từ 'Reasoning'.\",\n  \"narrowing\": [\n    \"Xem bảng tổng điểm các use case ở trang 12\",\n    \"Xem điểm số của các use case đối với tiêu chí Reasoning, Tool use và Dynamic decision\"\n  ],\n  \"have_instead\": [12]\n}",
+    "parsed": {
+      "tier": "khong",
+      "answer": "",
+      "citations": [],
+      "missing": "Nội dung kho ở trang 12 chỉ liệt kê bảng tổng hợp điểm số các use case (như FAQ nội bộ HR, Tóm tắt hợp đồng, Booking assistant, Research agent, Code assistant) theo các tiêu chí như Reasoning, Tool use, Dynamic decision, nhưng không có phần giải thích chi tiết cho từ 'Reasoning'.",
+      "narrowing": [
+        "Xem bảng tổng điểm các use case ở trang 12",
+        "Xem điểm số của các use case đối với tiêu chí Reasoning, Tool use và Dynamic decision"
+      ],
+      "have_instead": [
+        12
+      ]
+    }
+  },
+  "output": {
+    "tier": "khong",
+    "answer": "",
+    "citations": [],
+    "missing": "Nội dung kho ở trang 12 chỉ liệt kê bảng tổng hợp điểm số các use case (như FAQ nội bộ HR, Tóm tắt hợp đồng, Booking assistant, Research agent, Code assistant) theo các tiêu chí như Reasoning, Tool use, Dynamic decision, nhưng không có phần giải thích chi tiết cho từ 'Reasoning'.",
+    "narrowing": [
+      "Xem bảng tổng điểm các use case ở trang 12",
+      "Xem điểm số của các use case đối với tiêu chí Reasoning, Tool use và Dynamic decision"
+    ],
+    "have_instead": [
+      12
+    ]
+  },
+  "usage": {
+    "note": "xem trace"
+  },
+  "elapsed_ms": 12099.27225112915
+}

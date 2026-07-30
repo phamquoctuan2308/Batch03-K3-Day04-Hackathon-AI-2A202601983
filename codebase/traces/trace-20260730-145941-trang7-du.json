@@ -1,0 +1,44 @@
+{
+  "timestamp": "2026-07-30T14:59:41.319509+07:00",
+  "model": "gemini-3.5-flash-lite",
+  "input": {
+    "trang": 7,
+    "cau_hoi": "Tóm tắt sờ lai này",
+    "trang_tang": "mong",
+    "trang_so_ky_tu": 24
+  },
+  "guardrail": {
+    "raw": "```json\n{\"hop_le\": true, \"ly_do\": \"Học viên yêu cầu tóm tắt nội dung slide bài học, nằm trong phạm vi học tập hợp lệ.\"}\n```",
+    "parsed": {
+      "hop_le": true,
+      "ly_do": "Học viên yêu cầu tóm tắt nội dung slide bài học, nằm trong phạm vi học tập hợp lệ."
+    }
+  },
+  "classification": {
+    "raw": "```json\n{\n  \"tier\": \"du\",\n  \"answer\": \"Nội dung slide này gồm các từ khóa: Autonomous, Agent và Spectrum [trang 7].\",\n  \"citations\": [7],\n  \"missing\": null,\n  \"narrowing\": [],\n  \"have_instead\": []\n}\n```",
+    "parsed": {
+      "tier": "du",
+      "answer": "Nội dung slide này gồm các từ khóa: Autonomous, Agent và Spectrum [trang 7].",
+      "citations": [
+        7
+      ],
+      "missing": null,
+      "narrowing": [],
+      "have_instead": []
+    }
+  },
+  "output": {
+    "tier": "du",
+    "answer": "Nội dung slide này gồm các từ khóa: Autonomous, Agent và Spectrum [trang 7].",
+    "citations": [
+      7
+    ],
+    "missing": null,
+    "narrowing": [],
+    "have_instead": []
+  },
+  "usage": {
+    "note": "xem trace"
+  },
+  "elapsed_ms": 12279.413938522339
+}

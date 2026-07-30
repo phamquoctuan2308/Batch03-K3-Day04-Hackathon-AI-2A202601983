@@ -1,0 +1,50 @@
+{
+  "timestamp": "2026-07-30T14:58:50.210572+07:00",
+  "model": "gemini-3.5-flash-lite",
+  "input": {
+    "trang": 15,
+    "cau_hoi": "Giải thích đoạn bôi đen ở Trang 15.",
+    "trang_tang": "du",
+    "trang_so_ky_tu": 618
+  },
+  "guardrail": {
+    "raw": "{\"hop_le\": true, \"ly_do\": \"Học viên hỏi giải thích nội dung tài liệu học tập.\"}",
+    "parsed": {
+      "hop_le": true,
+      "ly_do": "Học viên hỏi giải thích nội dung tài liệu học tập."
+    }
+  },
+  "classification": {
+    "raw": "```json\n{\n  \"tier\": \"khong\",\n  \"answer\": \"\",\n  \"citations\": [],\n  \"missing\": \"Kho tài liệu không có thông tin về đoạn được bôi đen mà học viên đang nhắc đến.\",\n  \"narrowing\": [\n    \"Giải thích các agent patterns từ Anthropic có trong trang 15\",\n    \"Giải thích cấu trúc Prompt + docs + tools trong trang 15\"\n  ],\n  \"have_instead\": [\n    15\n  ]\n}\n```",
+    "parsed": {
+      "tier": "khong",
+      "answer": "",
+      "citations": [],
+      "missing": "Kho tài liệu không có thông tin về đoạn được bôi đen mà học viên đang nhắc đến.",
+      "narrowing": [
+        "Giải thích các agent patterns từ Anthropic có trong trang 15",
+        "Giải thích cấu trúc Prompt + docs + tools trong trang 15"
+      ],
+      "have_instead": [
+        15
+      ]
+    }
+  },
+  "output": {
+    "tier": "khong",
+    "answer": "",
+    "citations": [],
+    "missing": "Kho tài liệu không có thông tin về đoạn được bôi đen mà học viên đang nhắc đến.",
+    "narrowing": [
+      "Giải thích các agent patterns từ Anthropic có trong trang 15",
+      "Giải thích cấu trúc Prompt + docs + tools trong trang 15"
+    ],
+    "have_instead": [
+      15
+    ]
+  },
+  "usage": {
+    "note": "xem trace"
+  },
+  "elapsed_ms": 13526.994943618774
+}

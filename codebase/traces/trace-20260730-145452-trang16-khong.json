@@ -1,0 +1,44 @@
+{
+  "timestamp": "2026-07-30T14:54:52.402822+07:00",
+  "model": "gemini-3.5-flash-lite",
+  "input": {
+    "trang": 16,
+    "cau_hoi": "cho ví dụ cụ thể đi",
+    "trang_tang": "khong",
+    "trang_so_ky_tu": 0
+  },
+  "guardrail": {
+    "raw": "{\"hop_le\": true, \"ly_do\": \"Học viên đang yêu cầu ví dụ cụ thể liên quan đến bài học, đây là một câu hỏi học tập hợp lệ.\"}",
+    "parsed": {
+      "hop_le": true,
+      "ly_do": "Học viên đang yêu cầu ví dụ cụ thể liên quan đến bài học, đây là một câu hỏi học tập hợp lệ."
+    }
+  },
+  "classification": {
+    "raw": "```json\n{\n  \"tier\": \"khong\",\n  \"answer\": \"\",\n  \"citations\": [],\n  \"missing\": \"Hiện tại trang 16 không có nội dung nào trong kho dữ liệu, nên tôi chưa thể cung cấp ví dụ cụ thể cho bạn.\",\n  \"narrowing\": [\n    \"Bạn có muốn xem lại ví dụ hoặc nội dung ở các trang trước có sẵn trong kho không?\"\n  ],\n  \"have_instead\": []\n}\n```",
+    "parsed": {
+      "tier": "khong",
+      "answer": "",
+      "citations": [],
+      "missing": "Hiện tại trang 16 không có nội dung nào trong kho dữ liệu, nên tôi chưa thể cung cấp ví dụ cụ thể cho bạn.",
+      "narrowing": [
+        "Bạn có muốn xem lại ví dụ hoặc nội dung ở các trang trước có sẵn trong kho không?"
+      ],
+      "have_instead": []
+    }
+  },
+  "output": {
+    "tier": "khong",
+    "answer": "",
+    "citations": [],
+    "missing": "Hiện tại trang 16 không có nội dung nào trong kho dữ liệu, nên tôi chưa thể cung cấp ví dụ cụ thể cho bạn.",
+    "narrowing": [
+      "Bạn có muốn xem lại ví dụ hoặc nội dung ở các trang trước có sẵn trong kho không?"
+    ],
+    "have_instead": []
+  },
+  "usage": {
+    "note": "xem trace"
+  },
+  "elapsed_ms": 11523.90193939209
+}

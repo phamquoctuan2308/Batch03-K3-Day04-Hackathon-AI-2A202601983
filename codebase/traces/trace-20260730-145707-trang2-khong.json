@@ -1,0 +1,50 @@
+{
+  "timestamp": "2026-07-30T14:57:07.385848+07:00",
+  "model": "gemini-3.5-flash-lite",
+  "input": {
+    "trang": 2,
+    "cau_hoi": "Which model do the tutor like you pretrain on ? Qwen or mistral ?",
+    "trang_tang": "mong",
+    "trang_so_ky_tu": 129
+  },
+  "guardrail": {
+    "raw": "{\"hop_le\": true, \"ly_do\": \"Học viên hỏi về mô hình ngôn ngữ lớn (LLM) đằng sau AI tutor, liên quan đến kiến thức về LLM trong khóa học chatbot và agent.\"}",
+    "parsed": {
+      "hop_le": true,
+      "ly_do": "Học viên hỏi về mô hình ngôn ngữ lớn (LLM) đằng sau AI tutor, liên quan đến kiến thức về LLM trong khóa học chatbot và agent."
+    }
+  },
+  "classification": {
+    "raw": "{\n  \"tier\": \"khong\",\n  \"answer\": \"\",\n  \"citations\": [],\n  \"missing\": \"Nội dung kho hiện tại không có thông tin về mô hình mà trợ lý ảo (như Qwen hay Mistral) được huấn luyện trước (pretrain).\",\n  \"narrowing\": [\n    \"ChatGPT là chatbot hay agent?\",\n    \"Siri và Cursor IDE được phân loại như thế nào theo nội dung trang?\"\n  ],\n  \"have_instead\": [2]\n}",
+    "parsed": {
+      "tier": "khong",
+      "answer": "",
+      "citations": [],
+      "missing": "Nội dung kho hiện tại không có thông tin về mô hình mà trợ lý ảo (như Qwen hay Mistral) được huấn luyện trước (pretrain).",
+      "narrowing": [
+        "ChatGPT là chatbot hay agent?",
+        "Siri và Cursor IDE được phân loại như thế nào theo nội dung trang?"
+      ],
+      "have_instead": [
+        2
+      ]
+    }
+  },
+  "output": {
+    "tier": "khong",
+    "answer": "",
+    "citations": [],
+    "missing": "Nội dung kho hiện tại không có thông tin về mô hình mà trợ lý ảo (như Qwen hay Mistral) được huấn luyện trước (pretrain).",
+    "narrowing": [
+      "ChatGPT là chatbot hay agent?",
+      "Siri và Cursor IDE được phân loại như thế nào theo nội dung trang?"
+    ],
+    "have_instead": [
+      2
+    ]
+  },
+  "usage": {
+    "note": "xem trace"
+  },
+  "elapsed_ms": 11300.986051559448
+}

@@ -1,0 +1,40 @@
+{
+  "timestamp": "2026-07-30T14:52:36.767605+07:00",
+  "model": "gemini-3.5-flash-lite",
+  "input": {
+    "trang": 37,
+    "cau_hoi": "tóm tắt nội dung chính trong slide này",
+    "trang_tang": "khong",
+    "trang_so_ky_tu": 0
+  },
+  "guardrail": {
+    "raw": "{\"hop_le\": true, \"ly_do\": \"Câu hỏi yêu cầu tóm tắt nội dung slide bài học, hoàn toàn hợp lệ.\"}",
+    "parsed": {
+      "hop_le": true,
+      "ly_do": "Câu hỏi yêu cầu tóm tắt nội dung slide bài học, hoàn toàn hợp lệ."
+    }
+  },
+  "classification": {
+    "raw": "{\n  \"tier\": \"khong\",\n  \"answer\": \"\",\n  \"citations\": [],\n  \"missing\": \"Kho dữ liệu hiện không có nội dung cho trang 37.\",\n  \"narrowing\": [],\n  \"have_instead\": []\n}",
+    "parsed": {
+      "tier": "khong",
+      "answer": "",
+      "citations": [],
+      "missing": "Kho dữ liệu hiện không có nội dung cho trang 37.",
+      "narrowing": [],
+      "have_instead": []
+    }
+  },
+  "output": {
+    "tier": "khong",
+    "answer": "",
+    "citations": [],
+    "missing": "Kho dữ liệu hiện không có nội dung cho trang 37.",
+    "narrowing": [],
+    "have_instead": []
+  },
+  "usage": {
+    "note": "xem trace"
+  },
+  "elapsed_ms": 2278.9008617401123
+}

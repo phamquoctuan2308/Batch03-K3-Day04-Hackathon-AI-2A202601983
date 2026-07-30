@@ -1,0 +1,44 @@
+{
+  "timestamp": "2026-07-30T14:57:25.225157+07:00",
+  "model": "gemini-3.5-flash-lite",
+  "input": {
+    "trang": 15,
+    "cau_hoi": "Giải thích đoạn bôi đen ở Trang 15: \"Trang 15 / 46\nday03-tu-chatbot-den-agentic-agent-react.pdf\nTừ Anthropic: Agent Patterns Nên Tăng Dần Theo Nhu Cầu\nAugmented\nLLM\nPrompt +\ndocs + tools\nPrompt\nChaining\nBước nối\ntiếp rõ ràng\nRouting\nChọn path\n/ specialist\nOrchestrator\nWorker\nPhân việc\nrồi tổng hợp\nAgent\nTự quyết nhiều bước\nBắt đầu từ cấu trúc đơn giản nhất đủ dùng. Agent là pattern mạnh nhưng cũng\nđắt nhất về cost, eval, guardrails, và vận hành.\nGiảng viên (VinUni) AICB · Ngày 3 17/03/2026 11 / 34\"",
+    "trang_tang": "du",
+    "trang_so_ky_tu": 618
+  },
+  "guardrail": {
+    "raw": "{\"hop_le\": true, \"ly_do\": \"Câu hỏi liên quan trực tiếp đến nội dung slide học tập về các pattern của Agent.\"}",
+    "parsed": {
+      "hop_le": true,
+      "ly_do": "Câu hỏi liên quan trực tiếp đến nội dung slide học tập về các pattern của Agent."
+    }
+  },
+  "classification": {
+    "raw": "```json\n{\n  \"tier\": \"du\",\n  \"answer\": \"Theo nội dung ở trang 15, câu \\\"Bắt đầu từ cấu trúc đơn giản nhất đủ dùng. Agent là pattern mạnh nhưng...\\\" có ý nghĩa là:\\n\\n- **Bắt đầu từ cấu trúc đơn giản nhất đủ dùng:** Bạn nên bắt đầu xây dựng từ các mô hình cơ bản (như Augmented LLM, Prompt Chaining, v.v.) rồi mới tăng dần độ phức tạp theo nhu cầu.\\n- **Agent là pattern mạnh nhưng đắt nhất:** Mặc dù Agent là pattern mạnh mẽ với khả năng tự quyết nhiều bước, nó cũng là giải pháp tốn kém nhất về chi phí (cost), việc đánh giá (eval), các hàng rào bảo vệ (guardrails), và quá trình vận hành [trang 15].\",\n  \"citations\": [\n    15\n  ],\n  \"missing\": null,\n  \"narrowing\": [],\n  \"have_instead\": []\n}\n```",
+    "parsed": {
+      "tier": "du",
+      "answer": "Theo nội dung ở trang 15, câu \"Bắt đầu từ cấu trúc đơn giản nhất đủ dùng. Agent là pattern mạnh nhưng...\" có ý nghĩa là:\n\n- **Bắt đầu từ cấu trúc đơn giản nhất đủ dùng:** Bạn nên bắt đầu xây dựng từ các mô hình cơ bản (như Augmented LLM, Prompt Chaining, v.v.) rồi mới tăng dần độ phức tạp theo nhu cầu.\n- **Agent là pattern mạnh nhưng đắt nhất:** Mặc dù Agent là pattern mạnh mẽ với khả năng tự quyết nhiều bước, nó cũng là giải pháp tốn kém nhất về chi phí (cost), việc đánh giá (eval), các hàng rào bảo vệ (guardrails), và quá trình vận hành [trang 15].",
+      "citations": [
+        15
+      ],
+      "missing": null,
+      "narrowing": [],
+      "have_instead": []
+    }
+  },
+  "output": {
+    "tier": "du",
+    "answer": "Theo nội dung ở trang 15, câu \"Bắt đầu từ cấu trúc đơn giản nhất đủ dùng. Agent là pattern mạnh nhưng...\" có ý nghĩa là:\n\n- **Bắt đầu từ cấu trúc đơn giản nhất đủ dùng:** Bạn nên bắt đầu xây dựng từ các mô hình cơ bản (như Augmented LLM, Prompt Chaining, v.v.) rồi mới tăng dần độ phức tạp theo nhu cầu.\n- **Agent là pattern mạnh nhưng đắt nhất:** Mặc dù Agent là pattern mạnh mẽ với khả năng tự quyết nhiều bước, nó cũng là giải pháp tốn kém nhất về chi phí (cost), việc đánh giá (eval), các hàng rào bảo vệ (guardrails), và quá trình vận hành [trang 15].",
+    "citations": [
+      15
+    ],
+    "missing": null,
+    "narrowing": [],
+    "have_instead": []
+  },
+  "usage": {
+    "note": "xem trace"
+  },
+  "elapsed_ms": 12018.55206489563
+}
