@@ -151,9 +151,9 @@ Prototype: `codebase/index.html`. Mỗi nguyên tắc trỏ vào một phần t�
 | **G2** — Làm rõ nó làm tốt đến đâu | Hộp vàng **"Phần mình KHÔNG có căn cứ"** ở tầng `mong` — nói thẳng chỗ mình đuối thay vì lấp liếm | `.missing-box` dòng 316-319 |
 | **G15** — Mời feedback chi tiết | Nút 👍👎 dưới **mọi** câu trả lời, cả khi tutor từ chối *(khớp field `rating` trong data thật — chính chỗ đo ra 15/15 👎)* | `feedbackHtml()` dòng 353-359 |
 | **PAIR — Explainability + Trust** | Tầng `khong` hiện hàng chip **"Trang mình thực sự có"** thay vì bắt học viên tin lời từ chối suông — đây là chỗ lật ngược đúng lỗi gốc | `.have-instead` dòng 332-335 |
-| **G1** — Làm rõ hệ thống làm được gì | Câu từ chối ở guardrail `tu_choi`: nêu rõ phạm vi "chỉ trả lời dựa trên tài liệu bài giảng" | ⏳ **P2 chưa dựng màn `tu_choi`** |
+| **G1** — Làm rõ hệ thống làm được gì | Banner 🛑 **"Yêu cầu bị từ chối"** ở `tu_choi`, dòng phụ nói thẳng *"Guardrail chặn TRƯỚC khi vào bước tra cứu 3 tầng — không phải do thiếu nội dung trang N"*. Học viên biết ranh giới phạm vi nằm ở đâu | dòng 386-404 |
 
-> **P4 phải tự bấm qua 3 tầng trên trình duyệt và xác nhận 5 dòng đầu khớp thật, trước khi coi mục này là xong** — TA kiểm tại CP4 bằng cách bắt chỉ lên màn hình, không đọc code. Nếu P2 không kịp `tu_choi`, bỏ dòng G1 và giữ 5 nguyên tắc *(yêu cầu là ≥4)*.
+**Đã xác nhận trên trình duyệt (30/07 16:30):** render đủ 4 trạng thái, mỗi tầng một hình dạng khác hẳn — `du` thẻ xanh, `mong` thẻ vàng có hộp gạch nét đứt, `khong` thẻ xám trung tính, `tu_choi` banner đỏ viền trái. Ba tầng đầu dùng chung khung thẻ; `tu_choi` cố ý phá khung để không ai nhầm "bị chặn" với "thiếu dữ liệu".
 
 ---
 
