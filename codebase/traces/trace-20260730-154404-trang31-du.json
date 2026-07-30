@@ -1,0 +1,44 @@
+{
+  "timestamp": "2026-07-30T15:44:04.537950+07:00",
+  "model": "gemini-3.5-flash-lite",
+  "input": {
+    "trang": 31,
+    "cau_hoi": "LangGraph là gì",
+    "trang_tang": "du",
+    "trang_so_ky_tu": 212
+  },
+  "guardrail": {
+    "raw": "{\"hop_le\": true, \"ly_do\": \"Câu hỏi hỏi về khái niệm LangGraph, liên quan trực tiếp đến chủ đề Agent và kiến trúc trong lớp học AI.\"}",
+    "parsed": {
+      "hop_le": true,
+      "ly_do": "Câu hỏi hỏi về khái niệm LangGraph, liên quan trực tiếp đến chủ đề Agent và kiến trúc trong lớp học AI."
+    }
+  },
+  "classification": {
+    "raw": "{\n  \"tier\": \"du\",\n  \"answer\": \"LangGraph là công cụ giúp biểu diễn state, nodes, edges và conditional routing rõ hơn. Khi workflow có nhiều nhánh hoặc cần persist state, phương pháp sử dụng graph approach (như LangGraph) sẽ giúp dễ maintain hơn so với loop ad-hoc [31].\",\n  \"citations\": [31],\n  \"missing\": null,\n  \"narrowing\": [],\n  \"have_instead\": []\n}",
+    "parsed": {
+      "tier": "du",
+      "answer": "LangGraph là công cụ giúp biểu diễn state, nodes, edges và conditional routing rõ hơn. Khi workflow có nhiều nhánh hoặc cần persist state, phương pháp sử dụng graph approach (như LangGraph) sẽ giúp dễ maintain hơn so với loop ad-hoc [31].",
+      "citations": [
+        31
+      ],
+      "missing": null,
+      "narrowing": [],
+      "have_instead": []
+    }
+  },
+  "output": {
+    "tier": "du",
+    "answer": "LangGraph là công cụ giúp biểu diễn state, nodes, edges và conditional routing rõ hơn. Khi workflow có nhiều nhánh hoặc cần persist state, phương pháp sử dụng graph approach (như LangGraph) sẽ giúp dễ maintain hơn so với loop ad-hoc [31].",
+    "citations": [
+      31
+    ],
+    "missing": null,
+    "narrowing": [],
+    "have_instead": []
+  },
+  "usage": {
+    "note": "xem trace"
+  },
+  "elapsed_ms": 11312.829971313477
+}

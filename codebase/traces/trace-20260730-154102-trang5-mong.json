@@ -1,0 +1,54 @@
+{
+  "timestamp": "2026-07-30T15:41:02.302285+07:00",
+  "model": "gemini-3.5-flash-lite",
+  "input": {
+    "trang": 5,
+    "cau_hoi": "LLMs la gi",
+    "trang_tang": "mong",
+    "trang_so_ky_tu": 6
+  },
+  "guardrail": {
+    "raw": "{\"hop_le\": true, \"ly_do\": \"Học viên hỏi về khái niệm LLMs, nằm trong phạm vi chủ đề của lớp học AI.\"}",
+    "parsed": {
+      "hop_le": true,
+      "ly_do": "Học viên hỏi về khái niệm LLMs, nằm trong phạm vi chủ đề của lớp học AI."
+    }
+  },
+  "classification": {
+    "raw": "{\n  \"tier\": \"mong\",\n  \"answer\": \"Nội dung kho hiện tại chỉ có các ký tự rời rạc 'ợt trộ' và chưa đủ thông tin chi tiết để giải thích đầy đủ LLMs (Large Language Models) là gì.\",\n  \"citations\": [5],\n  \"missing\": \"Kho chưa có định nghĩa chi tiết về LLMs (Large Language Models) ở trang này.\",\n  \"narrowing\": [\n    \"Khái niệm cơ bản trong AI\",\n    \"Nội dung chi tiết của trang hiện tại\"\n  ],\n  \"have_instead\": [5]\n}",
+    "parsed": {
+      "tier": "mong",
+      "answer": "Nội dung kho hiện tại chỉ có các ký tự rời rạc 'ợt trộ' và chưa đủ thông tin chi tiết để giải thích đầy đủ LLMs (Large Language Models) là gì.",
+      "citations": [
+        5
+      ],
+      "missing": "Kho chưa có định nghĩa chi tiết về LLMs (Large Language Models) ở trang này.",
+      "narrowing": [
+        "Khái niệm cơ bản trong AI",
+        "Nội dung chi tiết của trang hiện tại"
+      ],
+      "have_instead": [
+        5
+      ]
+    }
+  },
+  "output": {
+    "tier": "mong",
+    "answer": "Nội dung kho hiện tại chỉ có các ký tự rời rạc 'ợt trộ' và chưa đủ thông tin chi tiết để giải thích đầy đủ LLMs (Large Language Models) là gì.",
+    "citations": [
+      5
+    ],
+    "missing": "Kho chưa có định nghĩa chi tiết về LLMs (Large Language Models) ở trang này.",
+    "narrowing": [
+      "Khái niệm cơ bản trong AI",
+      "Nội dung chi tiết của trang hiện tại"
+    ],
+    "have_instead": [
+      5
+    ]
+  },
+  "usage": {
+    "note": "xem trace"
+  },
+  "elapsed_ms": 11515.583038330078
+}

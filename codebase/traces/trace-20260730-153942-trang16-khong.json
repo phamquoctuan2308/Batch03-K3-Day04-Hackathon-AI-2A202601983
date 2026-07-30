@@ -1,0 +1,46 @@
+{
+  "timestamp": "2026-07-30T15:39:42.268900+07:00",
+  "model": "gemini-3.5-flash-lite",
+  "input": {
+    "trang": 16,
+    "cau_hoi": "cho ví dụ cụ thể đi",
+    "trang_tang": "khong",
+    "trang_so_ky_tu": 0
+  },
+  "guardrail": {
+    "raw": "{\"hop_le\": true, \"ly_do\": \"Học viên đang yêu cầu ví dụ cụ thể liên quan đến bài học, đây là câu hỏi học tập hợp lệ.\"}",
+    "parsed": {
+      "hop_le": true,
+      "ly_do": "Học viên đang yêu cầu ví dụ cụ thể liên quan đến bài học, đây là câu hỏi học tập hợp lệ."
+    }
+  },
+  "classification": {
+    "raw": "{\n  \"tier\": \"khong\",\n  \"answer\": \"\",\n  \"citations\": [],\n  \"missing\": \"Trang 16 hiện không có nội dung trong kho dữ liệu nên tôi không thể cung cấp ví dụ cụ thể cho bạn.\",\n  \"narrowing\": [\n    \"Bạn có muốn xem lại các ví dụ ở những trang trước không?\",\n    \"Bạn có câu hỏi về nội dung cụ thể nào khác đã được đề cập trong các trang khác không?\"\n  ],\n  \"have_instead\": []\n}",
+    "parsed": {
+      "tier": "khong",
+      "answer": "",
+      "citations": [],
+      "missing": "Trang 16 hiện không có nội dung trong kho dữ liệu nên tôi không thể cung cấp ví dụ cụ thể cho bạn.",
+      "narrowing": [
+        "Bạn có muốn xem lại các ví dụ ở những trang trước không?",
+        "Bạn có câu hỏi về nội dung cụ thể nào khác đã được đề cập trong các trang khác không?"
+      ],
+      "have_instead": []
+    }
+  },
+  "output": {
+    "tier": "khong",
+    "answer": "",
+    "citations": [],
+    "missing": "Trang 16 hiện không có nội dung trong kho dữ liệu nên tôi không thể cung cấp ví dụ cụ thể cho bạn.",
+    "narrowing": [
+      "Bạn có muốn xem lại các ví dụ ở những trang trước không?",
+      "Bạn có câu hỏi về nội dung cụ thể nào khác đã được đề cập trong các trang khác không?"
+    ],
+    "have_instead": []
+  },
+  "usage": {
+    "note": "xem trace"
+  },
+  "elapsed_ms": 12634.30404663086
+}

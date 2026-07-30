@@ -1,0 +1,44 @@
+{
+  "timestamp": "2026-07-30T15:43:17.284761+07:00",
+  "model": "gemini-3.5-flash-lite",
+  "input": {
+    "trang": 13,
+    "cau_hoi": "Giải thích đoạn bôi đen ở Trang 13.",
+    "trang_tang": "du",
+    "trang_so_ky_tu": 394
+  },
+  "guardrail": {
+    "raw": "{\"hop_le\": true, \"ly_do\": \"Học viên hỏi giải thích nội dung tài liệu học tập.\"}",
+    "parsed": {
+      "hop_le": true,
+      "ly_do": "Học viên hỏi giải thích nội dung tài liệu học tập."
+    }
+  },
+  "classification": {
+    "raw": "{\n  \"tier\": \"du\",\n  \"answer\": \"Nội dung ở trang 13 đề cập đến bài toán 1 bước (như hỏi đáp, tra FAQ, phân loại cơ bản) và nguyên tắc quan trọng là luôn benchmark rule / workflow / chatbot trước khi mở agent loop. Ngoài ra, trang này cũng nêu ra các trường hợp không nên dùng agent hoặc khi nào agent chỉ suy nghĩ mà không hành động được, bao gồm:\\n- Mọi thứ phải 100% deterministic vì mỗi sai sót đều rất đắt.\\n- Chi phí latency không chấp nhận được (vì loop 3–5 bước là đã quá chậm).\",\n  \"citations\": [13],\n  \"missing\": null,\n  \"narrowing\": [],\n  \"have_instead\": []\n}",
+    "parsed": {
+      "tier": "du",
+      "answer": "Nội dung ở trang 13 đề cập đến bài toán 1 bước (như hỏi đáp, tra FAQ, phân loại cơ bản) và nguyên tắc quan trọng là luôn benchmark rule / workflow / chatbot trước khi mở agent loop. Ngoài ra, trang này cũng nêu ra các trường hợp không nên dùng agent hoặc khi nào agent chỉ suy nghĩ mà không hành động được, bao gồm:\n- Mọi thứ phải 100% deterministic vì mỗi sai sót đều rất đắt.\n- Chi phí latency không chấp nhận được (vì loop 3–5 bước là đã quá chậm).",
+      "citations": [
+        13
+      ],
+      "missing": null,
+      "narrowing": [],
+      "have_instead": []
+    }
+  },
+  "output": {
+    "tier": "du",
+    "answer": "Nội dung ở trang 13 đề cập đến bài toán 1 bước (như hỏi đáp, tra FAQ, phân loại cơ bản) và nguyên tắc quan trọng là luôn benchmark rule / workflow / chatbot trước khi mở agent loop. Ngoài ra, trang này cũng nêu ra các trường hợp không nên dùng agent hoặc khi nào agent chỉ suy nghĩ mà không hành động được, bao gồm:\n- Mọi thứ phải 100% deterministic vì mỗi sai sót đều rất đắt.\n- Chi phí latency không chấp nhận được (vì loop 3–5 bước là đã quá chậm).",
+    "citations": [
+      13
+    ],
+    "missing": null,
+    "narrowing": [],
+    "have_instead": []
+  },
+  "usage": {
+    "note": "xem trace"
+  },
+  "elapsed_ms": 11458.899021148682
+}

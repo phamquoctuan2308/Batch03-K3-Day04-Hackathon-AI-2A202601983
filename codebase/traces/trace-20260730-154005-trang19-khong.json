@@ -1,0 +1,40 @@
+{
+  "timestamp": "2026-07-30T15:40:05.192912+07:00",
+  "model": "gemini-3.5-flash-lite",
+  "input": {
+    "trang": 19,
+    "cau_hoi": "tóm tắt bài hôm nay đi xem nào",
+    "trang_tang": "khong",
+    "trang_so_ky_tu": 0
+  },
+  "guardrail": {
+    "raw": "{\"hop_le\": true, \"ly_do\": \"Học viên yêu cầu tóm tắt nội dung bài học, phù hợp với phạm vi học tập.\"}",
+    "parsed": {
+      "hop_le": true,
+      "ly_do": "Học viên yêu cầu tóm tắt nội dung bài học, phù hợp với phạm vi học tập."
+    }
+  },
+  "classification": {
+    "raw": "{\n  \"tier\": \"khong\",\n  \"answer\": \"\",\n  \"citations\": [],\n  \"missing\": \"Rất tiếc, kho dữ liệu hiện tại không có nội dung cho trang 19 để tóm tắt bài học.\",\n  \"narrowing\": [],\n  \"have_instead\": []\n}",
+    "parsed": {
+      "tier": "khong",
+      "answer": "",
+      "citations": [],
+      "missing": "Rất tiếc, kho dữ liệu hiện tại không có nội dung cho trang 19 để tóm tắt bài học.",
+      "narrowing": [],
+      "have_instead": []
+    }
+  },
+  "output": {
+    "tier": "khong",
+    "answer": "",
+    "citations": [],
+    "missing": "Rất tiếc, kho dữ liệu hiện tại không có nội dung cho trang 19 để tóm tắt bài học.",
+    "narrowing": [],
+    "have_instead": []
+  },
+  "usage": {
+    "note": "xem trace"
+  },
+  "elapsed_ms": 11054.044961929321
+}

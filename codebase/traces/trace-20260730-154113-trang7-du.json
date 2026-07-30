@@ -1,0 +1,44 @@
+{
+  "timestamp": "2026-07-30T15:41:13.911314+07:00",
+  "model": "gemini-3.5-flash-lite",
+  "input": {
+    "trang": 7,
+    "cau_hoi": "reactive agent là gì",
+    "trang_tang": "du",
+    "trang_so_ky_tu": 324
+  },
+  "guardrail": {
+    "raw": "{\"hop_le\": true, \"ly_do\": \"Hỏi về khái niệm Agent trong bài học\"}",
+    "parsed": {
+      "hop_le": true,
+      "ly_do": "Hỏi về khái niệm Agent trong bài học"
+    }
+  },
+  "classification": {
+    "raw": "```json\n{\n  \"tier\": \"du\",\n  \"answer\": \"Reactive Agent là một dạng trong phổ tiến hóa của tác tử (Spectrum), được mô tả là dùng tools và loop (vòng lặp), quan sát theo từng bước [trang 7].\",\n  \"citations\": [7],\n  \"missing\": null,\n  \"narrowing\": [],\n  \"have_instead\": []\n}\n```",
+    "parsed": {
+      "tier": "du",
+      "answer": "Reactive Agent là một dạng trong phổ tiến hóa của tác tử (Spectrum), được mô tả là dùng tools và loop (vòng lặp), quan sát theo từng bước [trang 7].",
+      "citations": [
+        7
+      ],
+      "missing": null,
+      "narrowing": [],
+      "have_instead": []
+    }
+  },
+  "output": {
+    "tier": "du",
+    "answer": "Reactive Agent là một dạng trong phổ tiến hóa của tác tử (Spectrum), được mô tả là dùng tools và loop (vòng lặp), quan sát theo từng bước [trang 7].",
+    "citations": [
+      7
+    ],
+    "missing": null,
+    "narrowing": [],
+    "have_instead": []
+  },
+  "usage": {
+    "note": "xem trace"
+  },
+  "elapsed_ms": 11607.68723487854
+}
