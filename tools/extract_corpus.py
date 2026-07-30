@@ -70,6 +70,23 @@ def doc_cac_turn():
     return [t for t in theo_turn.values() if "student" in t and "tutor" in t]
 
 
+# Sửa 2026-07-30 (phát hiện khi soát trace T0367/N-03): UI VLearn có nút "Giải
+# thích đoạn bôi đen ở Trang N" tự nhét NGUYÊN đoạn bôi đen THẬT vào câu hỏi ->
+# check containment cũ hiểu nhầm thành "platform echo câu hỏi giả". Kiểm trên kho
+# demo: 14/19 turn dính containment khớp ĐÚNG template này (kể cả khi field "đoạn
+# được chọn" bị cắt ~300 ký tự, câu hỏi vẫn còn bản đầy đủ) — đây là bôi đen THẬT,
+# phải tính vào kho.
+#
+# THỬ dùng thêm 1 ngoại lệ nữa cho "đoạn dài bị cắt, lặp lại làm phần đầu câu hỏi"
+# (không cần khớp template) để cứu nốt vài case — nhưng NGOẠI LỆ ĐÓ BỊ BỎ vì nó
+# cũng khớp luôn 3 case jailbreak trang 6 (T0767/T0617/T0674, xem lớp ③ golden
+# set): học viên dán y nguyên đoạn tấn công vào CẢ 2 ô (đoạn chọn + câu hỏi), nên
+# về mặt chuỗi ký tự giống hệt "đoạn thật bị cắt" — nhưng nội dung là prompt
+# injection, KHÔNG phải slide thật, không được tính vào kho. Giữ nguyên hành vi cũ
+# (loại) cho các case không khớp template rõ ràng.
+RE_NUT_GIAI_THICH = re.compile(r'^Giải thích đoạn bôi đen ở Trang \d+:\s*"(.*)$', re.S)
+
+
 def la_boi_den_that(doan_chon: str, cau_hoi: str) -> bool:
     """
     Học viên có thật sự bôi đen text trên slide không?
@@ -77,13 +94,25 @@ def la_boi_den_that(doan_chon: str, cau_hoi: str) -> bool:
     KHÔNG, nếu "đoạn được chọn" chỉ là echo lại câu hỏi họ tự gõ:
       - giống nhau ≥80% (difflib), hoặc
       - chuỗi này chứa chuỗi kia
+
+    NGOẠI LỆ (bôi đen THẬT dù bị containment bắt nhầm — xem comment ở khai báo
+    RE_NUT_GIAI_THICH): nút "Giải thích đoạn bôi đen ở Trang N" tự trích dẫn lại
+    đoạn bôi đen trong câu hỏi.
     """
-    a, b = doan_chon.strip().lower(), cau_hoi.strip().lower()
+    a, b = doan_chon.strip(), cau_hoi.strip()
     if not a:
         return False
-    if a in b or b in a:
+    a_low, b_low = a.lower(), b.lower()
+
+    m = RE_NUT_GIAI_THICH.match(b)
+    if m:
+        trich_dan = m.group(1).rstrip('"').strip().lower()
+        if trich_dan.startswith(a_low) or a_low.startswith(trich_dan):
+            return True
+
+    if a_low in b_low or b_low in a_low:
         return False
-    return difflib.SequenceMatcher(None, a, b).ratio() < 0.8
+    return difflib.SequenceMatcher(None, a_low, b_low).ratio() < 0.8
 
 
 def phan_tich(turns):
