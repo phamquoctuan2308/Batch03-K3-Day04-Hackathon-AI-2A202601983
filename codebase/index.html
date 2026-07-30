@@ -481,7 +481,18 @@
       });
       const data = await res.json();
       if (data.loi) throw new Error(data.loi);
-      renderTier(data);
+      // Server trả dict thuần theo hợp đồng P2-P3, không có trường `input`
+      // (chỉ object mẫu trong SAMPLES mới có). renderTier cần input.trang để
+      // hiện số trang — gắn lại từ chính request vừa gửi.
+      renderTier({
+        tier: data.tier,
+        answer: data.answer || "",
+        citations: data.citations || [],
+        missing: data.missing || "",
+        narrowing: data.narrowing || [],
+        have_instead: data.have_instead || [],
+        input: { trang, cau_hoi: cauHoi },
+      });
     } catch (e) {
       answerArea.innerHTML = `
         <p class="placeholder-hint">
