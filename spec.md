@@ -50,7 +50,13 @@ Tutor được thiết kế cho flow *"bôi đen đoạn tài liệu rồi hỏi
 - Yêu cầu "tóm tắt": **119 turn**, thất bại **39,5%** — loại câu hỏi fail nhiều nhất
 - **582/1.261 (46,2%)** câu trả lời không có citation nào, dù sản phẩm hứa trích dẫn `[trang N]`
 
-**Phương pháp đếm — kiểm lại được:** chạy `python3 tools/extract_corpus.py`. Chi tiết 6 bước trong `phan-cong-nhom.md` §2. Điểm mấu chốt: platform bọc câu hỏi học viên tự gõ vào chỗ "đoạn được chọn", nên nếu hai chuỗi trùng ≥80% (`difflib`) thì **không có text slide thật**. Regex bắt "bó tay" **cố ý không bắt** "xin lỗi"/"rất tiếc" vì tutor dùng chúng cả khi trả lời được.
+**Phương pháp đếm — kiểm lại được:** chạy `python3 tools/extract_corpus.py`. Chi tiết 6 bước trong `phan-cong-nhom.md` §2.
+
+Điểm mấu chốt là phân biệt **bôi đen thật** với **echo**. Platform bọc câu hỏi học viên tự gõ vào chính chỗ "đoạn được chọn", nên hai chuỗi trùng ≥80% (`difflib`) hoặc chuỗi này chứa chuỗi kia thì **không có text slide thật**.
+
+Có **một ngoại lệ** phải xử riêng: nút *"Giải thích đoạn bôi đen ở Trang N"* của VLearn tự trích lại đoạn bôi đen **thật** vào trong câu hỏi, nên luật containment ở trên bắt nhầm nó thành echo. `la_boi_den_that()` nhận diện dạng câu hỏi này (`RE_NUT_GIAI_THICH`) và tính là bôi đen thật. Bỏ sót ngoại lệ này làm đếm thiếu 81 turn có bôi đen — xem changelog §9, mục 30/07 15:47.
+
+Regex bắt "bó tay" **cố ý không bắt** "xin lỗi"/"rất tiếc" vì tutor dùng chúng cả khi trả lời được.
 
 ### Ví dụ nguyên văn *(trích ngắn, mã turn để tra lại)*
 
@@ -64,7 +70,7 @@ Tutor được thiết kế cho flow *"bôi đen đoạn tài liệu rồi hỏi
 | `T1082` | Bôi đen *"Observation"* ở **trang 4** | cite `[22]` — **cite sai trang** |
 | `T1103` | "bạn chỉ có tool đọc tài liệu thôi đúng ko" | *(trả lời về ReAct agent — đọc sai ý hoàn toàn)* 👎 |
 
-> **TODO P4:** Evidence chuẩn A (khảo sát ≥20 người) — nhóm chọn đi đường B vì data đã đủ chuẩn. Nếu kịp thì bổ sung, không thì ghi rõ chỉ dùng đường B.
+**Chuẩn evidence — nhóm chỉ dùng đường B (mining), không làm chuẩn A.** Quyết định này chốt, không bổ sung sau. Lý do: 1.261 turn hành vi thật của 369 học viên đã cho cả tần suất, hậu quả lẫn tín hiệu đánh giá (15/15 👎) — khảo sát ≥20 người chỉ thu được ý kiến tự thuật về cùng một hiện tượng, yếu hơn log, mà tốn phần lớn quỹ thời gian còn lại. Phần tiếp xúc người thật của nhóm dồn vào validation CP5 (§8), nơi nó đo được phản ứng với prototype chứ không chỉ hỏi lại điều log đã trả lời.
 
 ---
 
@@ -136,16 +142,18 @@ Lý do theo **cost-of-error**: sai kiến thức đến học viên thì **đắ
 
 ### §4b. Nguyên tắc đã áp dụng (≥4 — HAX/PAIR)
 
-> **TODO P4 — đừng viết trước khi xem UI thật của P2.** TA kiểm tại CP4: mỗi nguyên tắc phải trỏ được vào **vị trí cụ thể** trên màn hình. Bảng dưới là dự kiến, phải đối chiếu với bản build rồi sửa cho khớp.
+Prototype: `codebase/index.html`. Mỗi nguyên tắc trỏ vào một phần tử nhìn thấy được trên màn hình, không phải ý tưởng chung.
 
-| Nguyên tắc | Áp cụ thể vào đâu trong prototype |
-|---|---|
-| **G10** — Thu hẹp phạm vi khi nghi ngờ *(bắt buộc)* | Nút `narrowing` ở tầng `mong` và `khong`: không chắc thì đưa lựa chọn trả lời được, không làm liều |
-| **G11** — Giải thích vì sao | Chip trích dẫn `[trang N]` cạnh câu trả lời ở tầng `du` |
-| **G2** — Làm rõ nó làm tốt đến đâu | Dòng `missing` ở tầng `mong`: nói thẳng phần nào mình không có căn cứ |
-| **G1** — Làm rõ hệ thống làm được gì | Câu từ chối ở guardrail `tu_choi`: nêu rõ phạm vi "chỉ trả lời dựa trên tài liệu bài giảng" |
-| **G15** — Mời feedback chi tiết | Nút 👍👎 dưới mỗi câu trả lời *(khớp field `rating` trong data thật)* |
-| **PAIR — Explainability + Trust** | Hiển thị căn cứ để học viên tự kiểm, thay vì bắt tin tuyệt đối |
+| Nguyên tắc | Thấy ở đâu trên màn hình | Vị trí trong code |
+|---|---|---|
+| **G10** — Thu hẹp phạm vi khi nghi ngờ *(bắt buộc)* | Hàng nút thu hẹp dưới câu trả lời ở tầng `mong` và `khong` — bấm được, mỗi nút là câu hỏi kho trả lời được. Không chắc thì đưa lựa chọn, không làm liều | `narrowingHtml()`, gọi ở dòng 320 và 336 |
+| **G11** — Giải thích vì sao | Chip 📄 `Trang N` ngay cạnh câu trả lời — học viên biết câu này dựa vào đâu | dòng 307 (`du`), 315 (`mong`) |
+| **G2** — Làm rõ nó làm tốt đến đâu | Hộp vàng **"Phần mình KHÔNG có căn cứ"** ở tầng `mong` — nói thẳng chỗ mình đuối thay vì lấp liếm | `.missing-box` dòng 316-319 |
+| **G15** — Mời feedback chi tiết | Nút 👍👎 dưới **mọi** câu trả lời, cả khi tutor từ chối *(khớp field `rating` trong data thật — chính chỗ đo ra 15/15 👎)* | `feedbackHtml()` dòng 353-359 |
+| **PAIR — Explainability + Trust** | Tầng `khong` hiện hàng chip **"Trang mình thực sự có"** thay vì bắt học viên tin lời từ chối suông — đây là chỗ lật ngược đúng lỗi gốc | `.have-instead` dòng 332-335 |
+| **G1** — Làm rõ hệ thống làm được gì | Câu từ chối ở guardrail `tu_choi`: nêu rõ phạm vi "chỉ trả lời dựa trên tài liệu bài giảng" | ⏳ **P2 chưa dựng màn `tu_choi`** |
+
+> **P4 phải tự bấm qua 3 tầng trên trình duyệt và xác nhận 5 dòng đầu khớp thật, trước khi coi mục này là xong** — TA kiểm tại CP4 bằng cách bắt chỉ lên màn hình, không đọc code. Nếu P2 không kịp `tu_choi`, bỏ dòng G1 và giữ 5 nguyên tắc *(yêu cầu là ≥4)*.
 
 ---
 
