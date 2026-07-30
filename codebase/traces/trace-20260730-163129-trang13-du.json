@@ -1,0 +1,44 @@
+{
+  "timestamp": "2026-07-30T16:31:29.570907+07:00",
+  "model": "gemini-3.5-flash-lite",
+  "input": {
+    "trang": 13,
+    "cau_hoi": "Giải thích đoạn bôi đen ở Trang 13.",
+    "trang_tang": "du",
+    "trang_so_ky_tu": 394
+  },
+  "guardrail": {
+    "raw": "{\"hop_le\": true, \"ly_do\": \"Câu hỏi yêu cầu giải thích nội dung tài liệu học tập (Trang 13), phù hợp với phạm vi bài học.\"}",
+    "parsed": {
+      "hop_le": true,
+      "ly_do": "Câu hỏi yêu cầu giải thích nội dung tài liệu học tập (Trang 13), phù hợp với phạm vi bài học."
+    }
+  },
+  "classification": {
+    "raw": "{\n  \"tier\": \"du\",\n  \"answer\": \"Nội dung ở trang 13 đề cập đến bài toán 1 bước (như hỏi đáp, tra FAQ, phân loại cơ bản) và nguyên tắc quan trọng là luôn phải benchmark rule / workflow / chatbot trước khi mở agent loop [trang 13]. Bên cạnh đó, nội dung cũng nêu các trường hợp khi nào không nên dùng agent (hay khi nào cần agent chỉ 'suy nghĩ' nhưng không hành động được): khi mọi thứ phải 100% deterministic vì mỗi sai sót đều rất đắt, hoặc khi chi phí latency không chấp nhận được (vì loop 3-5 bước là đã quá chậm) [trang 13].\",\n  \"citations\": [13],\n  \"missing\": null,\n  \"narrowing\": [],\n  \"have_instead\": []\n}",
+    "parsed": {
+      "tier": "du",
+      "answer": "Nội dung ở trang 13 đề cập đến bài toán 1 bước (như hỏi đáp, tra FAQ, phân loại cơ bản) và nguyên tắc quan trọng là luôn phải benchmark rule / workflow / chatbot trước khi mở agent loop [trang 13]. Bên cạnh đó, nội dung cũng nêu các trường hợp khi nào không nên dùng agent (hay khi nào cần agent chỉ 'suy nghĩ' nhưng không hành động được): khi mọi thứ phải 100% deterministic vì mỗi sai sót đều rất đắt, hoặc khi chi phí latency không chấp nhận được (vì loop 3-5 bước là đã quá chậm) [trang 13].",
+      "citations": [
+        13
+      ],
+      "missing": null,
+      "narrowing": [],
+      "have_instead": []
+    }
+  },
+  "output": {
+    "tier": "du",
+    "answer": "Nội dung ở trang 13 đề cập đến bài toán 1 bước (như hỏi đáp, tra FAQ, phân loại cơ bản) và nguyên tắc quan trọng là luôn phải benchmark rule / workflow / chatbot trước khi mở agent loop [trang 13]. Bên cạnh đó, nội dung cũng nêu các trường hợp khi nào không nên dùng agent (hay khi nào cần agent chỉ 'suy nghĩ' nhưng không hành động được): khi mọi thứ phải 100% deterministic vì mỗi sai sót đều rất đắt, hoặc khi chi phí latency không chấp nhận được (vì loop 3-5 bước là đã quá chậm) [trang 13].",
+    "citations": [
+      13
+    ],
+    "missing": null,
+    "narrowing": [],
+    "have_instead": []
+  },
+  "usage": {
+    "note": "xem trace"
+  },
+  "elapsed_ms": 11770.884990692139
+}

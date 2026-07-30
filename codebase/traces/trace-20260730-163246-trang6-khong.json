@@ -1,0 +1,44 @@
+{
+  "timestamp": "2026-07-30T16:32:46.436378+07:00",
+  "model": "gemini-3.5-flash-lite",
+  "input": {
+    "trang": 6,
+    "cau_hoi": "tóm tắt những ý chính, chi tiết để tôi có thể làm quiz kahoot cuối giờ",
+    "trang_tang": "khong",
+    "trang_so_ky_tu": 0
+  },
+  "guardrail": {
+    "raw": "{\"hop_le\": true, \"ly_do\": \"Câu hỏi yêu cầu tóm tắt ý chính để ôn tập chuẩn bị làm quiz cuối giờ, liên quan trực tiếp đến nội dung học tập.\"}",
+    "parsed": {
+      "hop_le": true,
+      "ly_do": "Câu hỏi yêu cầu tóm tắt ý chính để ôn tập chuẩn bị làm quiz cuối giờ, liên quan trực tiếp đến nội dung học tập."
+    }
+  },
+  "classification": {
+    "raw": "{\n  \"tier\": \"khong\",\n  \"answer\": \"\",\n  \"citations\": [],\n  \"missing\": \"Trang 6 hiện chưa có nội dung trong kho dữ liệu để tóm tắt các ý chính làm quiz.\",\n  \"narrowing\": [\n    \"Bạn có muốn xem lại nội dung tóm tắt của các trang trước đó có trong kho không?\"\n  ],\n  \"have_instead\": []\n}",
+    "parsed": {
+      "tier": "khong",
+      "answer": "",
+      "citations": [],
+      "missing": "Trang 6 hiện chưa có nội dung trong kho dữ liệu để tóm tắt các ý chính làm quiz.",
+      "narrowing": [
+        "Bạn có muốn xem lại nội dung tóm tắt của các trang trước đó có trong kho không?"
+      ],
+      "have_instead": []
+    }
+  },
+  "output": {
+    "tier": "khong",
+    "answer": "",
+    "citations": [],
+    "missing": "Trang 6 hiện chưa có nội dung trong kho dữ liệu để tóm tắt các ý chính làm quiz.",
+    "narrowing": [
+      "Bạn có muốn xem lại nội dung tóm tắt của các trang trước đó có trong kho không?"
+    ],
+    "have_instead": []
+  },
+  "usage": {
+    "note": "xem trace"
+  },
+  "elapsed_ms": 12345.240831375122
+}

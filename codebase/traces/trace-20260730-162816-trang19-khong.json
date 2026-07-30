@@ -1,0 +1,44 @@
+{
+  "timestamp": "2026-07-30T16:28:16.696522+07:00",
+  "model": "gemini-3.5-flash-lite",
+  "input": {
+    "trang": 19,
+    "cau_hoi": "tóm tắt bài hôm nay đi xem nào",
+    "trang_tang": "khong",
+    "trang_so_ky_tu": 0
+  },
+  "guardrail": {
+    "raw": "{\"hop_le\": true, \"ly_do\": \"Học viên yêu cầu tóm tắt nội dung bài học, nằm trong phạm vi học tập hợp lệ.\"}",
+    "parsed": {
+      "hop_le": true,
+      "ly_do": "Học viên yêu cầu tóm tắt nội dung bài học, nằm trong phạm vi học tập hợp lệ."
+    }
+  },
+  "classification": {
+    "raw": "{\n  \"tier\": \"khong\",\n  \"answer\": \"\",\n  \"citations\": [],\n  \"missing\": \"Hiện tại không có nội dung lưu trữ cho trang 19 để tóm tắt bài học.\",\n  \"narrowing\": [\n    \"Bạn có muốn xem lại nội dung của các trang trước đó không?\"\n  ],\n  \"have_instead\": []\n}",
+    "parsed": {
+      "tier": "khong",
+      "answer": "",
+      "citations": [],
+      "missing": "Hiện tại không có nội dung lưu trữ cho trang 19 để tóm tắt bài học.",
+      "narrowing": [
+        "Bạn có muốn xem lại nội dung của các trang trước đó không?"
+      ],
+      "have_instead": []
+    }
+  },
+  "output": {
+    "tier": "khong",
+    "answer": "",
+    "citations": [],
+    "missing": "Hiện tại không có nội dung lưu trữ cho trang 19 để tóm tắt bài học.",
+    "narrowing": [
+      "Bạn có muốn xem lại nội dung của các trang trước đó không?"
+    ],
+    "have_instead": []
+  },
+  "usage": {
+    "note": "xem trace"
+  },
+  "elapsed_ms": 11129.472017288208
+}

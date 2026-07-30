@@ -1,0 +1,44 @@
+{
+  "timestamp": "2026-07-30T16:28:38.785852+07:00",
+  "model": "gemini-3.5-flash-lite",
+  "input": {
+    "trang": 37,
+    "cau_hoi": "tóm tắt nội dung chính trong slide này",
+    "trang_tang": "khong",
+    "trang_so_ky_tu": 0
+  },
+  "guardrail": {
+    "raw": "```json\n{\"hop_le\": true, \"ly_do\": \"Học viên yêu cầu tóm tắt nội dung slide, liên quan trực tiếp đến việc học tập.\"}\n```",
+    "parsed": {
+      "hop_le": true,
+      "ly_do": "Học viên yêu cầu tóm tắt nội dung slide, liên quan trực tiếp đến việc học tập."
+    }
+  },
+  "classification": {
+    "raw": "{\n  \"tier\": \"khong\",\n  \"answer\": \"\",\n  \"citations\": [],\n  \"missing\": \"Hiện tại kho dữ liệu không có nội dung cho trang 37 này nên tôi không thể tóm tắt được.\",\n  \"narrowing\": [\n    \"Bạn có muốn xem lại nội dung của các trang trước đó không?\"\n  ],\n  \"have_instead\": []\n}",
+    "parsed": {
+      "tier": "khong",
+      "answer": "",
+      "citations": [],
+      "missing": "Hiện tại kho dữ liệu không có nội dung cho trang 37 này nên tôi không thể tóm tắt được.",
+      "narrowing": [
+        "Bạn có muốn xem lại nội dung của các trang trước đó không?"
+      ],
+      "have_instead": []
+    }
+  },
+  "output": {
+    "tier": "khong",
+    "answer": "",
+    "citations": [],
+    "missing": "Hiện tại kho dữ liệu không có nội dung cho trang 37 này nên tôi không thể tóm tắt được.",
+    "narrowing": [
+      "Bạn có muốn xem lại nội dung của các trang trước đó không?"
+    ],
+    "have_instead": []
+  },
+  "usage": {
+    "note": "xem trace"
+  },
+  "elapsed_ms": 11148.92315864563
+}

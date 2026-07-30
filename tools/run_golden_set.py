@@ -162,7 +162,13 @@ def run_one_case(corpus, ma, turn_id, trang_override, tier_mong_doi, turns_by_id
     t0 = time.time()
 
     guardrail_raw = call_gemini_with_retry(call_ai.GUARDRAIL_PROMPT, f"CÂU HỎI HỌC VIÊN: {cau_hoi}")
-    guardrail_parsed = call_ai.parse_json(guardrail_raw["text"])
+    try:
+        guardrail_parsed = call_ai.parse_json(guardrail_raw["text"])
+    except json.JSONDecodeError:
+        # An toàn: guardrail trả JSON hỏng -> mặc định cho qua (giống default
+        # trong call_ai.py: "default an toàn: cho qua"), nhưng đánh dấu rõ để
+        # không lẫn với case guardrail thật sự đánh giá "hop_le".
+        guardrail_parsed = {"hop_le": True, "ly_do": f"GUARDRAIL_PARSE_ERROR: {guardrail_raw['text'][:200]!r}"}
     hop_le = guardrail_parsed.get("hop_le", True)
 
     if not hop_le:
