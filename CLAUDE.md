@@ -61,7 +61,22 @@ Ví dụ đầy đủ 3 tầng: `codebase/sample-responses.json`.
 
 ## Git
 
-`main` là nhánh chốt, **không push thẳng**. Làm trên nhánh của vai mình (`data/…` `build/…` `prompt/…` `spec/…`), muốn vào `main` thì mở PR.
+`main` là nhánh chốt, **không push thẳng**. Làm trên nhánh của vai mình (`data/…` `build/…` `prompt/…` `spec/…`), muốn vào `main` thì mở PR — **Đức (P4) review rồi merge**.
+
+```bash
+git checkout main && git pull
+git checkout -b data/ten-viec        # data/ build/ prompt/ spec/ theo vai mình
+# ... làm việc, commit ...
+git push -u origin data/ten-viec
+
+gh pr create --base main --head data/ten-viec \
+  --title "<đổi gì>" --body "<làm gì · đã tự kiểm thế nào · còn treo gì cần P4 quyết>"
+```
+
+Chưa có `gh` thì mở link so sánh rồi bấm *Create pull request*:
+`https://github.com/phamquoctuan2308/Batch03-K3-Day04-Hackathon-AI-2A202601983/compare/main...<tên-nhánh>`
+
+**Thân PR phải có 3 phần:** làm gì · **đã tự kiểm thế nào** (số nào đối chiếu với đâu) · **còn treo gì cần P4 quyết**. Người review không đọc được suy nghĩ — chỗ nào chưa chắc thì nói ra trong PR, đừng để đến CP5 mới lộ.
 
 ## File nào là thật
 
