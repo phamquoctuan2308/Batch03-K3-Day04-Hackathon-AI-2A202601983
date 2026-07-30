@@ -1,0 +1,262 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8" />
+<title>Tutor biết nói "mình không biết" — Nhóm Vin Brothers · Zone D305</title>
+<style>
+  :root{
+    --bg:#f6f7f9; --card:#fff; --line:#e0e2e7; --ink:#1b1e24; --mute:#6b7280;
+    --accent:#3b5bfd; --bad:#b3261e; --bad-bg:#fbe9e8; --good:#1a7f4b; --good-bg:#e9f7ef;
+    --warn:#a15c00; --gray:#52606d;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:#dfe2e7;color:var(--ink);
+       font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+
+  /* Mỗi .slide = 1 trang 16:9. In ra PDF: Cmd+P, chọn Ngang, bỏ header/footer. */
+  .slide{
+    width:1280px;height:720px;margin:22px auto;background:var(--card);
+    border:1px solid var(--line);border-radius:10px;padding:42px 54px;
+    display:flex;flex-direction:column;position:relative;overflow:hidden;
+  }
+  .no{position:absolute;right:22px;bottom:16px;font-size:12px;color:#c3c7cd}
+  h1{font-size:31px;margin:0 0 6px;line-height:1.2}
+  .sub{font-size:15px;color:var(--mute);margin:0 0 22px}
+  .src{margin-top:auto;font-size:12px;color:var(--mute);padding-top:14px;border-top:1px solid var(--line)}
+  .src code{background:#eef0f3;padding:1px 5px;border-radius:4px}
+  b.hl{color:var(--bad)}
+
+  /* slide 1 — quote chatlog */
+  .qs{display:flex;flex-direction:column;gap:12px}
+  .q{border:1px solid var(--line);border-left:4px solid var(--bad);border-radius:8px;
+     background:#fcfcfd;padding:12px 16px;font-size:16.5px;line-height:1.5}
+  .q .who{display:inline-block;width:34px;color:var(--mute);font-size:13px;font-weight:700}
+  .q .tut{color:#3a3f47}
+  .q .doi{background:#ffe3e0;color:var(--bad);font-weight:800;padding:0 4px;border-radius:3px}
+  .q .ma{float:right;font-size:12px;color:var(--mute)}
+  .after{text-align:center;font-size:15px;color:var(--bad);font-weight:700;margin:16px 0 14px}
+  .nums{display:flex;gap:40px;justify-content:center}
+  .nums div{text-align:center}
+  .nums b{display:block;font-size:38px;line-height:1;color:var(--bad)}
+  .nums span{font-size:13px;color:var(--mute)}
+
+  /* slide 2 — bảng tick */
+  table{width:100%;border-collapse:collapse;font-size:16px}
+  th,td{padding:13px 14px;border-bottom:1px solid var(--line);text-align:left}
+  th{font-size:13px;color:var(--mute);text-transform:uppercase;letter-spacing:.04em}
+  td.c{text-align:center;font-size:15px}
+  tr.pick{background:var(--good-bg)}
+  tr.pick td{font-weight:700}
+  .yes{color:var(--good);font-weight:800}
+  .no{color:#c9ced4;font-weight:800}
+  .verdict{font-size:12px;font-weight:800;padding:3px 9px;border-radius:999px}
+  .v-pick{background:var(--good);color:#fff}
+  .v-drop{background:#eef0f3;color:var(--mute)}
+
+  /* slide 3 — 4 tầng */
+  .one{font-size:23px;line-height:1.5;background:#f7f8fb;border-left:4px solid var(--accent);
+       border-radius:8px;padding:20px 24px;margin-bottom:26px}
+  .tiers{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+  .tier{border:1px solid var(--line);border-radius:9px;padding:14px;font-size:14px;line-height:1.45}
+  .tier .t{font-weight:800;font-size:15px;margin-bottom:6px}
+  .t-du{border-color:var(--good);background:var(--good-bg)} .t-du .t{color:var(--good)}
+  .t-mo{border-color:var(--warn);background:#fdf3df} .t-mo .t{color:var(--warn)}
+  .t-kh{border-color:var(--gray);background:#eef1f3} .t-kh .t{color:var(--gray)}
+  .t-tc{border-color:var(--bad);background:var(--bad-bg)} .t-tc .t{color:var(--bad)}
+  .demo-note{margin-top:24px;font-size:15px;background:#fff8e1;border:1px dashed var(--warn);
+             border-radius:8px;padding:13px 16px}
+
+  /* slide 4 — kết quả */
+  .bar{display:flex;align-items:flex-end;gap:26px;height:210px;margin:6px 0 20px}
+  .bcol{flex:1;display:flex;flex-direction:column;justify-content:flex-end;align-items:center;gap:8px}
+  .bcol .v{width:100%;border-radius:7px 7px 0 0;background:var(--gray)}
+  .bcol.ok .v{background:var(--good)}
+  .bcol .lb{font-size:13px;color:var(--mute)} .bcol .pc{font-size:19px;font-weight:800}
+  .barline{position:relative;border-top:2px dashed var(--bad);margin-top:-1px}
+  .fail{font-size:14.5px;background:#fcfcfd;border:1px solid var(--line);border-radius:8px;padding:13px 16px}
+
+  /* slide 5 — chỗ trống */
+  .todo{border:2px dashed var(--warn);border-radius:10px;padding:26px;background:#fffdf5;
+        font-size:16px;line-height:1.6}
+  /* slide 6 */
+  ul.next{font-size:17px;line-height:1.9;margin:0 0 auto;padding-left:22px}
+  .lesson{font-size:17px;background:#f7f8fb;border-left:4px solid var(--accent);
+          border-radius:8px;padding:18px 22px;margin-top:14px}
+  @media print{
+    body{background:#fff}
+    .slide{margin:0;border:none;border-radius:0;page-break-after:always;box-shadow:none}
+  }
+</style>
+</head>
+<body>
+
+<!-- ═══ 1 ═══════════════════════════════════════════════ -->
+<section class="slide">
+  <h1>Học viên hỏi về trang đang xem — tutor đòi họ tự đưa nội dung trang đó</h1>
+  <p class="sub">Job: hiểu một trang tài liệu ngay trong lúc học, không phải rời trang đi tìm chỗ khác</p>
+
+  <div class="qs">
+    <div class="q">
+      <span class="ma">T0769 · 👎</span>
+      <span class="who">HV</span>“giải thích nghĩa chi tiết của trang 4”<br>
+      <span class="who">🤖</span><span class="tut">“…vui lòng <span class="doi">cung cấp nội dung hoặc tiêu đề của trang 4</span> đó để mình hỗ trợ…”</span>
+    </div>
+    <div class="q">
+      <span class="ma">T0649</span>
+      <span class="who">HV</span>“tóm tắt nội dung chính trong slide này”<br>
+      <span class="who">🤖</span><span class="tut">“…Bạn có thể <span class="doi">cung cấp thêm thông tin hoặc tiêu đề của slide đó</span>…”</span>
+    </div>
+    <div class="q">
+      <span class="ma">T0811</span>
+      <span class="who">HV</span>“Design Pattern ReAct là gì có lưu ý gì về nó?”<br>
+      <span class="who">🤖</span><span class="tut">“…<span class="doi">Nếu bạn có tài liệu cụ thể</span>… hãy cho tôi biết”</span>
+    </div>
+  </div>
+
+  <div class="after">cả ba đều là lượt CUỐI của hội thoại — học viên đi luôn</div>
+  <div class="nums">
+    <div><b>97</b><span>hội thoại chết tại câu bó tay</span></div>
+    <div><b>60</b><span>chỉ hỏi đúng 1 câu rồi bỏ</span></div>
+    <div><b>42</b><span>câu từ chối đòi HV cung cấp nội dung</span></div>
+    <div><b>15/15</b><span>lượt bó tay bị 👎 — 0 lượt 👍</span></div>
+  </div>
+
+  <div class="src">Nguồn: <code>chat_history_anonymized_for_hackathon.csv</code> — 1.261 turn · 369 học viên · 585 hội thoại · chế độ <code>in_class</code></div>
+  <div class="no">1 / 6</div>
+</section>
+
+<!-- ═══ 2 ═══════════════════════════════════════════════ -->
+<section class="slide">
+  <h1>Chỉ một ứng viên đủ cả ba điều kiện</h1>
+  <p class="sub">Đếm được bằng số · hậu quả quan sát được · người dùng ghét ra mặt</p>
+
+  <table>
+    <tr><th>Ứng viên</th><th style="text-align:center">Đếm được</th>
+        <th style="text-align:center">Hậu quả thấy được</th><th style="text-align:center">Người dùng ghét</th>
+        <th style="text-align:center">Chọn?</th></tr>
+    <tr class="pick">
+      <td>Tutor đòi học viên cung cấp nội dung</td>
+      <td class="c"><span class="yes">✓</span> 15,2% turn</td>
+      <td class="c"><span class="yes">✓</span> 60 người bỏ đi</td>
+      <td class="c"><span class="yes">✓</span> 15/15 👎</td>
+      <td class="c"><span class="verdict v-pick">CHỌN</span></td>
+    </tr>
+    <tr>
+      <td>Sinh quiz / câu hỏi ôn tập</td>
+      <td class="c"><span class="no">✕</span> 0,8% turn</td>
+      <td class="c"><span class="no">✕</span></td>
+      <td class="c"><span class="no">✕</span> có 👍</td>
+      <td class="c"><span class="verdict v-drop">LOẠI</span></td>
+    </tr>
+    <tr>
+      <td>46,2% câu trả lời không có citation</td>
+      <td class="c"><span class="yes">✓</span> 582/1.261</td>
+      <td class="c"><span class="no">✕</span></td>
+      <td class="c"><span class="no">✕</span></td>
+      <td class="c"><span class="verdict v-drop">LOẠI</span></td>
+    </tr>
+    <tr>
+      <td>Tutor không kiểm tra hiểu bài</td>
+      <td class="c"><span class="no">✕</span> vắng field</td>
+      <td class="c"><span class="no">✕</span></td>
+      <td class="c"><span class="no">✕</span></td>
+      <td class="c"><span class="verdict v-drop">LOẠI</span></td>
+    </tr>
+  </table>
+
+  <p style="font-size:16px;margin-top:22px">
+    <b>Sinh quiz loại vì không có pain</b> — tutor hiện tại đã làm được: <code>T0907</code> trả lời tốt, cite <code>[67,1]</code>, học viên bấm 👍. <b>3/4 case quiz thành công.</b>
+  </p>
+  <div class="src">Bảng đầy đủ + lý do loại từng ứng viên: <code>spec.md §2</code></div>
+  <div class="no">2 / 6</div>
+</section>
+
+<!-- ═══ 3 ═══════════════════════════════════════════════ -->
+<section class="slide">
+  <h1>Dạy tutor cách nói “mình không biết” mà vẫn giúp được</h1>
+  <p class="sub">Lát cắt: một quyết định AI</p>
+
+  <div class="one">
+    AI tự quyết <b>“mình có đủ căn cứ để trả lời hay không — và nếu không thì thu hẹp bằng cách nào”</b>,
+    rồi hành xử theo 3 tầng. <b>Không bao giờ đòi học viên tự cung cấp nội dung.</b>
+  </div>
+
+  <div class="tiers">
+    <div class="tier t-du"><div class="t">🟢 Đủ căn cứ</div>Trả lời + chip <code>[trang N]</code></div>
+    <div class="tier t-mo"><div class="t">🟡 Căn cứ mỏng</div>Trả lời phần chắc + nói rõ phần nào không có</div>
+    <div class="tier t-kh"><div class="t">⬜ Không có</div>Nói thẳng + <b>đưa ra trang mình thực sự có</b> + nút thu hẹp</div>
+    <div class="tier t-tc"><div class="t">🔴 Từ chối</div>Guardrail chặn <b>trước</b> quyết định 3 tầng</div>
+  </div>
+
+  <div class="demo-note">
+    <b>Demo live — 4 nhịp:</b> mở trang 6 (0 ký tự) → hỏi “tóm tắt ý chính để làm quiz” → tutor nói không có,
+    đưa ra <b>Trang 4, 5, 7</b> → <b>bấm nút “trang 4” → màn hình nhảy sang trang 4 và trả lời được</b> → thử câu jailbreak, banner đỏ.
+  </div>
+
+  <div class="src">Prototype: <code>codebase/index.html</code> + <code>codebase/server.py</code> · AI thật: <code>codebase/call_ai.py</code>, 70+ trace trong <code>codebase/traces/</code></div>
+  <div class="no">3 / 6</div>
+</section>
+
+<!-- ═══ 4 ═══════════════════════════════════════════════ -->
+<section class="slide">
+  <h1>Quality bar chốt 80% lúc 16:30 ngày 1 — đo được 82,8%</h1>
+  <p class="sub">Bar đặt trước khi biết kết quả. Lý do dựa trên mức nghiêm trọng của một lần sai, không suy ngược từ số đo.</p>
+
+  <div class="bar">
+    <div class="bcol"><span class="pc">37,9%</span><div class="v" style="height:80px"></div><span class="lb">run-01 · trước khi sửa</span></div>
+    <div class="bcol"><span class="pc">75,9%</span><div class="v" style="height:160px"></div><span class="lb">run-02 · sau sửa kho + prompt</span></div>
+    <div class="bcol ok"><span class="pc">82,8%</span><div class="v" style="height:175px"></div><span class="lb">run-03 · <b>ĐẠT</b></span></div>
+  </div>
+
+  <p style="font-size:15.5px;margin:0 0 14px">
+    Kèm <b>2 điều kiện cứng bắt buộc 100%</b>: 0 case bịa nội dung · tier <code>tu_choi</code> đạt đủ 3 điều kiện an toàn ở mọi case lớp ③.
+  </p>
+  <div class="fail">
+    <b>Thất bại đáng kể nhất:</b> 2 case model quá tự tin trên trang chỉ có một dòng tiêu đề (25-95 ký tự) —
+    tác dụng phụ của quy tắc “phân vân giữa 2 tầng thì chọn tầng cao hơn”. Ghi đủ, không giấu.
+  </div>
+
+  <div class="src">29 case golden set 100% từ chatlog thật · <code>eval/golden-set.md</code> · <code>eval/run-01→03.md</code> · mọi case fail ghi đủ</div>
+  <div class="no">4 / 6</div>
+</section>
+
+<!-- ═══ 5 ═══════════════════════════════════════════════ -->
+<section class="slide">
+  <h1>User thật nói gì</h1>
+  <p class="sub">≥5 người ngoài nhóm · mỗi phiên 10 phút · giao task thật rồi im lặng quan sát</p>
+
+  <div class="todo">
+    <b>⚠️ SLIDE NÀY CHƯA ĐIỀN — làm sau vòng validation sáng N2.</b><br><br>
+    Cần: <b>2 quote nguyên văn</b> có tên/vai người thử (ưu tiên willing user đã khai từ CP1)
+    · <b>1 thay đổi đã làm</b> từ feedback, có ghi trong <code>spec.md §9 Changelog</code>
+    · hoặc <b>giữ nguyên kèm lý do có căn cứ</b>.<br><br>
+    Nguồn khi có: <code>validation/</code>
+  </div>
+
+  <div class="src">Rubric R6 — 8 điểm: feedback log ≥5 mẩu (4đ) + ≥1 thay đổi từ feedback hoặc giữ nguyên có lý do (4đ)</div>
+  <div class="no">5 / 6</div>
+</section>
+
+<!-- ═══ 6 ═══════════════════════════════════════════════ -->
+<section class="slide">
+  <h1>Nếu có thêm một tuần</h1>
+  <p class="sub">Ba việc trỏ thẳng vào failure chưa xử</p>
+
+  <ul class="next">
+    <li><b>Sửa quy tắc phân vân tầng</b> — hiện “phân vân thì chọn tầng cao hơn” làm model quá tự tin trên trang chỉ có tiêu đề (2 case fail ở run-03).</li>
+    <li><b>Tách câu từ chối theo loại</b> — hỏi “deadline nộp bài?” đang nhận đúng câu dành cho jailbreak, lệch ngữ cảnh.</li>
+    <li><b>Nối UI với AI cho toàn bộ 35 trang</b> và mở rộng golden set lên 30+ case, thêm chiều kiểm “tier <code>khong</code> phải có <code>have_instead</code> không rỗng”.</li>
+  </ul>
+
+  <div class="lesson">
+    <b>Bài học lớn nhất:</b> mẫu 1-2 lượt không đủ để kết luận gì với model này.
+    Bản sửa prompt đầu tiên của nhóm trông ổn ở 2 lượt chạy — chạy 4 lượt mới lộ ra là nó
+    <b>làm hỏng</b> case tốt (trang 9 rơi từ <code>mong</code> 4/4 xuống <code>khong</code> 3/4). Suýt đẩy lên nhánh chính.
+  </div>
+
+  <div class="src">Nhóm Vin Brothers · Zone D305 · <code>spec.md</code> · <code>eval/</code> · <code>codebase/</code></div>
+  <div class="no">6 / 6</div>
+</section>
+
+</body>
+</html>
