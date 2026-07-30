@@ -1,0 +1,55 @@
+{
+  "timestamp": "2026-07-30T18:43:30.505725+07:00",
+  "model": "gemini-3.5-flash-lite",
+  "input": {
+    "trang": 6,
+    "cau_hoi": "thế còn agent thì sao",
+    "trang_tang": "khong",
+    "trang_so_ky_tu": 0
+  },
+  "guardrail": {
+    "raw": "{\"hop_le\": true, \"ly_do\": \"Học viên hỏi về khái niệm Agent trong nội dung bài học.\"}",
+    "parsed": {
+      "hop_le": true,
+      "ly_do": "Học viên hỏi về khái niệm Agent trong nội dung bài học."
+    }
+  },
+  "classification": {
+    "raw": "{\n  \"tier\": \"khong\",\n  \"answer\": \"\",\n  \"citations\": [],\n  \"missing\": \"Trang 6 hiện không có nội dung trong kho để trả lời chi tiết về agent.\",\n  \"narrowing\": [\n    \"Autonomous Agent là gì và phân biệt như thế nào trong Spectrum (Bot -> Chatbot -> Agent)?\",\n    \"Agentic Fit Framework dùng để làm gì và khi nào nên nâng từ chatbot lên agent?\"\n  ],\n  \"have_instead\": [7, 4, 8]\n}",
+    "parsed": {
+      "tier": "khong",
+      "answer": "",
+      "citations": [],
+      "missing": "Trang 6 hiện không có nội dung trong kho để trả lời chi tiết về agent.",
+      "narrowing": [
+        "Autonomous Agent là gì và phân biệt như thế nào trong Spectrum (Bot -> Chatbot -> Agent)?",
+        "Agentic Fit Framework dùng để làm gì và khi nào nên nâng từ chatbot lên agent?"
+      ],
+      "have_instead": [
+        7,
+        4,
+        8
+      ]
+    }
+  },
+  "output": {
+    "tier": "khong",
+    "answer": "",
+    "citations": [],
+    "missing": "Trang 6 hiện không có nội dung trong kho để trả lời chi tiết về agent.",
+    "narrowing": [
+      "Autonomous Agent là gì và phân biệt như thế nào trong Spectrum (Bot -> Chatbot -> Agent)?",
+      "Agentic Fit Framework dùng để làm gì và khi nào nên nâng từ chatbot lên agent?"
+    ],
+    "have_instead": [
+      7,
+      4,
+      8
+    ]
+  },
+  "usage": {
+    "input_tokens": 1836,
+    "output_tokens": 148
+  },
+  "elapsed_ms": 2082.21173286438
+}

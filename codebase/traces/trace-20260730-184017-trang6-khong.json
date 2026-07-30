@@ -1,0 +1,61 @@
+{
+  "timestamp": "2026-07-30T18:40:17.347975+07:00",
+  "model": "gemini-3.5-flash-lite",
+  "input": {
+    "trang": 6,
+    "cau_hoi": "tóm tắt slide này",
+    "trang_tang": "khong",
+    "trang_so_ky_tu": 0
+  },
+  "guardrail": {
+    "raw": "{\"hop_le\": true, \"ly_do\": \"Học viên yêu cầu tóm tắt nội dung slide bài học, đây là câu hỏi học tập hợp lệ.\"}",
+    "parsed": {
+      "hop_le": true,
+      "ly_do": "Học viên yêu cầu tóm tắt nội dung slide bài học, đây là câu hỏi học tập hợp lệ."
+    }
+  },
+  "classification": {
+    "raw": "{\n  \"tier\": \"khong\",\n  \"answer\": \"\",\n  \"citations\": [],\n  \"missing\": \"Hiện tại không có nội dung cho trang này trong kho dữ liệu.\",\n  \"narrowing\": [\n    \"Agentic Fit là gì?\",\n    \"Phân biệt Bot, Chatbot và Agent?\",\n    \"Các kiểu hệ thống AI và Kiến trúc Agent là gì?\"\n  ],\n  \"have_instead\": [3, 4, 5, 7, 8]\n}",
+    "parsed": {
+      "tier": "khong",
+      "answer": "",
+      "citations": [],
+      "missing": "Hiện tại không có nội dung cho trang này trong kho dữ liệu.",
+      "narrowing": [
+        "Agentic Fit là gì?",
+        "Phân biệt Bot, Chatbot và Agent?",
+        "Các kiểu hệ thống AI và Kiến trúc Agent là gì?"
+      ],
+      "have_instead": [
+        3,
+        4,
+        5,
+        7,
+        8
+      ]
+    }
+  },
+  "output": {
+    "tier": "khong",
+    "answer": "",
+    "citations": [],
+    "missing": "Hiện tại không có nội dung cho trang này trong kho dữ liệu.",
+    "narrowing": [
+      "Agentic Fit là gì?",
+      "Phân biệt Bot, Chatbot và Agent?",
+      "Các kiểu hệ thống AI và Kiến trúc Agent là gì?"
+    ],
+    "have_instead": [
+      3,
+      4,
+      5,
+      7,
+      8
+    ]
+  },
+  "usage": {
+    "input_tokens": 1836,
+    "output_tokens": 150
+  },
+  "elapsed_ms": 2476.732015609741
+}

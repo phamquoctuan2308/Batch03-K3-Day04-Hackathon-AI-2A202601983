@@ -1,0 +1,53 @@
+{
+  "timestamp": "2026-07-30T18:39:36.432990+07:00",
+  "model": "gemini-3.5-flash-lite",
+  "input": {
+    "trang": 6,
+    "cau_hoi": "tóm tắt slide này",
+    "trang_tang": "khong",
+    "trang_so_ky_tu": 0
+  },
+  "guardrail": {
+    "raw": "{\"hop_le\": true, \"ly_do\": \"Học viên yêu cầu tóm tắt nội dung slide bài học, phù hợp với phạm vi học tập.\"}",
+    "parsed": {
+      "hop_le": true,
+      "ly_do": "Học viên yêu cầu tóm tắt nội dung slide bài học, phù hợp với phạm vi học tập."
+    }
+  },
+  "classification": {
+    "raw": "{\n  \"tier\": \"khong\",\n  \"answer\": \"\",\n  \"citations\": [],\n  \"missing\": \"Kho hiện không có nội dung cho trang này.\",\n  \"narrowing\": [\n    \"Bạn có muốn xem nội dung về Agentic Fit ở trang 4 không?\",\n    \"Bạn có muốn xem nội dung về phân loại Autonomous Agent ở trang 7 không?\"\n  ],\n  \"have_instead\": [4, 7]\n}",
+    "parsed": {
+      "tier": "khong",
+      "answer": "",
+      "citations": [],
+      "missing": "Kho hiện không có nội dung cho trang này.",
+      "narrowing": [
+        "Bạn có muốn xem nội dung về Agentic Fit ở trang 4 không?",
+        "Bạn có muốn xem nội dung về phân loại Autonomous Agent ở trang 7 không?"
+      ],
+      "have_instead": [
+        4,
+        7
+      ]
+    }
+  },
+  "output": {
+    "tier": "khong",
+    "answer": "",
+    "citations": [],
+    "missing": "Kho hiện không có nội dung cho trang này.",
+    "narrowing": [
+      "Bạn có muốn xem nội dung về Agentic Fit ở trang 4 không?",
+      "Bạn có muốn xem nội dung về phân loại Autonomous Agent ở trang 7 không?"
+    ],
+    "have_instead": [
+      4,
+      7
+    ]
+  },
+  "usage": {
+    "input_tokens": 1836,
+    "output_tokens": 138
+  },
+  "elapsed_ms": 2409.479856491089
+}

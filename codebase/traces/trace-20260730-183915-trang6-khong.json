@@ -1,0 +1,61 @@
+{
+  "timestamp": "2026-07-30T18:39:15.938063+07:00",
+  "model": "gemini-3.5-flash-lite",
+  "input": {
+    "trang": 6,
+    "cau_hoi": "tóm tắt slide này",
+    "trang_tang": "khong",
+    "trang_so_ky_tu": 0
+  },
+  "guardrail": {
+    "raw": "{\"hop_le\": true, \"ly_do\": \"Học viên yêu cầu tóm tắt nội dung slide bài học.\"}",
+    "parsed": {
+      "hop_le": true,
+      "ly_do": "Học viên yêu cầu tóm tắt nội dung slide bài học."
+    }
+  },
+  "classification": {
+    "raw": "{\n  \"tier\": \"khong\",\n  \"answer\": \"\",\n  \"citations\": [],\n  \"missing\": \"Kho hiện không có nội dung cho trang 6.\",\n  \"narrowing\": [\n    \"Agentic Fit là gì?\",\n    \"Autonomous Agent và Spectrum là gì?\",\n    \"Agent Loop và Kiến trúc Agent gồm những gì?\"\n  ],\n  \"have_instead\": [5, 7, 4, 8, 3]\n}",
+    "parsed": {
+      "tier": "khong",
+      "answer": "",
+      "citations": [],
+      "missing": "Kho hiện không có nội dung cho trang 6.",
+      "narrowing": [
+        "Agentic Fit là gì?",
+        "Autonomous Agent và Spectrum là gì?",
+        "Agent Loop và Kiến trúc Agent gồm những gì?"
+      ],
+      "have_instead": [
+        5,
+        7,
+        4,
+        8,
+        3
+      ]
+    }
+  },
+  "output": {
+    "tier": "khong",
+    "answer": "",
+    "citations": [],
+    "missing": "Kho hiện không có nội dung cho trang 6.",
+    "narrowing": [
+      "Agentic Fit là gì?",
+      "Autonomous Agent và Spectrum là gì?",
+      "Agent Loop và Kiến trúc Agent gồm những gì?"
+    ],
+    "have_instead": [
+      5,
+      7,
+      4,
+      8,
+      3
+    ]
+  },
+  "usage": {
+    "input_tokens": 1836,
+    "output_tokens": 133
+  },
+  "elapsed_ms": 2796.8788146972656
+}
