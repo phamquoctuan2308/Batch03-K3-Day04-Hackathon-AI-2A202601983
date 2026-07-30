@@ -95,14 +95,18 @@ Regex bắt "bó tay" **cố ý không bắt** "xin lỗi"/"rất tiếc" vì tu
 
 ## §3. Giải pháp tương tự đã nghiên cứu
 
-> **TODO — P4 gom, mỗi thành viên thử 1 sản phẩm 15 phút.** Mỗi mục trả lời 4 câu: ① họ giải job này bằng flow nào ② một điều đáng học *(quan sát cụ thể, không phải "giao diện đẹp")* ③ một điều đáng né ④ mình khác gì ở lát cắt này.
+**Cách thử — giống nhau cho cả hai, để so sánh được:** nạp cùng một file `data/vlearn-pack/slides/d1-slide-hackathon.pdf` (29 trang), rồi hỏi đúng 2 câu — một câu **có** căn cứ (*"Tóm tắt trang 5"*) và một câu **không** có căn cứ (*"Trang 47 nói gì?"* — file không có trang 47). Câu thứ hai mới là câu đo được lát cắt của nhóm.
 
 | Sản phẩm | Ai thử | Flow | Đáng học | Đáng né | Mình khác gì |
 |---|---|---|---|---|---|
-| NotebookLM | *(điền)* | | | | |
-| ChatGPT study mode | *(điền)* | | | | |
-| Khanmigo | *(điền)* | | | | |
-| *(tự chọn)* | *(điền)* | | | | |
+| **NotebookLM** | P4 · 30/07 | Nạp nguồn → hỏi trong khung chat → trả lời kèm **chỉ số trích dẫn gắn ngay trong câu**, bấm vào mở đúng đoạn gốc trong nguồn | Hỏi trang không có: nó **không dừng ở lời từ chối** mà liệt kê nội dung nó *thực sự có* ở lân cận (trang 25-28: giải phẫu prompt, temperature, top_p). Đúng nguyên tắc "đưa ra trang mình có" — xác nhận hướng thiết kế tầng `khong` của nhóm là đúng | Hai chỗ: ① **suy đoán ra ngoài nguồn** — nhìn mục lục trang 1 rồi đoán *"có khả năng trang 47 thuộc phần Gọi API lần đầu"*, tức là suy diễn về nội dung nó không có; ② **đề nghị đi tìm nguồn bên ngoài** — rời khỏi phạm vi tài liệu được nạp, đúng thứ luật 1 của nhóm cấm | Nhóm chốt cứng: không có căn cứ thì `answer = ""`, không suy diễn kể cả từ mục lục, và **không bao giờ đi ra ngoài kho**. Thà nói ít hơn là đoán |
+| **ChatGPT** *(upload file)* | P4 · 30/07 | Upload PDF → hỏi trong chat → trả lời văn xuôi, **không có trích dẫn trang nào** | Câu từ chối rất sắc: *"File PDF bạn tải lên chỉ có 29 trang, nên không có trang 47"* — nêu **con số kiểm chứng được** thay vì "không tìm thấy" chung chung, rồi đưa 3 lựa chọn thu hẹp (bộ tài liệu khác · ý bạn là trang 4-7 · tải nhầm file) | **Đòi người dùng cung cấp nội dung**: *"hãy tải lên file đó hoặc cho mình biết tên tài liệu"* — đúng nguyên văn lỗi gốc nhóm đang sửa, đo được trong chatlog VLearn ở 74 turn (5,9%) | Đây là luật cứng số 1 của nhóm: tier `khong` **tuyệt đối không đòi học viên cung cấp nội dung**. Có kiểm tự động bằng `RE_DOI_NOI_DUNG` trong `tools/run_golden_set.py`, vi phạm 1 case là fail toàn bộ quality bar |
+
+**Quan sát bắc ngang hai sản phẩm — lý do nhóm bắt buộc có trích dẫn:** cùng một file, cùng câu *"Tóm tắt trang 5"*, hai sản phẩm trả về **nội dung khác hẳn nhau**. NotebookLM nói trang 5 về ImageNet 2009 và bước ngoặt Transformer 2017; ChatGPT nói trang 5 về 70 năm lịch sử AI và hai lần "AI Winter". Ít nhất một trong hai đọc sai trang hoặc bịa — nhưng ChatGPT **không trích dẫn gì** nên người dùng không có cách nào biết bên nào đúng.
+
+Đúng hiện tượng đã đo trong chatlog VLearn: **582/1.261 (46,2%)** câu trả lời không có citation nào, và có case cite sai trang thật (`T1082` — học viên bôi đen ở trang 4, tutor cite `[22]`). Vì vậy chip `[trang N]` ở tầng `du`/`mong` của nhóm không phải trang trí — nó là thứ duy nhất cho học viên tự kiểm.
+
+*Khanmigo và các sản phẩm khác: không thử, hết quỹ thời gian ngày 1. Hai sản phẩm trên đã phủ được cả hai đầu của trục cần so (có trích dẫn vs không có trích dẫn).*
 
 ---
 
