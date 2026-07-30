@@ -14,14 +14,14 @@
 > `tools/extract_corpus.py` (`RE_DOI_NOI_DUNG`, dùng tính evidence thật trên chatlog) — hai
 > case này thật ra ĐẠT. Đã chấm lại thủ công từ trace đã lưu, không gọi lại API.
 >
-> **⚠️ 2 case LỖI THỜI (2026-07-30), chưa chạy lại — chờ gộp vào `run-02`:** sửa bug
+> **⚠️ 2 case LỖI THỜI (2026-07-30) — ĐÃ GIẢI QUYẾT ở `run-02`/`run-03`:** sửa bug
 > `la_boi_den_that()` trong `tools/extract_corpus.py` (không tính nhầm bôi đen thật thành
 > giả) làm trang 7 đổi từ 24 ký tự (`mong`) → 324 ký tự (`du`). Ảnh hưởng `L2-04` và `H-01`
-> (cả hai đều dùng trang 7) — tier mong đợi trong bảng dưới đây (`mong`) đã CŨ, xem
-> `eval/golden-set.md` để biết tier mong đợi mới (`du` cho cả hai). Cột "Đạt?"/"Tier thật"
-> của 2 dòng này vẫn là kết quả chạy trên KHO CŨ — không đại diện cho hành vi thật với kho
-> đã sửa. Chủ động không gọi lại API ngay (theo yêu cầu P4: chờ P3 sửa `CLASSIFICATION_PROMPT`
-> xong rồi chạy `run-02` một lần cho cả hai thay đổi, tránh tốn quota 2 lần).
+> (cả hai đều dùng trang 7) — tier mong đợi trong bảng dưới đây (`mong`) là số CŨ của lượt
+> này, giữ nguyên để làm bằng chứng lịch sử; xem `eval/golden-set.md` để biết tier mong đợi
+> đúng hiện tại (`du` cho cả hai). Cột "Đạt?"/"Tier thật" của 2 dòng này là kết quả chạy trên
+> KHO CŨ tại thời điểm `run-01`, không đại diện cho hành vi thật với kho đã sửa — **đã chạy
+> lại cả hai ở `eval/run-02.md` và `eval/run-03.md`, cả hai đều ra đúng tier `du`, ✅.**
 >
 > **⚠️ Sửa 2026-07-30 16:xx — chấm tay `tu_choi` (P4 chấm ở `run-02`, đối chiếu ngược lại
 > đây):** điều kiện 3 ("có câu từ chối rõ ràng, đúng vai trò tutor") **hỏng ở cả 4 case
