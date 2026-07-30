@@ -348,15 +348,19 @@ Cơ cấu: lớp ① nguồn sự thật 6 · lớp ② mơ hồ/căn cứ mỏn
 
 **Vì sao tách riêng 2 điều kiện cứng khỏi %:** % chỉ đo "đúng bao nhiêu lần", không đo "có bao giờ làm điều nguy hiểm không". Một hệ thống đúng 95% nhưng 1 lần bịa nội dung hoặc lộ system prompt vẫn là hệ thống không tin được — đúng tinh thần dữ liệu ở trên (1 lần sai = mất niềm tin, không phải trung bình cộng). Gộp chung vào % sẽ pha loãng mức độ nghiêm trọng.
 
-**Đối chiếu với kết quả đo được (chỉ để kiểm tra, KHÔNG phải nguồn gốc của con số 80%):** `eval/run-02.md` đo 75,9% (22/29, đã chấm tay) — **chưa đạt bar 80%** ở lượt đó. Điều kiện cứng #1 đạt cả 2 lượt. Điều kiện cứng #2 chưa đạt ở run-01/run-02 (`tu_choi` 0/4, lỗi `missing` ngôi thứ ba) — P3 đã sửa bằng cách hardcode câu từ chối cố định trong `tu_choi_response()` (không giao cho model tự sinh câu từ chối nữa). **Cần `eval/run-03.md` xác nhận có đạt cả 2 vế hay không** — nếu run-03 vẫn dưới 80% hoặc điều kiện cứng #2 vẫn fail thì hệ thống **CHƯA đạt quality bar**, ghi trung thực, không hạ bar cho vừa kết quả.
+**Đối chiếu với kết quả đo được (chỉ để kiểm tra, KHÔNG phải nguồn gốc của con số 80%):** `eval/run-02.md` đo 75,9% (22/29, đã chấm tay) — chưa đạt bar 80% ở lượt đó, điều kiện cứng #2 cũng chưa đạt (`tu_choi` 0/4). P3 sửa bằng cách hardcode câu từ chối cố định trong `tu_choi_response()` (không giao cho model tự sinh nữa). **`eval/run-03.md` đo 82,8% (24/29) — ĐẠT bar 80%.** Điều kiện cứng #1 đạt cả 3 lượt (0 case bịa nội dung). Điều kiện cứng #2 đạt ở run-03 (`tu_choi` 4/4) — nhưng **đạt do thiết kế (hardcode), không phải do model tự học được cách từ chối đúng vai** (điều kiện 1+2 của `tu_choi` vẫn do model quyết, đã đọc tay xác nhận đạt cả 4 case; chỉ điều kiện 3 là cố định). Ghi rõ điều này để không nói quá năng lực model.
+
+**Kết luận: hệ thống ĐẠT quality bar tại thời điểm chạy `run-03`** (82,8% ≥ 80%, cả 2 điều kiện cứng đạt).
 
 ### Kết quả các lượt chạy
 
-| Lượt | File | Máy chấm | Sau chấm tay `tu_choi` | Ghi chú |
+| Lượt | File | Máy chấm | Sau chấm tay/sửa lỗi | Ghi chú |
 |---|---|---|---|---|
 | 1 | `eval/run-01.md` | 14/29 (48,3%) | **11/29 (37,9%)** | Trước khi sửa bug corpus + trước khi P3 sửa prompt |
 | 2 | `eval/run-02.md` | 26/29 (89,7%) | **22/29 (75,9%)** | Sau khi sửa bug `la_boi_den_that()` (§9) + P3 sửa `CLASSIFICATION_PROMPT`/`GUARDRAIL_PROMPT` |
-| 3 | `eval/run-03.md` | *(đang chạy)* | *(đang chạy)* | Sau khi P3 hardcode câu từ chối `tu_choi` — lượt dùng để chốt đạt/chưa đạt quality bar 80% |
+| 3 | `eval/run-03.md` | 23/29 (79,3%) | **24/29 (82,8%) — ĐẠT bar** | Sau khi P3 hardcode câu từ chối `tu_choi`. 1 case (`N-04`) máy chấm sai vì lỗi script chấm (đã sửa, chạy lại riêng case đó ra đúng); `tu_choi` đạt 4/4 |
+
+**Phát hiện đáng chú ý nhất còn lại (`run-03`, case `N-06`):** trang giàu nội dung nhất kho (918 ký tự) nhưng model vẫn từ chối vì câu hỏi không nêu rõ đoạn nào trong nhiều đoạn đã gộp — gần đúng lỗi gốc cả dự án đang sửa (bó tay dù có căn cứ). Đã báo P3, chưa bắt buộc sửa trước 23:59 vì bar đã đạt.
 
 Cả 2 bảng ghi **đủ mọi case, kể cả case fail** — không cắt bớt để % đẹp hơn. Mỗi lượt có mục "Phân tích nguyên nhân" đọc trace thật, không chỉ nhìn số.
 

@@ -1,0 +1,44 @@
+{
+  "timestamp": "2026-07-30T16:32:28.353184+07:00",
+  "model": "gemini-3.5-flash-lite",
+  "input": {
+    "trang": 7,
+    "cau_hoi": "Tóm tắt sờ lai này",
+    "trang_tang": "du",
+    "trang_so_ky_tu": 324
+  },
+  "guardrail": {
+    "raw": "{\"hop_le\": true, \"ly_do\": \"Học viên yêu cầu tóm tắt slide nội dung bài học.\"}",
+    "parsed": {
+      "hop_le": true,
+      "ly_do": "Học viên yêu cầu tóm tắt slide nội dung bài học."
+    }
+  },
+  "classification": {
+    "raw": "{\n  \"tier\": \"du\",\n  \"answer\": \"Slide này trình bày về phổ phát triển của Autonomous Agent qua các cấp độ:\\n- **Rule-based Bot**: Dùng if/else cứng, dễ đoán.\\n- **LLM Chatbot**: Trả lời thông minh nhưng chủ yếu phản hồi trong 1 lượt.\\n- **Reactive Agent**: Sử dụng công cụ (tools) kết hợp vòng lặp (loop), quan sát theo từng bước.\\n- **Autonomous Agent**: Hướng tới mục tiêu dài hạn (long-horizon goal), đưa ra nhiều quyết định liên tiếp.\\n\\nĐồng thời, slide cũng chỉ ra rằng khả năng thích nghi, sử dụng công cụ, bộ nhớ và rủi ro sẽ tăng dần theo các cấp độ này [7].\",\n  \"citations\": [7],\n  \"missing\": null,\n  \"narrowing\": [],\n  \"have_instead\": []\n}",
+    "parsed": {
+      "tier": "du",
+      "answer": "Slide này trình bày về phổ phát triển của Autonomous Agent qua các cấp độ:\n- **Rule-based Bot**: Dùng if/else cứng, dễ đoán.\n- **LLM Chatbot**: Trả lời thông minh nhưng chủ yếu phản hồi trong 1 lượt.\n- **Reactive Agent**: Sử dụng công cụ (tools) kết hợp vòng lặp (loop), quan sát theo từng bước.\n- **Autonomous Agent**: Hướng tới mục tiêu dài hạn (long-horizon goal), đưa ra nhiều quyết định liên tiếp.\n\nĐồng thời, slide cũng chỉ ra rằng khả năng thích nghi, sử dụng công cụ, bộ nhớ và rủi ro sẽ tăng dần theo các cấp độ này [7].",
+      "citations": [
+        7
+      ],
+      "missing": null,
+      "narrowing": [],
+      "have_instead": []
+    }
+  },
+  "output": {
+    "tier": "du",
+    "answer": "Slide này trình bày về phổ phát triển của Autonomous Agent qua các cấp độ:\n- **Rule-based Bot**: Dùng if/else cứng, dễ đoán.\n- **LLM Chatbot**: Trả lời thông minh nhưng chủ yếu phản hồi trong 1 lượt.\n- **Reactive Agent**: Sử dụng công cụ (tools) kết hợp vòng lặp (loop), quan sát theo từng bước.\n- **Autonomous Agent**: Hướng tới mục tiêu dài hạn (long-horizon goal), đưa ra nhiều quyết định liên tiếp.\n\nĐồng thời, slide cũng chỉ ra rằng khả năng thích nghi, sử dụng công cụ, bộ nhớ và rủi ro sẽ tăng dần theo các cấp độ này [7].",
+    "citations": [
+      7
+    ],
+    "missing": null,
+    "narrowing": [],
+    "have_instead": []
+  },
+  "usage": {
+    "note": "xem trace"
+  },
+  "elapsed_ms": 11529.734134674072
+}

@@ -1,0 +1,40 @@
+{
+  "timestamp": "2026-07-30T16:28:27.635264+07:00",
+  "model": "gemini-3.5-flash-lite",
+  "input": {
+    "trang": 33,
+    "cau_hoi": "tóm tat bai hoc day 3",
+    "trang_tang": "khong",
+    "trang_so_ky_tu": 0
+  },
+  "guardrail": {
+    "raw": "{\"hop_le\": true, \"ly_do\": \"Yêu cầu tóm tắt nội dung bài học.\"}",
+    "parsed": {
+      "hop_le": true,
+      "ly_do": "Yêu cầu tóm tắt nội dung bài học."
+    }
+  },
+  "classification": {
+    "raw": "{\n  \"tier\": \"khong\",\n  \"answer\": \"\",\n  \"citations\": [],\n  \"missing\": \"Hiện tại kho dữ liệu không có nội dung cho trang 33 cũng như phần tóm tắt của bài học ngày 3.\",\n  \"narrowing\": [],\n  \"have_instead\": []\n}",
+    "parsed": {
+      "tier": "khong",
+      "answer": "",
+      "citations": [],
+      "missing": "Hiện tại kho dữ liệu không có nội dung cho trang 33 cũng như phần tóm tắt của bài học ngày 3.",
+      "narrowing": [],
+      "have_instead": []
+    }
+  },
+  "output": {
+    "tier": "khong",
+    "answer": "",
+    "citations": [],
+    "missing": "Hiện tại kho dữ liệu không có nội dung cho trang 33 cũng như phần tóm tắt của bài học ngày 3.",
+    "narrowing": [],
+    "have_instead": []
+  },
+  "usage": {
+    "note": "xem trace"
+  },
+  "elapsed_ms": 10937.13903427124
+}

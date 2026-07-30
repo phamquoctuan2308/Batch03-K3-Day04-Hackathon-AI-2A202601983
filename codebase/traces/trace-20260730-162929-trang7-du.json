@@ -1,0 +1,44 @@
+{
+  "timestamp": "2026-07-30T16:29:29.393314+07:00",
+  "model": "gemini-3.5-flash-lite",
+  "input": {
+    "trang": 7,
+    "cau_hoi": "reactive agent là gì",
+    "trang_tang": "du",
+    "trang_so_ky_tu": 324
+  },
+  "guardrail": {
+    "raw": "{\"hop_le\": true, \"ly_do\": \"Học viên hỏi về khái niệm 'reactive agent' trong chủ đề Agent của bài học.\"}",
+    "parsed": {
+      "hop_le": true,
+      "ly_do": "Học viên hỏi về khái niệm 'reactive agent' trong chủ đề Agent của bài học."
+    }
+  },
+  "classification": {
+    "raw": "{\n  \"tier\": \"du\",\n  \"answer\": \"Reactive Agent (trong phổ Autonomous Agent) là loại agent sử dụng công cụ (tools) và vòng lặp (loop), thực hiện quan sát theo từng bước [trang 7].\",\n  \"citations\": [7],\n  \"missing\": null,\n  \"narrowing\": [],\n  \"have_instead\": []\n}",
+    "parsed": {
+      "tier": "du",
+      "answer": "Reactive Agent (trong phổ Autonomous Agent) là loại agent sử dụng công cụ (tools) và vòng lặp (loop), thực hiện quan sát theo từng bước [trang 7].",
+      "citations": [
+        7
+      ],
+      "missing": null,
+      "narrowing": [],
+      "have_instead": []
+    }
+  },
+  "output": {
+    "tier": "du",
+    "answer": "Reactive Agent (trong phổ Autonomous Agent) là loại agent sử dụng công cụ (tools) và vòng lặp (loop), thực hiện quan sát theo từng bước [trang 7].",
+    "citations": [
+      7
+    ],
+    "missing": null,
+    "narrowing": [],
+    "have_instead": []
+  },
+  "usage": {
+    "note": "xem trace"
+  },
+  "elapsed_ms": 12346.769332885742
+}

@@ -1,0 +1,44 @@
+{
+  "timestamp": "2026-07-30T16:30:22.566738+07:00",
+  "model": "gemini-3.5-flash-lite",
+  "input": {
+    "trang": 15,
+    "cau_hoi": "Giải thích đoạn bôi đen ở Trang 15: \"Trang 15 / 46\nday03-tu-chatbot-den-agentic-agent-react.pdf\nTừ Anthropic: Agent Patterns Nên Tăng Dần Theo Nhu Cầu\nAugmented\nLLM\nPrompt +\ndocs + tools\nPrompt\nChaining\nBước nối\ntiếp rõ ràng\nRouting\nChọn path\n/ specialist\nOrchestrator\nWorker\nPhân việc\nrồi tổng hợp\nAgent\nTự quyết nhiều bước\nBắt đầu từ cấu trúc đơn giản nhất đủ dùng. Agent là pattern mạnh nhưng cũng\nđắt nhất về cost, eval, guardrails, và vận hành.\nGiảng viên (VinUni) AICB · Ngày 3 17/03/2026 11 / 34\"",
+    "trang_tang": "du",
+    "trang_so_ky_tu": 918
+  },
+  "guardrail": {
+    "raw": "{\"hop_le\": true, \"ly_do\": \"Học viên hỏi giải thích nội dung slide học tập về các Agent Patterns từ Anthropic.\"}",
+    "parsed": {
+      "hop_le": true,
+      "ly_do": "Học viên hỏi giải thích nội dung slide học tập về các Agent Patterns từ Anthropic."
+    }
+  },
+  "classification": {
+    "raw": "{\n  \"tier\": \"du\",\n  \"answer\": \"Dựa theo tài liệu từ Anthropic trên trang 15, các agent patterns nên được tăng dần theo nhu cầu, bắt đầu từ cấu trúc đơn giản nhất đủ dùng vì agent là pattern mạnh nhưng cũng đắt nhất về chi phí (cost), đánh giá (eval), hàng rào bảo vệ (guardrails), và vận hành.\\n\\nCụ thể, các mức độ tăng dần bao gồm:\\n- **Augmented LLM**: Prompt kết hợp với tài liệu (docs) và công cụ (tools).\\n- **Prompt Chaining**: Các bước nối tiếp rõ ràng.\\n- **Routing**: Chọn đường đi (path) hoặc chuyên gia (specialist).\\n- **Orchestrator-Worker**: Phân việc rồi tổng hợp lại.\\n- **Agent**: Tự quyết định nhiều bước.\",\n  \"citations\": [15],\n  \"missing\": null,\n  \"narrowing\": [],\n  \"have_instead\": []\n}",
+    "parsed": {
+      "tier": "du",
+      "answer": "Dựa theo tài liệu từ Anthropic trên trang 15, các agent patterns nên được tăng dần theo nhu cầu, bắt đầu từ cấu trúc đơn giản nhất đủ dùng vì agent là pattern mạnh nhưng cũng đắt nhất về chi phí (cost), đánh giá (eval), hàng rào bảo vệ (guardrails), và vận hành.\n\nCụ thể, các mức độ tăng dần bao gồm:\n- **Augmented LLM**: Prompt kết hợp với tài liệu (docs) và công cụ (tools).\n- **Prompt Chaining**: Các bước nối tiếp rõ ràng.\n- **Routing**: Chọn đường đi (path) hoặc chuyên gia (specialist).\n- **Orchestrator-Worker**: Phân việc rồi tổng hợp lại.\n- **Agent**: Tự quyết định nhiều bước.",
+      "citations": [
+        15
+      ],
+      "missing": null,
+      "narrowing": [],
+      "have_instead": []
+    }
+  },
+  "output": {
+    "tier": "du",
+    "answer": "Dựa theo tài liệu từ Anthropic trên trang 15, các agent patterns nên được tăng dần theo nhu cầu, bắt đầu từ cấu trúc đơn giản nhất đủ dùng vì agent là pattern mạnh nhưng cũng đắt nhất về chi phí (cost), đánh giá (eval), hàng rào bảo vệ (guardrails), và vận hành.\n\nCụ thể, các mức độ tăng dần bao gồm:\n- **Augmented LLM**: Prompt kết hợp với tài liệu (docs) và công cụ (tools).\n- **Prompt Chaining**: Các bước nối tiếp rõ ràng.\n- **Routing**: Chọn đường đi (path) hoặc chuyên gia (specialist).\n- **Orchestrator-Worker**: Phân việc rồi tổng hợp lại.\n- **Agent**: Tự quyết định nhiều bước.",
+    "citations": [
+      15
+    ],
+    "missing": null,
+    "narrowing": [],
+    "have_instead": []
+  },
+  "usage": {
+    "note": "xem trace"
+  },
+  "elapsed_ms": 11778.080224990845
+}
