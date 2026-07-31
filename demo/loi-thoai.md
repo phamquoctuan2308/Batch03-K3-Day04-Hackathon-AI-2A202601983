@@ -4,7 +4,7 @@
 > Dòng bắt đầu bằng `>` là **chỉ dẫn hành động**, không đọc lên.
 > Đọc để nắm ý, lúc nói dùng lời của mình. Đừng học thuộc.
 
-**Phân công:** slide 1-2 P4 · slide 3 P3 nói + P2 bấm · slide 4 P1 · slide 5 P1 · slide 6 P4
+**Phân công:** slide 1-2 P4 · slide 3 P3 nói + P2 bấm · slide 4 P1 · slide 5 P4
 
 ---
 
@@ -72,21 +72,7 @@
 
 ---
 
-## Slide 5 — 45 giây
-
-> → SLIDE NÀY CHƯA ĐIỀN. Sau vòng validation sáng mai, thay ô vàng bằng 2 quote thật.
-
-Khi có rồi, nói theo mẫu:
-
-“Bọn em cho 5 người ngoài nhóm thử, mỗi người 10 phút, giao task thật rồi im lặng quan sát.”
-
-“Bạn [tên] nói: [quote nguyên văn].”
-
-“Sau phản hồi đó bọn em đã sửa [việc gì], ghi trong changelog.” — hoặc — “Bọn em quyết định giữ nguyên, vì [lý do có căn cứ].”
-
----
-
-## Slide 6 — 30 giây
+## Slide 5 — 30 giây
 
 “Nếu có thêm một tuần, ba việc — cả ba đều trỏ vào lỗi bọn em đã biết mà chưa sửa xong.”
 
