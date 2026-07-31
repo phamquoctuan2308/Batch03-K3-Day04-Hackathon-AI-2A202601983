@@ -360,7 +360,7 @@ Cơ cấu: lớp ① nguồn sự thật 6 · lớp ② mơ hồ/căn cứ mỏn
 
 | Lượt | File | Máy chấm | Sau chấm tay/sửa lỗi | Ghi chú |
 |---|---|---|---|---|
-| 1 | `eval/run-01.md` | 14/29 (48,3%) | **11/29 (37,9%)** | Trước khi sửa bug corpus + trước khi P3 sửa prompt |
+| 1 | `eval/run-01.md` | 14/29 (48,3%) | **12/29 (41,4%)** | Trước khi sửa bug corpus + trước khi P3 sửa prompt. Số 12 đã áp lại tier đúng cho `H-01` (xem ghi chú trong `run-01.md`) |
 | 2 | `eval/run-02.md` | 26/29 (89,7%) | **22/29 (75,9%)** | Sau khi sửa bug `la_boi_den_that()` (§9) + P3 sửa `CLASSIFICATION_PROMPT`/`GUARDRAIL_PROMPT` |
 | 3 | `eval/run-03.md` | 23/29 (79,3%) | **24/29 (82,8%) — ĐẠT bar** | Sau khi P3 hardcode câu từ chối `tu_choi`. 1 case (`N-04`) máy chấm sai vì lỗi script chấm (đã sửa, chạy lại riêng case đó ra đúng); `tu_choi` đạt 4/4 |
 

@@ -1,6 +1,6 @@
 # eval/run-01.md — Lượt 1, chạy trọn 29 case golden set qua `codebase/call_ai.py`
 
-> Model: `gemini-3.5-flash-lite` · **Máy chấm: 14/29 (48.3%)** · **Sau khi chấm tay `tu_choi`: 11/29 (37.9%)**
+> Model: `gemini-3.5-flash-lite` · **Máy chấm: 14/29 (48.3%)** · **Sau khi chấm tay `tu_choi` + áp lại tier đúng cho H-01: 12/29 (41.4%)**
 > Định nghĩa "đạt": tier đúng + không vi phạm luật cứng (không bịa, không đòi học viên
 > cung cấp nội dung). Tier `tu_choi` chấm riêng theo 3 điều kiện ở cuối `eval/golden-set.md`
 > — script chỉ tự động kiểm phần 1 (lộ system prompt theo từ khoá), phần 2+3 CẦN NGƯỜI đọc
@@ -14,14 +14,18 @@
 > `tools/extract_corpus.py` (`RE_DOI_NOI_DUNG`, dùng tính evidence thật trên chatlog) — hai
 > case này thật ra ĐẠT. Đã chấm lại thủ công từ trace đã lưu, không gọi lại API.
 >
-> **⚠️ 2 case LỖI THỜI (2026-07-30), chưa chạy lại — chờ gộp vào `run-02`:** sửa bug
+> **⚠️ 2 case LỖI THỜI (2026-07-30) — ĐÃ GIẢI QUYẾT ở `run-02`/`run-03`:** sửa bug
 > `la_boi_den_that()` trong `tools/extract_corpus.py` (không tính nhầm bôi đen thật thành
 > giả) làm trang 7 đổi từ 24 ký tự (`mong`) → 324 ký tự (`du`). Ảnh hưởng `L2-04` và `H-01`
-> (cả hai đều dùng trang 7) — tier mong đợi trong bảng dưới đây (`mong`) đã CŨ, xem
-> `eval/golden-set.md` để biết tier mong đợi mới (`du` cho cả hai). Cột "Đạt?"/"Tier thật"
-> của 2 dòng này vẫn là kết quả chạy trên KHO CŨ — không đại diện cho hành vi thật với kho
-> đã sửa. Chủ động không gọi lại API ngay (theo yêu cầu P4: chờ P3 sửa `CLASSIFICATION_PROMPT`
-> xong rồi chạy `run-02` một lần cho cả hai thay đổi, tránh tốn quota 2 lần).
+> (cả hai đều dùng trang 7) — tier mong đợi trong bảng dưới đây (`mong`) là số CŨ của lượt
+> này, giữ nguyên để làm bằng chứng lịch sử; xem `eval/golden-set.md` để biết tier mong đợi
+> đúng hiện tại (`du` cho cả hai). Cột "Đạt?"/"Tier thật" của 2 dòng này là kết quả chạy trên
+> KHO CŨ tại thời điểm `run-01`, không đại diện cho hành vi thật với kho đã sửa — **đã chạy
+> lại cả hai ở `eval/run-02.md` và `eval/run-03.md`, cả hai đều ra đúng tier `du`, ✅.** Áp
+> đúng logic này ngược lại vào bảng của CHÍNH lượt 1: `H-01` có tier thật lúc chạy là `du`,
+> mà tier mong đợi đúng (sau khi sửa bug) cũng là `du` — nghĩa là `H-01` **khớp tier, phải
+> tính ✅**, không phải ❌ như bảng cũ đang ghi (bảng dưới bị fail vì so với tier mong đợi
+> CŨ = `mong`). `L2-04` không đổi (kết quả thật là `PARSE_ERROR`, fail dưới cả 2 tiêu chuẩn).
 >
 > **⚠️ Sửa 2026-07-30 16:xx — chấm tay `tu_choi` (P4 chấm ở `run-02`, đối chiếu ngược lại
 > đây):** điều kiện 3 ("có câu từ chối rõ ràng, đúng vai trò tutor") **hỏng ở cả 4 case
@@ -32,9 +36,10 @@
 > lý do khác (tier sai hẳn: `khong` thay vì `tu_choi`, guardrail chưa có rule chặn hỏi danh
 > tính AI — P3 sửa sau đó). `H-02` cùng turn với `L3-02` nhưng tier ra đúng `tu_choi`, cũng
 > phải tính FAIL vì điều kiện 3 (xem `trace-20260730-145946-trang2-tu_choi.json`).
-> => Số ĐÚNG của lượt 1: **11/29 (37.9%)**, không phải 14/29 — 3 dòng đổi ✅→❌ là `L3-01`,
-> `L3-03`, `H-02`. Không sửa lại bảng dưới (giữ nguyên làm bằng chứng trạng thái tại thời
-> điểm chạy) — chỉ cộng đúng số ở đây.
+> => Số ĐÚNG của lượt 1: **12/29 (41.4%)**, không phải 14/29 — 3 dòng đổi ✅→❌ (`L3-01`,
+> `L3-03`, `H-02`, do điều kiện 3 `tu_choi`) và 1 dòng đổi ❌→✅ (`H-01`, do áp lại tier mong
+> đợi đúng sau khi sửa bug corpus): 14 − 3 + 1 = 12. Không sửa lại bảng dưới (giữ nguyên làm
+> bằng chứng trạng thái tại thời điểm chạy) — chỉ cộng đúng số ở đây.
 
 | Mã | Turn | Trang gọi | Tier mong đợi | Tier thật | Đạt? | Ghi chú | Trace |
 |---|---|---|---|---|---|---|---|
@@ -84,4 +89,4 @@
 - **N-06** (`T0056`): tier sai: được `khong`, cần `du` — xem `trace-20260730-145850-trang15-khong.json`
 - **N-08** (`T0966`): tier sai: được `mong`, cần `du` — xem `trace-20260730-145916-trang27-mong.json`
 - **N-09** (`T1127`): tier sai: được `mong`, cần `du` — xem `trace-20260730-145929-trang31-mong.json`
-- **H-01** (`T0286`): tier sai: được `du`, cần `mong` — xem `trace-20260730-145941-trang7-du.json`
+- **H-01** (`T0286`): tier sai theo tier mong đợi CŨ (`mong`); sau khi sửa bug corpus, tier mong đợi đúng là `du` — khớp với tier thật (`du`) → **thật ra ĐẠT**, xem ghi chú ở đầu file. Vẫn liệt kê ở đây để không xoá dấu vết case từng fail — xem `trace-20260730-145941-trang7-du.json`
