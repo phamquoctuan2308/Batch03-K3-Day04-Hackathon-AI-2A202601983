@@ -26,6 +26,20 @@
   .src code{background:#eef0f3;padding:1px 5px;border-radius:4px}
   b.hl{color:var(--bad)}
 
+
+  /* slide bìa */
+  .cover{justify-content:center;text-align:center;background:linear-gradient(160deg,#fff 55%,#eef1fb)}
+  .cover .zone{font-size:14px;letter-spacing:.14em;text-transform:uppercase;color:var(--mute);margin-bottom:14px}
+  .cover .team{font-size:52px;font-weight:800;letter-spacing:-.02em;margin:0 0 6px}
+  .cover .rule{width:64px;height:4px;background:var(--accent);border-radius:2px;margin:18px auto 22px}
+  .cover .topic{font-size:26px;line-height:1.4;max-width:900px;margin:0 auto;font-weight:600}
+  .cover .quote{font-size:17px;color:var(--mute);margin:14px auto 0;max-width:800px;line-height:1.55}
+  .cover .who{display:flex;gap:0;justify-content:center;margin-top:38px;flex-wrap:wrap}
+  .cover .who div{padding:0 22px;border-right:1px solid var(--line);text-align:center}
+  .cover .who div:last-child{border-right:none}
+  .cover .who b{display:block;font-size:16px}
+  .cover .who span{font-size:12.5px;color:var(--mute)}
+
   /* slide 1 — quote chatlog */
   .qs{display:flex;flex-direction:column;gap:12px}
   .q{border:1px solid var(--line);border-left:4px solid var(--bad);border-radius:8px;
@@ -90,6 +104,29 @@
 </style>
 </head>
 <body>
+
+<!-- ═══ BÌA ═══════════════════════════════════════════ -->
+<section class="slide cover">
+  <div class="zone">Mini Hackathon AI · Batch 03 · Zone D305</div>
+  <div class="team">Vin Brothers</div>
+  <div class="rule"></div>
+  <div class="topic">Tutor biết nói “mình không biết”<br>mà vẫn giúp được</div>
+  <p class="quote">
+    AI tutor của VLearn, khi không tra được nội dung trang học viên đang xem,
+    lại <b>đòi chính họ cung cấp nội dung trang đó</b>.
+    Nhóm dạy nó cách từ chối mà vẫn chỉ được đường đi tiếp.
+  </p>
+
+  <div class="who">
+    <div><b>Trương Công Thái Đức</b><span>P4 · Spec lead</span></div>
+    <div><b>Trần Văn Hiếu</b><span>P1 · Data &amp; Eval</span></div>
+    <div><b>Phạm Quốc Tuấn</b><span>P2 · Build</span></div>
+    <div><b>Trần Trung Hiếu</b><span>P3 · Prompt &amp; AI call</span></div>
+  </div>
+
+  <div class="src">Hướng A — VLearn · tối ưu tính năng có sẵn · <code>spec.md</code></div>
+  <div class="no">bìa</div>
+</section>
 
 <!-- ═══ 1 ═══════════════════════════════════════════════ -->
 <section class="slide">
